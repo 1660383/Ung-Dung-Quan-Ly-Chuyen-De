@@ -118,18 +118,13 @@ namespace QuanLyChuyenDe.Views.Dashboard
             MessageBox.Show("Chuyên đề đang mở");
         }
 
-        private void FrmBangDieuKhien_FormClosed(object sender, FormClosedEventArgs e)
+        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn muốn chương trình?", "Thông báo", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 Application.Exit();
             }
-        }
-
-        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void btn_Click(object sender, EventArgs e)
@@ -144,7 +139,8 @@ namespace QuanLyChuyenDe.Views.Dashboard
 
         private void btnContext_Click(object sender, EventArgs e)
         {
-
+            contextMenuStrip1.Show(this.btnContext,0,this.btnContext.Height);
         }
+
     }
 }

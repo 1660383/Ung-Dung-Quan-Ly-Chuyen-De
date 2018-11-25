@@ -35,11 +35,11 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTenNguoDung = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnContext = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.đóngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.action1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thoátToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnContext = new System.Windows.Forms.Button();
             this.navMenu = new QuanLyChuyenDe.Views.UserControls.NavigationDrawer();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -81,6 +81,21 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.label1.TabIndex = 3;
             this.label1.Text = "Quản Lý Chuyên Đề";
             // 
+            // btnContext
+            // 
+            this.btnContext.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnContext.BackgroundImage = global::QuanLyChuyenDe.Properties.Resources.ic_more1;
+            this.btnContext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnContext.ContextMenuStrip = this.contextMenuStrip1;
+            this.btnContext.FlatAppearance.BorderSize = 0;
+            this.btnContext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContext.Location = new System.Drawing.Point(838, 1);
+            this.btnContext.Name = "btnContext";
+            this.btnContext.Size = new System.Drawing.Size(38, 48);
+            this.btnContext.TabIndex = 1;
+            this.btnContext.UseVisualStyleBackColor = true;
+            this.btnContext.Click += new System.EventHandler(this.btnContext_Click);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -109,21 +124,6 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.thoátToolStripMenuItem.Text = "Thoát";
             this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click);
             // 
-            // btnContext
-            // 
-            this.btnContext.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnContext.BackgroundImage = global::QuanLyChuyenDe.Properties.Resources.ic_more1;
-            this.btnContext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnContext.ContextMenuStrip = this.contextMenuStrip1;
-            this.btnContext.FlatAppearance.BorderSize = 0;
-            this.btnContext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContext.Location = new System.Drawing.Point(838, 1);
-            this.btnContext.Name = "btnContext";
-            this.btnContext.Size = new System.Drawing.Size(38, 48);
-            this.btnContext.TabIndex = 1;
-            this.btnContext.UseVisualStyleBackColor = true;
-            this.btnContext.Click += new System.EventHandler(this.btnContext_Click);
-            // 
             // navMenu
             // 
             this.navMenu.AutoSetItemWidth = true;
@@ -148,7 +148,6 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.Name = "FrmBangDieuKhien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmBangDieuKhien";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmBangDieuKhien_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
