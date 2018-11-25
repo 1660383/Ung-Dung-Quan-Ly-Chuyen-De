@@ -53,6 +53,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dashboard\FrmBangDieuKhien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dashboard\FrmBangDieuKhien.Designer.cs">
+      <DependentUpon>FrmBangDieuKhien.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login\frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,13 +68,34 @@
     <Compile Include="Views\UserControls\MyTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Views\UserControls\NavigationDrawer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\NavigationDrawer.Designer.cs">
+      <DependentUpon>NavigationDrawer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\NavigationItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\NavigationItem.Designer.cs">
+      <DependentUpon>NavigationItem.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Dashboard\FrmBangDieuKhien.resx">
+      <DependentUpon>FrmBangDieuKhien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Login\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\NavigationDrawer.resx">
+      <DependentUpon>NavigationDrawer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\NavigationItem.resx">
+      <DependentUpon>NavigationItem.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -101,6 +128,105 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\school-book-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_more.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_more1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_more2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_active1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_active2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_more3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_hamberger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_hamberger1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_more4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_more5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_setting1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_V_hamberger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_hamberger2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_hamberger3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_hamberger4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_setting2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_setting3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_setting4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_V_hamberger1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_book1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_book_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_group_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_add_team.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_hamberger5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_V_hamberger .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_V_hamberger 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_exam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_register.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_details.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
