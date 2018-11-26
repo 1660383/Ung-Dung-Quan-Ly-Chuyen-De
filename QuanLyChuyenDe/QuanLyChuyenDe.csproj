@@ -80,6 +80,24 @@
     <Compile Include="Views\UserControls\NavigationItem.Designer.cs">
       <DependentUpon>NavigationItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\uc_CapNhatTrangThaiChuyenDe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\uc_CapNhatTrangThaiChuyenDe.Designer.cs">
+      <DependentUpon>uc_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\uc_GiaoChuyenDe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\uc_GiaoChuyenDe.Designer.cs">
+      <DependentUpon>uc_GiaoChuyenDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\uc_TraCuuDiemSinhVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\uc_TraCuuDiemSinhVien.Designer.cs">
+      <DependentUpon>uc_TraCuuDiemSinhVien.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -96,6 +114,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\NavigationItem.resx">
       <DependentUpon>NavigationItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\uc_CapNhatTrangThaiChuyenDe.resx">
+      <DependentUpon>uc_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\uc_GiaoChuyenDe.resx">
+      <DependentUpon>uc_GiaoChuyenDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\uc_TraCuuDiemSinhVien.resx">
+      <DependentUpon>uc_TraCuuDiemSinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

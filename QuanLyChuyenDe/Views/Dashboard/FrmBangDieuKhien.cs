@@ -14,12 +14,18 @@ namespace QuanLyChuyenDe.Views.Dashboard
     public partial class FrmBangDieuKhien : Form
     {
         public enum NguoiDung {SinhVien,GiaoVien,GiaoVu};
+        private UserControl userControl;
         public FrmBangDieuKhien()
         {
             InitializeComponent();
-
+            this.userControl.Click += UserControl_Click;
 
            
+        }
+
+        private void UserControl_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Dong");
         }
 
         public FrmBangDieuKhien(NguoiDung nguoiDung)
@@ -76,17 +82,47 @@ namespace QuanLyChuyenDe.Views.Dashboard
             item = new NavigationItem();
             item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_book1;
             item.Text = "Giao chuyên đề";
+            item.NavItemClick += Item_NavItemClick1;
             this.navMenu.AddItem(item);
 
             item = new NavigationItem();
             item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_update;
             item.Text = "Cập nhật trạng thái chuyên đề";
+            item.NavItemClick += Item_NavItemClick2;
             this.navMenu.AddItem(item);
 
             item = new NavigationItem();
             item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_find;
             item.Text = "Tra cứu điểm sinh viên";
+            item.NavItemClick += Item_NavItemClick3;
             this.navMenu.AddItem(item);
+        }
+
+        private void Item_NavItemClick3(object sender, EventArgs e)
+        {
+            if ((this.userControl as uc_TraCuuDiemSinhVien) == null)
+            {
+                this.pnlChinh.Controls.Clear();
+                this.userControl = new uc_TraCuuDiemSinhVien();
+                this.userControl.Dock = DockStyle.Fill;
+                this.pnlChinh.Controls.Add(new uc_TraCuuDiemSinhVien());
+            }
+        }
+
+        private void Item_NavItemClick2(object sender, EventArgs e)
+        {
+            if ((this.userControl as uc_CapNhatTrangThaiChuyenDe) == null)
+            {
+                this.pnlChinh.Controls.Clear();
+                this.userControl = new uc_CapNhatTrangThaiChuyenDe();
+                this.userControl.Dock = DockStyle.Fill;
+                this.pnlChinh.Controls.Add(this.userControl);
+            }
+        }
+
+        private void Item_NavItemClick1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Giao chuyên đề");
         }
 
         private void TaoBangDieuKhienCuaGiaoVu()
@@ -118,15 +154,7 @@ namespace QuanLyChuyenDe.Views.Dashboard
             MessageBox.Show("Chuyên đề đang mở");
         }
 
-        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Bạn muốn chương trình?", "Thông báo", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
-
+    
         private void btn_Click(object sender, EventArgs e)
         {
             MessageBox.Show("btn");
@@ -142,5 +170,39 @@ namespace QuanLyChuyenDe.Views.Dashboard
             contextMenuStrip1.Show(this.btnContext,0,this.btnContext.Height);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void miThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn muốn chương trình?", "Thông báo", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+        private bool phongto = false;
+        private Point viTriBanDau;
+        private Size kichhThuocBanDau;
+        private void miPhongTo_Click(object sender, EventArgs e)
+        {
+            this.phongto = !this.phongto; 
+            if (phongto)
+            {               
+                this.viTriBanDau = this.Location;
+                this.kichhThuocBanDau = this.Size;
+                this.miPhongTo.Text = "Thu nhỏ";
+                this.Location = new Point(0, 0);
+                this.Size = Screen.PrimaryScreen.WorkingArea.Size;
+            }
+            else
+            {
+                this.miPhongTo.Text = "Phóng to";
+                this.Location = this.viTriBanDau;
+                this.Size = this.kichhThuocBanDau;
+            }
+        }
     }
 }

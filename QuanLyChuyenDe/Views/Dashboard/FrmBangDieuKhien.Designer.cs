@@ -37,9 +37,11 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.label1 = new System.Windows.Forms.Label();
             this.btnContext = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.đóngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.action1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thoátToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miCaNhan = new System.Windows.Forms.ToolStripMenuItem();
+            this.miDangXuat = new System.Windows.Forms.ToolStripMenuItem();
+            this.miPhongTo = new System.Windows.Forms.ToolStripMenuItem();
+            this.miThoat = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlChinh = new System.Windows.Forms.Panel();
             this.navMenu = new QuanLyChuyenDe.Views.UserControls.NavigationDrawer();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -47,6 +49,8 @@ namespace QuanLyChuyenDe.Views.Dashboard
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.panel1.Controls.Add(this.lblTenNguoDung);
             this.panel1.Controls.Add(this.label1);
@@ -99,30 +103,48 @@ namespace QuanLyChuyenDe.Views.Dashboard
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.đóngToolStripMenuItem,
-            this.action1ToolStripMenuItem,
-            this.thoátToolStripMenuItem});
+            this.miCaNhan,
+            this.miDangXuat,
+            this.miPhongTo,
+            this.miThoat});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 92);
             // 
-            // đóngToolStripMenuItem
+            // miCaNhan
             // 
-            this.đóngToolStripMenuItem.Name = "đóngToolStripMenuItem";
-            this.đóngToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.đóngToolStripMenuItem.Text = "Cá nhân";
+            this.miCaNhan.Name = "miCaNhan";
+            this.miCaNhan.Size = new System.Drawing.Size(127, 22);
+            this.miCaNhan.Text = "Cá nhân";
             // 
-            // action1ToolStripMenuItem
+            // miDangXuat
             // 
-            this.action1ToolStripMenuItem.Name = "action1ToolStripMenuItem";
-            this.action1ToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.action1ToolStripMenuItem.Text = "Đăng xuất";
+            this.miDangXuat.Name = "miDangXuat";
+            this.miDangXuat.Size = new System.Drawing.Size(127, 22);
+            this.miDangXuat.Text = "Đăng xuất";
             // 
-            // thoátToolStripMenuItem
+            // miPhongTo
             // 
-            this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.thoátToolStripMenuItem.Text = "Thoát";
-            this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click);
+            this.miPhongTo.Name = "miPhongTo";
+            this.miPhongTo.Size = new System.Drawing.Size(127, 22);
+            this.miPhongTo.Text = "Phóng to";
+            this.miPhongTo.Click += new System.EventHandler(this.miPhongTo_Click);
+            // 
+            // miThoat
+            // 
+            this.miThoat.Name = "miThoat";
+            this.miThoat.Size = new System.Drawing.Size(127, 22);
+            this.miThoat.Text = "Thoát";
+            this.miThoat.Click += new System.EventHandler(this.miThoat_Click);
+            // 
+            // pnlChinh
+            // 
+            this.pnlChinh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlChinh.Location = new System.Drawing.Point(50, 50);
+            this.pnlChinh.Name = "pnlChinh";
+            this.pnlChinh.Size = new System.Drawing.Size(825, 430);
+            this.pnlChinh.TabIndex = 2;
             // 
             // navMenu
             // 
@@ -135,7 +157,7 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.navMenu.Name = "navMenu";
             this.navMenu.Size = new System.Drawing.Size(50, 480);
             this.navMenu.Speed = 20;
-            this.navMenu.TabIndex = 1;
+            this.navMenu.TabIndex = 3;
             // 
             // FrmBangDieuKhien
             // 
@@ -143,6 +165,7 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 480);
             this.Controls.Add(this.navMenu);
+            this.Controls.Add(this.pnlChinh);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmBangDieuKhien";
@@ -160,11 +183,13 @@ namespace QuanLyChuyenDe.Views.Dashboard
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnContext;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem đóngToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem action1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miCaNhan;
+        private System.Windows.Forms.ToolStripMenuItem miDangXuat;
         private System.Windows.Forms.Label lblTenNguoDung;
-        private System.Windows.Forms.ToolStripMenuItem thoátToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miPhongTo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlChinh;
         private UserControls.NavigationDrawer navMenu;
+        private System.Windows.Forms.ToolStripMenuItem miThoat;
     }
 }
