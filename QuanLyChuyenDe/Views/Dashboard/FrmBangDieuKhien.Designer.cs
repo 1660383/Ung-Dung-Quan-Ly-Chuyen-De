@@ -32,9 +32,9 @@ namespace QuanLyChuyenDe.Views.Dashboard
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlBanner = new System.Windows.Forms.Panel();
             this.lblTenNguoDung = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTenUngDung = new System.Windows.Forms.Label();
             this.btnContext = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miCaNhan = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,22 +43,25 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.miThoat = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlChinh = new System.Windows.Forms.Panel();
             this.navMenu = new QuanLyChuyenDe.Views.UserControls.NavigationDrawer();
-            this.panel1.SuspendLayout();
+            this.pnlBanner.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnlBanner
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnlBanner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.panel1.Controls.Add(this.lblTenNguoDung);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnContext);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(875, 50);
-            this.panel1.TabIndex = 0;
+            this.pnlBanner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.pnlBanner.Controls.Add(this.lblTenNguoDung);
+            this.pnlBanner.Controls.Add(this.lblTenUngDung);
+            this.pnlBanner.Controls.Add(this.btnContext);
+            this.pnlBanner.Location = new System.Drawing.Point(0, 0);
+            this.pnlBanner.Name = "pnlBanner";
+            this.pnlBanner.Size = new System.Drawing.Size(875, 50);
+            this.pnlBanner.TabIndex = 0;
+            this.pnlBanner.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlBanner_MouseDown);
+            this.pnlBanner.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlBanner_MouseMove);
+            this.pnlBanner.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlBanner_MouseUp);
             // 
             // lblTenNguoDung
             // 
@@ -73,17 +76,20 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.lblTenNguoDung.Text = "Đ.H.Ngọc";
             this.lblTenNguoDung.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // lblTenUngDung
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(314, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(276, 31);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Quản Lý Chuyên Đề";
+            this.lblTenUngDung.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblTenUngDung.AutoSize = true;
+            this.lblTenUngDung.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenUngDung.ForeColor = System.Drawing.Color.White;
+            this.lblTenUngDung.Location = new System.Drawing.Point(314, 6);
+            this.lblTenUngDung.Name = "lblTenUngDung";
+            this.lblTenUngDung.Size = new System.Drawing.Size(276, 31);
+            this.lblTenUngDung.TabIndex = 3;
+            this.lblTenUngDung.Text = "Quản Lý Chuyên Đề";
+            this.lblTenUngDung.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlBanner_MouseDown);
+            this.lblTenUngDung.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlBanner_MouseMove);
+            this.lblTenUngDung.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlBanner_MouseUp);
             // 
             // btnContext
             // 
@@ -166,13 +172,13 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.ClientSize = new System.Drawing.Size(875, 480);
             this.Controls.Add(this.navMenu);
             this.Controls.Add(this.pnlChinh);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlBanner);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmBangDieuKhien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmBangDieuKhien";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlBanner.ResumeLayout(false);
+            this.pnlBanner.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -180,14 +186,14 @@ namespace QuanLyChuyenDe.Views.Dashboard
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlBanner;
         private System.Windows.Forms.Button btnContext;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem miCaNhan;
         private System.Windows.Forms.ToolStripMenuItem miDangXuat;
         private System.Windows.Forms.Label lblTenNguoDung;
         private System.Windows.Forms.ToolStripMenuItem miPhongTo;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTenUngDung;
         private System.Windows.Forms.Panel pnlChinh;
         private UserControls.NavigationDrawer navMenu;
         private System.Windows.Forms.ToolStripMenuItem miThoat;

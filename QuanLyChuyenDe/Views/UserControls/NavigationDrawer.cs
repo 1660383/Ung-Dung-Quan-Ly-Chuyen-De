@@ -56,6 +56,7 @@ namespace QuanLyChuyenDe.Views.UserControls
             set
             {
                 flag = value;
+               // this.btnHamberger_Click(this,EventArgs.Empty);
             }
         }
 
@@ -129,16 +130,15 @@ namespace QuanLyChuyenDe.Views.UserControls
 
         private void btnHamberger_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < this.items.Count; i++)
+            {
+                this.items[i].Title.Hide();
+            }
+
             if (flag)
             {
                 flag = false;
-                this.btnHamberger.Image = global::QuanLyChuyenDe.Properties.Resources.ic_V_hamberger_1;
-
-                for (int i = 0; i < this.items.Count; i++)
-                {
-                    this.items[i].Title.Hide();
-                }
-
+                this.btnHamberger.Image = global::QuanLyChuyenDe.Properties.Resources.ic_V_hamberger_1;              
                 for (int i = 0; i <= (this.MaxWidth - this.MinWidth) / this.speed; i++)
                 {
                     if (this.Size.Width + this.speed <= this.maxWidth)
@@ -149,13 +149,7 @@ namespace QuanLyChuyenDe.Views.UserControls
                     {
                         this.Size = new Size(this.MaxWidth, this.Size.Height);
                     }
-                }
-
-                for (int i = 0; i < this.items.Count; i++)
-                {
-                    this.items[i].Title.Show();
-                }
-
+                }              
             }
             else
             {
@@ -172,6 +166,10 @@ namespace QuanLyChuyenDe.Views.UserControls
                         this.Size = new Size(this.minWidth, this.Size.Height);
                     }
                 }
+            }
+            for (int i = 0; i < this.items.Count; i++)
+            {
+                this.items[i].Title.Show();
             }
         }
     }

@@ -44,16 +44,16 @@ namespace QuanLyChuyenDe.Views.Dashboard
                     break;
             }
         }
-  
         private void TaoBangDieuKhienCuaSinhVien()
         {
             NavigationItem item;
-
             item = new NavigationItem();
             item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_book1;
-            item.Text = "Chuyên đề đang mở";
+            item.Text = "Chuyên đề đang mở";          
             item.NavItemClick += Item_NavItemClick;
-            this.navMenu.AddItem(item);
+            item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
+            this.navMenu.AddItem(item);        
+
 
             item = new NavigationItem();
             item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_book_ok;
@@ -75,6 +75,16 @@ namespace QuanLyChuyenDe.Views.Dashboard
             item.Text = "Kết quả học tập";
             this.navMenu.AddItem(item);
         }
+
+        private void Item_NavItem_MouseEnter(object sender, EventArgs e)
+        {
+            ToolTip toolTip = new ToolTip();
+            toolTip.InitialDelay = 500;
+            toolTip.AutoPopDelay = 5000;
+            toolTip.ShowAlways = false;
+            toolTip.SetToolTip((NavigationItem)sender, ((NavigationItem)sender).Text);
+        }
+
         private void TaoBangDieuKhienCuaGiaoVien()
         {
             NavigationItem item;
@@ -204,5 +214,32 @@ namespace QuanLyChuyenDe.Views.Dashboard
                 this.Size = this.kichhThuocBanDau;
             }
         }
+        private bool mouseDown = false;
+        private Point mouseDownPos = new Point(0, 0);
+        private void pnlBanner_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.mouseDown = !this.mouseDown;
+            this.mouseDownPos = e.Location;
+        }
+
+        private void pnlBanner_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (this.mouseDown)
+            {
+                this.Location = new Point(this.Location.X + e.X - mouseDownPos.X, this.Location.Y + e.Y - mouseDownPos.Y);
+            }
+        }
+
+        private void pnlBanner_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.mouseDown = !this.mouseDown;
+            this.mouseDownPos = new Point(0,0);
+        }
+
+        private void lblTenUngDung_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
     }
 }

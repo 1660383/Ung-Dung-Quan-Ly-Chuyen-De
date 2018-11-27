@@ -1,4 +1,5 @@
 ﻿using QuanLyChuyenDe.Views.UserControls;
+using System;
 
 namespace QuanLyChuyenDe.Views.Login
 {
@@ -39,10 +40,10 @@ namespace QuanLyChuyenDe.Views.Login
             this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnDangNhap = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbTenUngDung = new System.Windows.Forms.PictureBox();
             this.pnlChinh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTenUngDung)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlChinh
@@ -56,7 +57,7 @@ namespace QuanLyChuyenDe.Views.Login
             this.pnlChinh.Controls.Add(this.txtMatKhau);
             this.pnlChinh.Controls.Add(this.checkBox1);
             this.pnlChinh.Controls.Add(this.btnDangNhap);
-            this.pnlChinh.Controls.Add(this.pictureBox1);
+            this.pnlChinh.Controls.Add(this.pbTenUngDung);
             this.pnlChinh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChinh.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlChinh.Location = new System.Drawing.Point(0, 0);
@@ -64,6 +65,8 @@ namespace QuanLyChuyenDe.Views.Login
             this.pnlChinh.Size = new System.Drawing.Size(382, 403);
             this.pnlChinh.TabIndex = 0;
             this.pnlChinh.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlChinh_MouseDown);
+            this.pnlChinh.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlChinh_MouseMove);
+            this.pnlChinh.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlChinh_MouseUp);
             // 
             // btnThoat
             // 
@@ -150,15 +153,18 @@ namespace QuanLyChuyenDe.Views.Login
             this.btnDangNhap.UseVisualStyleBackColor = false;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
-            // pictureBox1
+            // pbTenUngDung
             // 
-            this.pictureBox1.Image = global::QuanLyChuyenDe.Properties.Resources.button_quan_ly_chuyen_de1;
-            this.pictureBox1.Location = new System.Drawing.Point(45, 109);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(290, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.pbTenUngDung.Image = global::QuanLyChuyenDe.Properties.Resources.button_quan_ly_chuyen_de1;
+            this.pbTenUngDung.Location = new System.Drawing.Point(45, 109);
+            this.pbTenUngDung.Name = "pbTenUngDung";
+            this.pbTenUngDung.Size = new System.Drawing.Size(290, 40);
+            this.pbTenUngDung.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbTenUngDung.TabIndex = 1;
+            this.pbTenUngDung.TabStop = false;
+            this.pbTenUngDung.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlChinh_MouseDown);
+            this.pbTenUngDung.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlChinh_MouseUp);
+            this.pbTenUngDung.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlChinh_MouseMove);
             // 
             // frmDangNhap
             // 
@@ -173,7 +179,7 @@ namespace QuanLyChuyenDe.Views.Login
             this.pnlChinh.ResumeLayout(false);
             this.pnlChinh.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTenUngDung)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -182,7 +188,7 @@ namespace QuanLyChuyenDe.Views.Login
         #endregion
 
         private System.Windows.Forms.Panel pnlChinh;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbTenUngDung;
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label2;
