@@ -42,8 +42,7 @@ namespace QuanLyChuyenDe.Views.UserControls
         }
 
         public NavigationItem()
-        {
-            
+        {            
             InitializeComponent();
         }
         protected virtual void OnNavItemClick(EventArgs e)
@@ -51,7 +50,7 @@ namespace QuanLyChuyenDe.Views.UserControls
             NavItemClick?.Invoke(this, e);
         }
 
-        protected virtual void OnNavItem_MouseEnter(EventArgs e)
+        protected virtual void OnNavItem_MouseEnter(object sender, EventArgs e)
         {
             NavItem_MouseEnter?.Invoke(this, e);
         }
@@ -61,12 +60,13 @@ namespace QuanLyChuyenDe.Views.UserControls
         }
         private void Title_MouseEnter(object sender, EventArgs e)
         {
+            this.OnNavItem_MouseEnter(sender,e);
             this.Title.BackColor = Color.FromArgb(170, 197, 230);
             this.pbIcon.BackColor = Color.FromArgb(170, 197, 230);
         }
 
         private void Title_MouseLeave(object sender, EventArgs e)
-        {
+        {           
             this.Title.BackColor = Color.FromArgb(47, 85, 130);
             this.pbIcon.BackColor = Color.FromArgb(47, 85, 130);
         }

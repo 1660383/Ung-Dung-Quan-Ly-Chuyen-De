@@ -117,6 +117,6 @@
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.Label Title;       
-        private System.Windows.Forms.PictureBox pbIcon;
+        public System.Windows.Forms.PictureBox pbIcon;
     }
 }

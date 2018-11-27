@@ -191,15 +191,15 @@ namespace QuanLyChuyenDe.Views.UserControls
                 this.lvChuyenDeMo.View = View.Tile;
             }
         }
-
-        private void comboBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        
+        private void lblTenChuyenDe_MouseEnter(object sender, EventArgs e)
         {
-            this.comboBox1.Text = "";
-        }
-
-        private void comboBox2_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            this.comboBox2.Text = "";
+            ToolTip toolTip = new ToolTip();
+            toolTip.InitialDelay = 500;
+            toolTip.AutoPopDelay = 5000;
+            toolTip.ReshowDelay = 500;
+            toolTip.ShowAlways = true;    
+            toolTip.SetToolTip(this.lblTenChuyenDe, this.lblTenChuyenDe.Text);
         }
     }
 }

@@ -57,7 +57,7 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.pnlBanner.Controls.Add(this.btnContext);
             this.pnlBanner.Location = new System.Drawing.Point(0, 0);
             this.pnlBanner.Name = "pnlBanner";
-            this.pnlBanner.Size = new System.Drawing.Size(875, 50);
+            this.pnlBanner.Size = new System.Drawing.Size(947, 50);
             this.pnlBanner.TabIndex = 0;
             this.pnlBanner.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlBanner_MouseDown);
             this.pnlBanner.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlBanner_MouseMove);
@@ -69,7 +69,7 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.lblTenNguoDung.AutoSize = true;
             this.lblTenNguoDung.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenNguoDung.ForeColor = System.Drawing.Color.White;
-            this.lblTenNguoDung.Location = new System.Drawing.Point(766, 16);
+            this.lblTenNguoDung.Location = new System.Drawing.Point(838, 16);
             this.lblTenNguoDung.Name = "lblTenNguoDung";
             this.lblTenNguoDung.Size = new System.Drawing.Size(66, 16);
             this.lblTenNguoDung.TabIndex = 2;
@@ -82,7 +82,7 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.lblTenUngDung.AutoSize = true;
             this.lblTenUngDung.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenUngDung.ForeColor = System.Drawing.Color.White;
-            this.lblTenUngDung.Location = new System.Drawing.Point(314, 6);
+            this.lblTenUngDung.Location = new System.Drawing.Point(350, 6);
             this.lblTenUngDung.Name = "lblTenUngDung";
             this.lblTenUngDung.Size = new System.Drawing.Size(276, 31);
             this.lblTenUngDung.TabIndex = 3;
@@ -99,7 +99,7 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.btnContext.ContextMenuStrip = this.contextMenuStrip1;
             this.btnContext.FlatAppearance.BorderSize = 0;
             this.btnContext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContext.Location = new System.Drawing.Point(838, 1);
+            this.btnContext.Location = new System.Drawing.Point(910, 1);
             this.btnContext.Name = "btnContext";
             this.btnContext.Size = new System.Drawing.Size(38, 48);
             this.btnContext.TabIndex = 1;
@@ -147,9 +147,11 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.pnlChinh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlChinh.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlChinh.Location = new System.Drawing.Point(50, 50);
             this.pnlChinh.Name = "pnlChinh";
-            this.pnlChinh.Size = new System.Drawing.Size(825, 430);
+            this.pnlChinh.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.pnlChinh.Size = new System.Drawing.Size(894, 520);
             this.pnlChinh.TabIndex = 2;
             // 
             // navMenu
@@ -161,7 +163,7 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.navMenu.MaxWidth = 250;
             this.navMenu.MinWidth = 50;
             this.navMenu.Name = "navMenu";
-            this.navMenu.Size = new System.Drawing.Size(50, 480);
+            this.navMenu.Size = new System.Drawing.Size(50, 570);
             this.navMenu.Speed = 20;
             this.navMenu.TabIndex = 3;
             // 
@@ -169,7 +171,7 @@ namespace QuanLyChuyenDe.Views.Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 480);
+            this.ClientSize = new System.Drawing.Size(947, 570);
             this.Controls.Add(this.navMenu);
             this.Controls.Add(this.pnlChinh);
             this.Controls.Add(this.pnlBanner);

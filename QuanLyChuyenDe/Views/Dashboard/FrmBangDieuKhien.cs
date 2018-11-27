@@ -51,7 +51,7 @@ namespace QuanLyChuyenDe.Views.Dashboard
             item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_book1;
             item.Text = "Chuyên đề đang mở";          
             item.NavItemClick += Item_NavItemClick;
-            item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
+           // item.NavItem_MouseEnter += new EventHandler(this.Item_NavItem_MouseEnter);
             this.navMenu.AddItem(item);        
 
 
@@ -76,15 +76,6 @@ namespace QuanLyChuyenDe.Views.Dashboard
             this.navMenu.AddItem(item);
         }
 
-        private void Item_NavItem_MouseEnter(object sender, EventArgs e)
-        {
-            ToolTip toolTip = new ToolTip();
-            toolTip.InitialDelay = 500;
-            toolTip.AutoPopDelay = 5000;
-            toolTip.ShowAlways = false;
-            toolTip.SetToolTip((NavigationItem)sender, ((NavigationItem)sender).Text);
-        }
-
         private void TaoBangDieuKhienCuaGiaoVien()
         {
             NavigationItem item;
@@ -93,19 +84,62 @@ namespace QuanLyChuyenDe.Views.Dashboard
             item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_book1;
             item.Text = "Giao chuyên đề";
             item.NavItemClick += Item_NavItemClick1;
+            item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
             this.navMenu.AddItem(item);
 
             item = new NavigationItem();
             item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_update;
             item.Text = "Cập nhật trạng thái chuyên đề";
             item.NavItemClick += Item_NavItemClick2;
+            item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
             this.navMenu.AddItem(item);
 
             item = new NavigationItem();
             item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_find;
             item.Text = "Tra cứu điểm sinh viên";
             item.NavItemClick += Item_NavItemClick3;
+            item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
             this.navMenu.AddItem(item);
+        }
+
+        private void TaoBangDieuKhienCuaGiaoVu()
+        {
+            NavigationItem item;
+
+            item = new NavigationItem();
+            item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_book1;
+            item.Text = "Danh sách chuyên đề";
+            item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
+            this.navMenu.AddItem(item);
+
+            item = new NavigationItem();
+            item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_register;
+            item.Text = "Thông tin đăng ký chuyên đề";
+            item.NavItem_MouseEnter += Item_NavItem_MouseEnter;        
+            this.navMenu.AddItem(item);
+
+            item = new NavigationItem();
+            item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_details;
+            item.Text = "Chi tiết chuyên đề";
+            item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
+            this.navMenu.AddItem(item);
+
+            item = new NavigationItem();
+            item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_find;
+            item.Text = "Tra cứu điểm sinh viên";
+            item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
+            this.navMenu.AddItem(item);
+        }
+        private void Item_NavItem_MouseEnter(object sender, EventArgs e)
+        {
+            ToolTip toolTip = new ToolTip();
+            toolTip.InitialDelay = 500;
+            toolTip.AutoPopDelay = 5000;
+            toolTip.ReshowDelay = 500;
+            toolTip.ShowAlways = true;
+            //lblTenUngDung.Text = sender.ToString();
+            //toolTip.SetToolTip(((NavigationItem)sender).Title, ((NavigationItem)sender).Text);
+            toolTip.SetToolTip(((NavigationItem)sender).pbIcon, ((NavigationItem)sender).Text);
         }
 
         private void Item_NavItemClick3(object sender, EventArgs e)
@@ -132,38 +166,19 @@ namespace QuanLyChuyenDe.Views.Dashboard
 
         private void Item_NavItemClick1(object sender, EventArgs e)
         {
-            MessageBox.Show("Giao chuyên đề");
-        }
+            if ((this.userControl as uc_GiaoChuyenDe) == null)
+            {
+                this.pnlChinh.Controls.Clear();
+                this.userControl = new uc_GiaoChuyenDe();
+                this.userControl.Dock = DockStyle.Fill;
+                this.pnlChinh.Controls.Add(this.userControl);
+            }
+        }      
 
-        private void TaoBangDieuKhienCuaGiaoVu()
-        {
-            NavigationItem item;
-
-            item = new NavigationItem();
-            item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_book1;
-            item.Text = "Danh sách chuyên đề";
-            this.navMenu.AddItem(item);
-
-            item = new NavigationItem();
-            item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_register;
-            item.Text = "Thông tin đăng ký chuyên đề";
-            this.navMenu.AddItem(item);
-          
-            item = new NavigationItem();
-            item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_details;
-            item.Text = "Chi tiết chuyên đề";
-            this.navMenu.AddItem(item);
-
-            item = new NavigationItem();
-            item.Icon = global::QuanLyChuyenDe.Properties.Resources.ic_find;
-            item.Text = "Tra cứu điểm sinh viên";
-            this.navMenu.AddItem(item);
-        }
         private void Item_NavItemClick(object sender, EventArgs e)
         {
             MessageBox.Show("Chuyên đề đang mở");
         }
-
     
         private void btn_Click(object sender, EventArgs e)
         {
@@ -193,6 +208,7 @@ namespace QuanLyChuyenDe.Views.Dashboard
                 Application.Exit();
             }
         }
+
         private bool phongto = false;
         private Point viTriBanDau;
         private Size kichhThuocBanDau;
@@ -214,6 +230,7 @@ namespace QuanLyChuyenDe.Views.Dashboard
                 this.Size = this.kichhThuocBanDau;
             }
         }
+
         private bool mouseDown = false;
         private Point mouseDownPos = new Point(0, 0);
         private void pnlBanner_MouseDown(object sender, MouseEventArgs e)
@@ -239,7 +256,6 @@ namespace QuanLyChuyenDe.Views.Dashboard
         private void lblTenUngDung_MouseDown(object sender, MouseEventArgs e)
         {
 
-        }
-
+        }       
     }
 }

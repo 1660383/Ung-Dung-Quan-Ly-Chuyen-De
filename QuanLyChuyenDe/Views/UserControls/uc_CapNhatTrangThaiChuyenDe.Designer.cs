@@ -37,14 +37,13 @@
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("5", 0);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uc_CapNhatTrangThaiChuyenDe));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lvChuyenDeMo = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.myTextBox1 = new QuanLyChuyenDe.Views.UserControls.MyTextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -69,12 +68,13 @@
             this.lblTenChuyenDe = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.myTextBox1 = new QuanLyChuyenDe.Views.UserControls.MyTextBox();
             this.groupBox1.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -84,22 +84,47 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Controls.Add(this.splitContainer1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(825, 430);
+            this.groupBox1.Size = new System.Drawing.Size(894, 520);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "CẬP NHẬT TRẠNG THÁI CHUYÊN ĐỀ";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 18);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.panel3);
+            this.splitContainer1.Panel1.Controls.Add(this.panel2);
+            this.splitContainer1.Panel1.Controls.Add(this.panel1);
+            this.splitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.label2);
+            this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.splitContainer1.Size = new System.Drawing.Size(888, 499);
+            this.splitContainer1.SplitterDistance = 489;
+            this.splitContainer1.TabIndex = 0;
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.lvChuyenDeMo);
-            this.panel3.Location = new System.Drawing.Point(3, 56);
+            this.panel3.Location = new System.Drawing.Point(0, 63);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(422, 337);
+            this.panel3.Size = new System.Drawing.Size(491, 399);
             this.panel3.TabIndex = 3;
             // 
             // lvChuyenDeMo
@@ -115,7 +140,7 @@
             this.lvChuyenDeMo.LargeImageList = this.imageList1;
             this.lvChuyenDeMo.Location = new System.Drawing.Point(0, 0);
             this.lvChuyenDeMo.Name = "lvChuyenDeMo";
-            this.lvChuyenDeMo.Size = new System.Drawing.Size(422, 337);
+            this.lvChuyenDeMo.Size = new System.Drawing.Size(491, 399);
             this.lvChuyenDeMo.SmallImageList = this.imageList1;
             this.lvChuyenDeMo.TabIndex = 0;
             this.lvChuyenDeMo.UseCompatibleStateImageBehavior = false;
@@ -127,44 +152,23 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "ic_ChuyenDe.png");
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 18);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.panel2);
-            this.splitContainer1.Panel1.Controls.Add(this.panel1);
-            this.splitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer1.Size = new System.Drawing.Size(819, 409);
-            this.splitContainer1.SplitterDistance = 422;
-            this.splitContainer1.TabIndex = 0;
-            // 
             // panel2
             // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.myTextBox1);
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(422, 36);
+            this.panel2.Size = new System.Drawing.Size(459, 36);
             this.panel2.TabIndex = 2;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(159, 10);
+            this.label7.Location = new System.Drawing.Point(176, 12);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 16);
             this.label7.TabIndex = 2;
@@ -173,23 +177,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(274, 10);
+            this.label5.Location = new System.Drawing.Point(298, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 16);
             this.label5.TabIndex = 2;
             this.label5.Text = "Năm học:";
-            // 
-            // myTextBox1
-            // 
-            this.myTextBox1.ForeColor = System.Drawing.Color.Gray;
-            this.myTextBox1.Hint = "Nhập \'tên\' hoặc \'mã\' CĐ";
-            this.myTextBox1.HintColor = System.Drawing.Color.Gray;
-            this.myTextBox1.Location = new System.Drawing.Point(3, 7);
-            this.myTextBox1.Name = "myTextBox1";
-            this.myTextBox1.Size = new System.Drawing.Size(146, 22);
-            this.myTextBox1.TabIndex = 1;
-            this.myTextBox1.Text = "Nhập \'tên\' hoặc \'mã\' CĐ";
-            this.myTextBox1.TextColor = System.Drawing.SystemColors.WindowText;
             // 
             // comboBox2
             // 
@@ -197,11 +189,10 @@
             this.comboBox2.Items.AddRange(new object[] {
             "hk1",
             "hk2"});
-            this.comboBox2.Location = new System.Drawing.Point(214, 5);
+            this.comboBox2.Location = new System.Drawing.Point(231, 7);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(54, 24);
             this.comboBox2.TabIndex = 0;
-            this.comboBox2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.comboBox2_MouseDoubleClick);
             // 
             // comboBox1
             // 
@@ -212,11 +203,10 @@
             "2016",
             "2015",
             "2014"});
-            this.comboBox1.Location = new System.Drawing.Point(344, 5);
+            this.comboBox1.Location = new System.Drawing.Point(368, 7);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(75, 24);
             this.comboBox1.TabIndex = 0;
-            this.comboBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.comboBox1_MouseDoubleClick);
             // 
             // panel1
             // 
@@ -225,9 +215,9 @@
             this.panel1.Controls.Add(this.rbBieuTuongNho);
             this.panel1.Controls.Add(this.rbBieuTuongLon);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 378);
+            this.panel1.Location = new System.Drawing.Point(0, 468);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(422, 31);
+            this.panel1.Size = new System.Drawing.Size(489, 31);
             this.panel1.TabIndex = 1;
             // 
             // rbLat
@@ -299,13 +289,14 @@
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.MinimumSize = new System.Drawing.Size(393, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(393, 409);
+            this.groupBox2.Size = new System.Drawing.Size(395, 499);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin chi tiết";
             // 
             // lbl1
             // 
+            this.lbl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl1.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl1.ForeColor = System.Drawing.Color.Red;
             this.lbl1.Location = new System.Drawing.Point(241, 66);
@@ -317,6 +308,7 @@
             // 
             // lbl2
             // 
+            this.lbl2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl2.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl2.ForeColor = System.Drawing.Color.Red;
             this.lbl2.Location = new System.Drawing.Point(241, 92);
@@ -328,6 +320,7 @@
             // 
             // lbl3
             // 
+            this.lbl3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl3.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl3.ForeColor = System.Drawing.Color.Red;
             this.lbl3.Location = new System.Drawing.Point(354, 120);
@@ -339,6 +332,7 @@
             // 
             // lbl4
             // 
+            this.lbl4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl4.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl4.ForeColor = System.Drawing.Color.Red;
             this.lbl4.Location = new System.Drawing.Point(354, 152);
@@ -350,6 +344,7 @@
             // 
             // btnCapNhat
             // 
+            this.btnCapNhat.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnCapNhat.Location = new System.Drawing.Point(148, 188);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(75, 23);
@@ -360,6 +355,7 @@
             // 
             // nudSLSinhVienToiDa
             // 
+            this.nudSLSinhVienToiDa.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.nudSLSinhVienToiDa.Location = new System.Drawing.Point(148, 64);
             this.nudSLSinhVienToiDa.Name = "nudSLSinhVienToiDa";
             this.nudSLSinhVienToiDa.Size = new System.Drawing.Size(87, 22);
@@ -367,6 +363,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(22, 66);
             this.label6.Name = "label6";
@@ -376,6 +373,7 @@
             // 
             // nudSLNhomToiDa
             // 
+            this.nudSLNhomToiDa.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.nudSLNhomToiDa.Location = new System.Drawing.Point(148, 92);
             this.nudSLNhomToiDa.Name = "nudSLNhomToiDa";
             this.nudSLNhomToiDa.Size = new System.Drawing.Size(87, 22);
@@ -383,6 +381,7 @@
             // 
             // lbl
             // 
+            this.lbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl.AutoSize = true;
             this.lbl.Location = new System.Drawing.Point(40, 94);
             this.lbl.Name = "lbl";
@@ -392,6 +391,7 @@
             // 
             // dtpKetThuc
             // 
+            this.dtpKetThuc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dtpKetThuc.Location = new System.Drawing.Point(148, 148);
             this.dtpKetThuc.Name = "dtpKetThuc";
             this.dtpKetThuc.Size = new System.Drawing.Size(200, 22);
@@ -399,6 +399,7 @@
             // 
             // dtpBatDau
             // 
+            this.dtpBatDau.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dtpBatDau.Location = new System.Drawing.Point(148, 120);
             this.dtpBatDau.Name = "dtpBatDau";
             this.dtpBatDau.Size = new System.Drawing.Size(200, 22);
@@ -406,6 +407,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(26, 153);
             this.label4.Name = "label4";
@@ -415,6 +417,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(29, 125);
             this.label3.Name = "label3";
@@ -424,17 +427,21 @@
             // 
             // lblTenChuyenDe
             // 
-            this.lblTenChuyenDe.AutoSize = true;
+            this.lblTenChuyenDe.AllowDrop = true;
+            this.lblTenChuyenDe.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblTenChuyenDe.AutoEllipsis = true;
             this.lblTenChuyenDe.BackColor = System.Drawing.SystemColors.Control;
             this.lblTenChuyenDe.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenChuyenDe.Location = new System.Drawing.Point(145, 43);
             this.lblTenChuyenDe.Name = "lblTenChuyenDe";
-            this.lblTenChuyenDe.Size = new System.Drawing.Size(109, 18);
+            this.lblTenChuyenDe.Size = new System.Drawing.Size(250, 18);
             this.lblTenChuyenDe.TabIndex = 6;
             this.lblTenChuyenDe.Text = "CHUYÊN ĐỀ 1";
+            this.lblTenChuyenDe.MouseEnter += new System.EventHandler(this.lblTenChuyenDe_MouseEnter);
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(43, 43);
@@ -451,20 +458,32 @@
             this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 0;
             // 
+            // myTextBox1
+            // 
+            this.myTextBox1.ForeColor = System.Drawing.Color.Gray;
+            this.myTextBox1.Hint = "Nhập \'tên\' hoặc \'mã\' CĐ";
+            this.myTextBox1.HintColor = System.Drawing.Color.Gray;
+            this.myTextBox1.Location = new System.Drawing.Point(16, 7);
+            this.myTextBox1.Name = "myTextBox1";
+            this.myTextBox1.Size = new System.Drawing.Size(146, 22);
+            this.myTextBox1.TabIndex = 1;
+            this.myTextBox1.Text = "Nhập \'tên\' hoặc \'mã\' CĐ";
+            this.myTextBox1.TextColor = System.Drawing.SystemColors.WindowText;
+            // 
             // uc_CapNhatTrangThaiChuyenDe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
             this.Name = "uc_CapNhatTrangThaiChuyenDe";
-            this.Size = new System.Drawing.Size(825, 430);
+            this.Size = new System.Drawing.Size(894, 520);
             this.groupBox1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
