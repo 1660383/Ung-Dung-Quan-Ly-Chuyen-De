@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BUS;
 
 namespace GUI.UserControls
 {
@@ -15,6 +16,8 @@ namespace GUI.UserControls
         public UC_GiaoChuyenDe()
         {
             InitializeComponent();
+            Class1 c = new Class1();
+            dataGridView1.DataSource = c.getEXP();
         }
     }
 }
