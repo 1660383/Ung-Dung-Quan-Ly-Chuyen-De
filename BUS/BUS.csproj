@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BUS_ChuyenDe.cs" />
+    <Compile Include="BUS_ChuyenDeGiaoVienThamGia.cs" />
+    <Compile Include="BUS_NoiDungChuyenDe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
