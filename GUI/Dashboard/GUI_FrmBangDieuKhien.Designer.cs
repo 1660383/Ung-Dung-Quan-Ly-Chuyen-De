@@ -42,14 +42,14 @@ namespace GUI.Dashboards
             this.miPhongTo = new System.Windows.Forms.ToolStripMenuItem();
             this.miThoat = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlChinh = new System.Windows.Forms.Panel();
-            this.navMenu = new UC_NavigationDrawer();
+            this.navMenu = new GUI.UserControls.UC_NavigationDrawer();
             this.pnlBanner.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBanner
             // 
-            this.pnlBanner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.pnlBanner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlBanner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.pnlBanner.Controls.Add(this.lblTenNguoDung);
@@ -114,38 +114,39 @@ namespace GUI.Dashboards
             this.miPhongTo,
             this.miThoat});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
             // 
             // miCaNhan
             // 
             this.miCaNhan.Name = "miCaNhan";
-            this.miCaNhan.Size = new System.Drawing.Size(127, 22);
+            this.miCaNhan.Size = new System.Drawing.Size(152, 22);
             this.miCaNhan.Text = "Cá nhân";
             // 
             // miDangXuat
             // 
             this.miDangXuat.Name = "miDangXuat";
-            this.miDangXuat.Size = new System.Drawing.Size(127, 22);
+            this.miDangXuat.Size = new System.Drawing.Size(152, 22);
             this.miDangXuat.Text = "Đăng xuất";
+            this.miDangXuat.Click += new System.EventHandler(this.miDangXuat_Click);
             // 
             // miPhongTo
             // 
             this.miPhongTo.Name = "miPhongTo";
-            this.miPhongTo.Size = new System.Drawing.Size(127, 22);
+            this.miPhongTo.Size = new System.Drawing.Size(152, 22);
             this.miPhongTo.Text = "Phóng to";
             this.miPhongTo.Click += new System.EventHandler(this.miPhongTo_Click);
             // 
             // miThoat
             // 
             this.miThoat.Name = "miThoat";
-            this.miThoat.Size = new System.Drawing.Size(127, 22);
+            this.miThoat.Size = new System.Drawing.Size(152, 22);
             this.miThoat.Text = "Thoát";
             this.miThoat.Click += new System.EventHandler(this.miThoat_Click);
             // 
             // pnlChinh
             // 
-            this.pnlChinh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.pnlChinh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlChinh.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlChinh.Location = new System.Drawing.Point(50, 50);

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GUI.Dashboards;
+using BUS;
 namespace GUI
 {
     public partial class GUI_DangNhap : Form
@@ -23,31 +24,50 @@ namespace GUI
             Application.Exit();
         }
 
-   
+
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            GUI_BangDieuKhien guiBangDieuKhien = new GUI_BangDieuKhien(GUI_BangDieuKhien.NguoiDung.GiaoVien);
-            guiBangDieuKhien.Show();
-            this.Hide();
-            //if(txtTaiKhoan.Text == "sv" && txtMatKhau.Text == "sv")
-            //{
-            //    GUI_BangDieuKhien GUI_BangDieuKhien = new GUI_BangDieuKhien(GUI_BangDieuKhien.NguoiDung.SinhVien);
-            //    GUI_BangDieuKhien.Show();
-            //    this.Hide();
-            //}
-            //else if (txtTaiKhoan.Text == "gv" && txtMatKhau.Text == "gv")
-            //{
-            //    GUI_BangDieuKhien GUI_BangDieuKhien = new GUI_BangDieuKhien(GUI_BangDieuKhien.NguoiDung.GiaoVien);
-            //    GUI_BangDieuKhien.Show();
-            //    this.Hide();
-            //}
-            //else if (txtTaiKhoan.Text == "gvu" && txtMatKhau.Text == "gvu")
-            //{
-            //    GUI_BangDieuKhien GUI_BangDieuKhien = new GUI_BangDieuKhien(GUI_BangDieuKhien.NguoiDung.GiaoVu);
-            //    GUI_BangDieuKhien.Show();
-            //    this.Hide();
-            //}                
+            string tenDangNhap, matKhau;
+            if (String.IsNullOrEmpty(txtTaiKhoan.Text.Trim()))
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!");
+                return;
+            }
+            tenDangNhap = txtTaiKhoan.Text.Trim();
 
+            if (String.IsNullOrEmpty(txtMatKhau.Text.Trim()))
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!");
+                return;
+            }
+            matKhau = txtMatKhau.Text.Trim();
+
+            BUS_TaiKhoan.LoaiTaiKhoan loaiTaiKhoan = BUS_TaiKhoan.DangNhap(tenDangNhap, matKhau);
+            GUI_BangDieuKhien guiBangDieuKhien;
+            switch (loaiTaiKhoan)
+            {
+                case BUS_TaiKhoan.LoaiTaiKhoan.SINHVIEN:
+                    LuuThongTinDangNhap();
+                    guiBangDieuKhien = new GUI_BangDieuKhien(GUI_BangDieuKhien.NguoiDung.SinhVien);
+                    guiBangDieuKhien.Show();
+                    this.Hide();
+                    break;
+                case BUS_TaiKhoan.LoaiTaiKhoan.GIAOVIEN:
+                    LuuThongTinDangNhap();
+                    guiBangDieuKhien = new GUI_BangDieuKhien(GUI_BangDieuKhien.NguoiDung.GiaoVien);
+                    guiBangDieuKhien.Show();
+                    this.Hide();
+                    break;
+                case BUS_TaiKhoan.LoaiTaiKhoan.GIAOVU:
+                    LuuThongTinDangNhap();
+                    guiBangDieuKhien = new GUI_BangDieuKhien(GUI_BangDieuKhien.NguoiDung.GiaoVu);
+                    guiBangDieuKhien.Show();
+                    this.Hide();
+                    break;
+                case BUS_TaiKhoan.LoaiTaiKhoan.WRONG:
+                    MessageBox.Show("Thông tin đăng nhập không chính xác!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+            }
         }
 
         private void btnThoat_MouseDown(object sender, MouseEventArgs e)
@@ -74,6 +94,32 @@ namespace GUI
         {
             this.mouseDown = !this.mouseDown;
             this.mouseDownPos = new Point(0, 0);
+        }
+
+        private void LuuThongTinDangNhap()
+        {
+            GUI.Properties.Settings.Default.Check = ckbGiuDangNhap.Checked;
+            if (ckbGiuDangNhap.Checked)
+            {
+                GUI.Properties.Settings.Default.Username = txtTaiKhoan.Text.Trim();
+                GUI.Properties.Settings.Default.Password = txtMatKhau.Text.Trim();
+            }
+            else
+            {
+                GUI.Properties.Settings.Default.Username = "";
+                GUI.Properties.Settings.Default.Password = "";
+            }
+            GUI.Properties.Settings.Default.Save();
+        }
+
+        private void GUI_DangNhap_Load(object sender, EventArgs e)
+        {
+            ckbGiuDangNhap.Checked = GUI.Properties.Settings.Default.Check;
+            if (GUI.Properties.Settings.Default.Check)
+            {
+                txtTaiKhoan.Text = GUI.Properties.Settings.Default.Username;
+                txtMatKhau.Text = GUI.Properties.Settings.Default.Password;
+            }
         }
     }
 }

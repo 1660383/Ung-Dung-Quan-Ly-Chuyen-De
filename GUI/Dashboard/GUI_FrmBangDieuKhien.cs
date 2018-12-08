@@ -256,6 +256,12 @@ namespace GUI.Dashboards
         private void lblTenUngDung_MouseDown(object sender, MouseEventArgs e)
         {
 
-        }       
+        }
+
+        private void miDangXuat_Click(object sender, EventArgs e)
+        {
+            new GUI_DangNhap().Show();            
+            this.Hide();
+        }
     }
 }
