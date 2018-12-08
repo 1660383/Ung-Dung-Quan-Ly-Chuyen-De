@@ -42,14 +42,14 @@ namespace GUI.Dashboards
             this.miPhongTo = new System.Windows.Forms.ToolStripMenuItem();
             this.miThoat = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlChinh = new System.Windows.Forms.Panel();
-            this.navMenu = new UC_NavigationDrawer();
+            this.navMenu = new GUI.UserControls.UC_NavigationDrawer();
             this.pnlBanner.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBanner
             // 
-            this.pnlBanner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.pnlBanner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlBanner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.pnlBanner.Controls.Add(this.lblTenNguoDung);
@@ -144,8 +144,8 @@ namespace GUI.Dashboards
             // 
             // pnlChinh
             // 
-            this.pnlChinh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.pnlChinh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlChinh.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlChinh.Location = new System.Drawing.Point(50, 50);
@@ -153,6 +153,7 @@ namespace GUI.Dashboards
             this.pnlChinh.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pnlChinh.Size = new System.Drawing.Size(894, 520);
             this.pnlChinh.TabIndex = 2;
+
             // 
             // navMenu
             // 

@@ -256,6 +256,8 @@ namespace GUI.Dashboards
         private void lblTenUngDung_MouseDown(object sender, MouseEventArgs e)
         {
 
-        }       
+        }
+
+      
     }
 }
