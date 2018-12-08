@@ -30,14 +30,17 @@ namespace GUI
             string tenDangNhap, matKhau;
             if (String.IsNullOrEmpty(txtTaiKhoan.Text.Trim()))
             {
-                MessageBox.Show("Vui lòng nhập đủ thông tin!");
+                txtTaiKhoan.Focus();
+                MessageBox.Show("Vui lòng nhập đủ thông tin!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             tenDangNhap = txtTaiKhoan.Text.Trim();
 
             if (String.IsNullOrEmpty(txtMatKhau.Text.Trim()))
             {
-                MessageBox.Show("Vui lòng nhập đủ thông tin!");
+                txtMatKhau.Focus();
+                MessageBox.Show("Vui lòng nhập đủ thông tin!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 return;
             }
             matKhau = txtMatKhau.Text.Trim();
