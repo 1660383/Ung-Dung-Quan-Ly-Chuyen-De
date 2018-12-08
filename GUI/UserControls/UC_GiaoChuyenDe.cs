@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
+using System.IO;
 
 namespace GUI.UserControls
 {
@@ -16,8 +17,35 @@ namespace GUI.UserControls
         public UC_GiaoChuyenDe()
         {
             InitializeComponent();
-            Class1 c = new Class1();
-            dataGridView1.DataSource = c.getEXP();
+            //BUS_GiaoChuyenDe giaoChuyenDe = new BUS_GiaoChuyenDe();
+            //dataGridView1.DataSource = giaoChuyenDe.
+        }
+
+        private void btnChon_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();            
+            DialogResult result = ofd.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                txtDuongDan.Text = ofd.FileName;
+            }
+
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            
+            //BUS_NoiDungChuyenDe.Save(File.ReadAllBytes(txtDuongDan.Text));
+        }
+        int i = 0;
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            //label1.Text = "Move: "+i++;
+        }
+
+        private void splitContainer1_SplitterMoving(object sender, SplitterCancelEventArgs e)
+        {
+            label1.Text = "Move: " + i++;
         }
     }
 }

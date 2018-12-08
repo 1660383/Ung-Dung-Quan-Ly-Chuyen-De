@@ -114,31 +114,32 @@ namespace GUI.Dashboards
             this.miPhongTo,
             this.miThoat});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
             // 
             // miCaNhan
             // 
             this.miCaNhan.Name = "miCaNhan";
-            this.miCaNhan.Size = new System.Drawing.Size(127, 22);
+            this.miCaNhan.Size = new System.Drawing.Size(152, 22);
             this.miCaNhan.Text = "Cá nhân";
             // 
             // miDangXuat
             // 
             this.miDangXuat.Name = "miDangXuat";
-            this.miDangXuat.Size = new System.Drawing.Size(127, 22);
+            this.miDangXuat.Size = new System.Drawing.Size(152, 22);
             this.miDangXuat.Text = "Đăng xuất";
+            this.miDangXuat.Click += new System.EventHandler(this.miDangXuat_Click);
             // 
             // miPhongTo
             // 
             this.miPhongTo.Name = "miPhongTo";
-            this.miPhongTo.Size = new System.Drawing.Size(127, 22);
+            this.miPhongTo.Size = new System.Drawing.Size(152, 22);
             this.miPhongTo.Text = "Phóng to";
             this.miPhongTo.Click += new System.EventHandler(this.miPhongTo_Click);
             // 
             // miThoat
             // 
             this.miThoat.Name = "miThoat";
-            this.miThoat.Size = new System.Drawing.Size(127, 22);
+            this.miThoat.Size = new System.Drawing.Size(152, 22);
             this.miThoat.Text = "Thoát";
             this.miThoat.Click += new System.EventHandler(this.miThoat_Click);
             // 

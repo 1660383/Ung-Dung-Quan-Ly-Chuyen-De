@@ -258,6 +258,11 @@ namespace GUI.Dashboards
 
         }
 
-      
+        private void miDangXuat_Click(object sender, EventArgs e)
+        {
+            new GUI_DangNhap().Show();            
+            this.Hide();
+        }
+
     }
 }

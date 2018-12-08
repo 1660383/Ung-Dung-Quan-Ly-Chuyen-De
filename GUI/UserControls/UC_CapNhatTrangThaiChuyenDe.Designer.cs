@@ -144,7 +144,6 @@
             this.lvChuyenDeMo.SmallImageList = this.imageList1;
             this.lvChuyenDeMo.TabIndex = 0;
             this.lvChuyenDeMo.UseCompatibleStateImageBehavior = false;
-            this.lvChuyenDeMo.SelectedIndexChanged += new System.EventHandler(this.lvChuyenDeMo_SelectedIndexChanged);
             // 
             // imageList1
             // 
