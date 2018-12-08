@@ -154,6 +154,7 @@ namespace GUI.Dashboards
             this.pnlChinh.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pnlChinh.Size = new System.Drawing.Size(894, 520);
             this.pnlChinh.TabIndex = 2;
+
             // 
             // navMenu
             // 

@@ -303,6 +303,14 @@
       <Project>{a3b65c9c-bfb1-49f4-9c14-e9707dde1aef}</Project>
       <Name>BUS</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{5da5d542-2b4e-42ff-89a7-08f74baf4384}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{515f9304-45ae-4490-bece-ad80fd1c7183}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

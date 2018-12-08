@@ -263,5 +263,6 @@ namespace GUI.Dashboards
             new GUI_DangNhap().Show();            
             this.Hide();
         }
+
     }
 }
