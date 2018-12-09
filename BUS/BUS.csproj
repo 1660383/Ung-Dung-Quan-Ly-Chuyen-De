@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     
-    <Compile Include="KetQuaBUS.cs" /
+    <Compile Include="KetQuaBUS.cs" />
     <Compile Include="BUS_ChuyenDe.cs" />
     <Compile Include="BUS_ChuyenDeGiaoVienThamGia.cs" />
     <Compile Include="BUS_NoiDungChuyenDe.cs" />
