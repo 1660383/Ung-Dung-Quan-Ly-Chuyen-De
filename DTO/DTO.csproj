@@ -43,6 +43,7 @@
 
     <Compile Include="KetQua.cs" />
     <Compile Include="DTO_ChuyenDe.cs" />
+    <Compile Include="DTO_ChuyenDeDangMo.cs" />
     <Compile Include="DTO_ChuyenDeGiaoVienThamGia.cs" />
     <Compile Include="DTO_NoiDungChuyenDe.cs" />
     <Compile Include="DTO_TaiKhoan.cs" />

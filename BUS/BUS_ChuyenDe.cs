@@ -9,7 +9,7 @@ using System.Data;
 
 namespace BUS
 {
-    class BUS_ChuyenDe
+    public class BUS_ChuyenDe
     {
         public static DTO_ChuyenDe LayThongTinChuyenDe(string maChuyenDe)
         {
@@ -32,5 +32,7 @@ namespace BUS
             }
             return chuyenDe;
         }
+
+        
     }
 }

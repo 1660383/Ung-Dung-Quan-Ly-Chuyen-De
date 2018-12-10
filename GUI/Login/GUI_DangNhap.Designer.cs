@@ -72,7 +72,7 @@ namespace GUI
             this.btnThoat.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(176)))), ((int)(((byte)(241)))));
             this.btnThoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThoat.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.ForeColor = System.Drawing.Color.White;
+            this.btnThoat.ForeColor = System.Drawing.SystemColors.Control;
             this.btnThoat.Location = new System.Drawing.Point(348, 0);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(34, 32);
@@ -80,6 +80,8 @@ namespace GUI
             this.btnThoat.Text = "X";
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            this.btnThoat.MouseEnter += new System.EventHandler(this.btnThoat_MouseEnter);
+            this.btnThoat.MouseLeave += new System.EventHandler(this.btnThoat_MouseLeave);
             // 
             // pictureBox2
             // 

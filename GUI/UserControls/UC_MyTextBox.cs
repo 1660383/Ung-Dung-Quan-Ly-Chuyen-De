@@ -31,7 +31,7 @@ namespace GUI.UserControls
 
         private void MyTextBox_GotFocus(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(this.Text) || this.Text.Equals(this.hint))
+            if (String.IsNullOrEmpty(this.Text) || this.Text == this.hint)
             {
                 this.Clear();
                 this.ForeColor = this.textColor;

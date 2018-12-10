@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GUI.UserControls;
-
+using GUI.Profile;
+using BUS;
 namespace GUI.Dashboards
 {
     public partial class GUI_BangDieuKhien : Form
@@ -264,5 +265,19 @@ namespace GUI.Dashboards
             this.Hide();
         }
 
+        private void GUI_BangDieuKhien_Load(object sender, EventArgs e)
+        {
+            lblTenNguoDung.Text = BUS_TaiKhoan.LayTenNguoiDung();
+        }
+
+        private void miCaNhan_Click(object sender, EventArgs e)
+        {
+            new GUI_ThongTinCaNhan().ShowDialog();
+        }
+
+        private void lblTenNguoDung_Click(object sender, EventArgs e)
+        {
+            new GUI_ThongTinCaNhan().ShowDialog();
+        }
     }
 }

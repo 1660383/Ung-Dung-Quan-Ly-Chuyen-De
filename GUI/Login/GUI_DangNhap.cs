@@ -40,7 +40,6 @@ namespace GUI
             {
                 txtMatKhau.Focus();
                 MessageBox.Show("Vui lòng nhập đủ thông tin!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
                 return;
             }
             matKhau = txtMatKhau.Text.Trim();
@@ -123,6 +122,16 @@ namespace GUI
                 txtTaiKhoan.Text = GUI.Properties.Settings.Default.Username;
                 txtMatKhau.Text = GUI.Properties.Settings.Default.Password;
             }
+        }
+
+        private void btnThoat_MouseEnter(object sender, EventArgs e)
+        {
+            btnThoat.ForeColor = Color.Red;          
+        }
+
+        private void btnThoat_MouseLeave(object sender, EventArgs e)
+        {
+            btnThoat.ForeColor = SystemColors.Control;
         }
     }
 }
