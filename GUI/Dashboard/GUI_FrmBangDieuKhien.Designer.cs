@@ -35,13 +35,13 @@ namespace GUI.Dashboards
             this.pnlBanner = new System.Windows.Forms.Panel();
             this.lblTenNguoDung = new System.Windows.Forms.Label();
             this.lblTenUngDung = new System.Windows.Forms.Label();
-            this.btnContext = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miCaNhan = new System.Windows.Forms.ToolStripMenuItem();
             this.miDangXuat = new System.Windows.Forms.ToolStripMenuItem();
             this.miPhongTo = new System.Windows.Forms.ToolStripMenuItem();
             this.miThoat = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlChinh = new System.Windows.Forms.Panel();
+            this.btnContext = new System.Windows.Forms.Button();
             this.navMenu = new GUI.UserControls.UC_NavigationDrawer();
             this.pnlBanner.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -66,15 +66,16 @@ namespace GUI.Dashboards
             // lblTenNguoDung
             // 
             this.lblTenNguoDung.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTenNguoDung.AutoSize = true;
             this.lblTenNguoDung.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenNguoDung.ForeColor = System.Drawing.Color.White;
-            this.lblTenNguoDung.Location = new System.Drawing.Point(838, 16);
+            this.lblTenNguoDung.Location = new System.Drawing.Point(699, 16);
             this.lblTenNguoDung.Name = "lblTenNguoDung";
-            this.lblTenNguoDung.Size = new System.Drawing.Size(66, 16);
+            this.lblTenNguoDung.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblTenNguoDung.Size = new System.Drawing.Size(205, 21);
             this.lblTenNguoDung.TabIndex = 2;
             this.lblTenNguoDung.Text = "Đ.H.Ngọc";
-            this.lblTenNguoDung.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTenNguoDung.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTenNguoDung.Click += new System.EventHandler(this.lblTenNguoDung_Click);
             // 
             // lblTenUngDung
             // 
@@ -91,21 +92,6 @@ namespace GUI.Dashboards
             this.lblTenUngDung.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlBanner_MouseMove);
             this.lblTenUngDung.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlBanner_MouseUp);
             // 
-            // btnContext
-            // 
-            this.btnContext.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnContext.BackgroundImage = global::GUI.Properties.Resources.ic_more5;
-            this.btnContext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnContext.ContextMenuStrip = this.contextMenuStrip1;
-            this.btnContext.FlatAppearance.BorderSize = 0;
-            this.btnContext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContext.Location = new System.Drawing.Point(910, 1);
-            this.btnContext.Name = "btnContext";
-            this.btnContext.Size = new System.Drawing.Size(38, 48);
-            this.btnContext.TabIndex = 1;
-            this.btnContext.UseVisualStyleBackColor = true;
-            this.btnContext.Click += new System.EventHandler(this.btnContext_Click);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -114,32 +100,33 @@ namespace GUI.Dashboards
             this.miPhongTo,
             this.miThoat});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 92);
             // 
             // miCaNhan
             // 
             this.miCaNhan.Name = "miCaNhan";
-            this.miCaNhan.Size = new System.Drawing.Size(152, 22);
+            this.miCaNhan.Size = new System.Drawing.Size(127, 22);
             this.miCaNhan.Text = "Cá nhân";
+            this.miCaNhan.Click += new System.EventHandler(this.miCaNhan_Click);
             // 
             // miDangXuat
             // 
             this.miDangXuat.Name = "miDangXuat";
-            this.miDangXuat.Size = new System.Drawing.Size(152, 22);
+            this.miDangXuat.Size = new System.Drawing.Size(127, 22);
             this.miDangXuat.Text = "Đăng xuất";
             this.miDangXuat.Click += new System.EventHandler(this.miDangXuat_Click);
             // 
             // miPhongTo
             // 
             this.miPhongTo.Name = "miPhongTo";
-            this.miPhongTo.Size = new System.Drawing.Size(152, 22);
+            this.miPhongTo.Size = new System.Drawing.Size(127, 22);
             this.miPhongTo.Text = "Phóng to";
             this.miPhongTo.Click += new System.EventHandler(this.miPhongTo_Click);
             // 
             // miThoat
             // 
             this.miThoat.Name = "miThoat";
-            this.miThoat.Size = new System.Drawing.Size(152, 22);
+            this.miThoat.Size = new System.Drawing.Size(127, 22);
             this.miThoat.Text = "Thoát";
             this.miThoat.Click += new System.EventHandler(this.miThoat_Click);
             // 
@@ -154,6 +141,21 @@ namespace GUI.Dashboards
             this.pnlChinh.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pnlChinh.Size = new System.Drawing.Size(894, 520);
             this.pnlChinh.TabIndex = 2;
+            // 
+            // btnContext
+            // 
+            this.btnContext.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnContext.BackgroundImage = global::GUI.Properties.Resources.ic_more5;
+            this.btnContext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnContext.ContextMenuStrip = this.contextMenuStrip1;
+            this.btnContext.FlatAppearance.BorderSize = 0;
+            this.btnContext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContext.Location = new System.Drawing.Point(910, 1);
+            this.btnContext.Name = "btnContext";
+            this.btnContext.Size = new System.Drawing.Size(38, 48);
+            this.btnContext.TabIndex = 1;
+            this.btnContext.UseVisualStyleBackColor = true;
+            this.btnContext.Click += new System.EventHandler(this.btnContext_Click);
             // 
             // navMenu
             // 
@@ -180,6 +182,7 @@ namespace GUI.Dashboards
             this.Name = "GUI_BangDieuKhien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GUI_BangDieuKhien";
+            this.Load += new System.EventHandler(this.GUI_BangDieuKhien_Load);
             this.pnlBanner.ResumeLayout(false);
             this.pnlBanner.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);

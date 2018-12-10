@@ -6,31 +6,36 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class DTO_ChuyenDeGiaoVienThamGia
+    public class DTO_ChuyenDeGiaoVienThamGia
     {
-        string maGiaoVien;
+        string maGiaoVienThamGia;
         string maChuyenDe;
-        string nam;
+        int namHoc;
         string maHocKy;
 
-        public DTO_ChuyenDeGiaoVienThamGia(string maGiaoVien, string maChuyenDe, string maHocKy, string nam)
+        public DTO_ChuyenDeGiaoVienThamGia()
         {
-            this.maGiaoVien = maGiaoVien;
+
+        }
+
+        public DTO_ChuyenDeGiaoVienThamGia(string maGiaoVienThamGia, string maChuyenDe, int namHoc, string maHocKy)
+        {
+            this.maGiaoVienThamGia = maGiaoVienThamGia;
             this.maChuyenDe = maChuyenDe;
-            this.nam = nam;
+            this.namHoc = namHoc;
             this.maHocKy = maHocKy;
         }
 
-        public string MaGiaoVien
+        public string MaGiaoVienThamGia
         {
             get
             {
-                return maGiaoVien;
+                return maGiaoVienThamGia;
             }
 
             set
             {
-                maGiaoVien = value;
+                maGiaoVienThamGia = value;
             }
         }
 
@@ -47,19 +52,8 @@ namespace DTO
             }
         }
 
-        public string Nam
-        {
-            get
-            {
-                return nam;
-            }
 
-            set
-            {
-                nam = value;
-            }
-        }
-
+       
         public string MaHocKy
         {
             get
@@ -70,6 +64,19 @@ namespace DTO
             set
             {
                 maHocKy = value;
+            }
+        }
+
+        public int NamHoc
+        {
+            get
+            {
+                return namHoc;
+            }
+
+            set
+            {
+                namHoc = value;
             }
         }
     }

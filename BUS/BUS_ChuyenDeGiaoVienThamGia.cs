@@ -9,20 +9,22 @@ using System.Threading.Tasks;
 
 namespace BUS
 {
-    class BUS_ChuyenDeGiaoVienThamGia
+    public class BUS_ChuyenDeGiaoVienThamGia
     {
-        public static List<DTO_ChuyenDe> LayDsChuyenDeGiaoVienThamGia(string maGiaoVien)
+
+        public static List<DTO_ChuyenDeGiaoVienThamGia> LayDsChuyenDeGiaoVienThamGia()
         {
             DataTable dt;
+            string maGiaoVien = BUS.Properties.Settings.Default.TaiKhoanHienTai.IdTaiKhoan;
             StringBuilder query = new StringBuilder();
-            query.AppendFormat("SELECT * FROM GIAOVIEN_THAMGIA_CHUYENDE WHERE MAGVTG = '{0}'", maGiaoVien);
+            query.AppendFormat("SELECT gv.MAGV, MACD, NAM, MAHK FROM GIAOVIEN_THAMGIA_CHUYENDE  gvtgcd, GIAOVIEN gv WHERE gv.USERID = '{0}' AND gvtgcd.MAGV = gv.MAGV", maGiaoVien);
             DataProvider.Connect();
             dt = DataProvider.Select(CommandType.Text, query.ToString());
             DataProvider.Disconnect();
-            List<DTO_ChuyenDe> dsChuyenDe = new List<DTO_ChuyenDe>();
-            foreach(DataRow row in dt.Rows)
+            List<DTO_ChuyenDeGiaoVienThamGia> dsChuyenDe = new List<DTO_ChuyenDeGiaoVienThamGia>();
+            foreach (DataRow row in dt.Rows)
             {
-                DTO_ChuyenDe chuyenDe =  BUS_ChuyenDe.LayThongTinChuyenDe(row[2].ToString());
+                DTO_ChuyenDeGiaoVienThamGia chuyenDe = new DTO_ChuyenDeGiaoVienThamGia(row[0].ToString(), row[1].ToString().Trim(), int.Parse(row[2].ToString().Trim()), row[3].ToString().Trim());
                 dsChuyenDe.Add(chuyenDe);
             }
             return dsChuyenDe;
