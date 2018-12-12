@@ -150,7 +150,7 @@ namespace GUI.Dashboards
                 this.pnlChinh.Controls.Clear();
                 this.userControl = new UC_TraCuuDiemSinhVien();
                 this.userControl.Dock = DockStyle.Fill;
-                this.pnlChinh.Controls.Add(new UC_TraCuuDiemSinhVien());
+                this.pnlChinh.Controls.Add(userControl);
             }
         }
 
