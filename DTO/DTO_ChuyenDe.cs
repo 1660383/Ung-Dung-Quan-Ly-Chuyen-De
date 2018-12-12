@@ -8,13 +8,13 @@ namespace DTO
 {
     public class DTO_ChuyenDe
     {
-       protected string maChuyenDe;
-       protected string maNganh;
-       private string tenChuyenDe;
+        protected string maChuyenDe;
+        protected string maNganh;
+        private string tenChuyenDe;
         public DTO_ChuyenDe()
         {
 
-           }
+        }
 
         public DTO_ChuyenDe(string maChuyenDe, string maNganh, string tenChuyenDe)
         {

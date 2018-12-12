@@ -91,11 +91,11 @@
     <Compile Include="UserControls\UC_CapNhatTrangThaiChuyenDe.Designer.cs">
       <DependentUpon>UC_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UC_GiaoChuyenDe.cs">
+    <Compile Include="UserControls\UC_GiaoNoiDungChuyenDe.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UC_GiaoChuyenDe.Designer.cs">
-      <DependentUpon>UC_GiaoChuyenDe.cs</DependentUpon>
+    <Compile Include="UserControls\UC_GiaoNoiDungChuyenDe.Designer.cs">
+      <DependentUpon>UC_GiaoNoiDungChuyenDe.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UC_TraCuuDiemSinhVien.cs">
       <SubType>UserControl</SubType>
@@ -131,8 +131,8 @@
     <EmbeddedResource Include="UserControls\UC_CapNhatTrangThaiChuyenDe.resx">
       <DependentUpon>UC_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UC_GiaoChuyenDe.resx">
-      <DependentUpon>UC_GiaoChuyenDe.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UC_GiaoNoiDungChuyenDe.resx">
+      <DependentUpon>UC_GiaoNoiDungChuyenDe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_TraCuuDiemSinhVien.resx">
       <DependentUpon>UC_TraCuuDiemSinhVien.cs</DependentUpon>

@@ -17,7 +17,7 @@ namespace GUI.UserControls
         private PopupNotifier popup;
         private DataView dataView;
         private DataTable dataTable;
-        private List<DTO.DTO_ChuyenDeDangMo> dsChuyenDeGVThamGiaDangMo;
+        private List<DTO.DTO_ThongTinChuyenDeMo> dsChuyenDeGVThamGiaDangMo;
         private List<DTO.DTO_ChuyenDeGiaoVienThamGia> dsChuyenDeGiaoVienThamGia;
         private List<int> dsNamHoc;
         public UC_CapNhatTrangThaiChuyenDe()
@@ -41,7 +41,7 @@ namespace GUI.UserControls
         {
             cbNamHoc.Items.Clear();
             dsNamHoc = new List<int>();
-            foreach (DTO.DTO_ChuyenDeDangMo i in dsChuyenDeGVThamGiaDangMo)
+            foreach (DTO.DTO_ThongTinChuyenDeMo i in dsChuyenDeGVThamGiaDangMo)
             {
                 if (dsNamHoc.BinarySearch(i.NamHoc) < 0)
                 {
@@ -75,7 +75,7 @@ namespace GUI.UserControls
             dataTable.Columns.Add("HocKy");
             dataTable.Columns.Add("NamHoc");
 
-            foreach (DTO.DTO_ChuyenDeDangMo i in dsChuyenDeGVThamGiaDangMo)
+            foreach (DTO.DTO_ThongTinChuyenDeMo i in dsChuyenDeGVThamGiaDangMo)
             {
                 dataTable.Rows.Add(i.MaChuyenDe, BUS_ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe, i.HocKy, i.NamHoc);
             }
@@ -84,13 +84,13 @@ namespace GUI.UserControls
 
         private void LayThongTinCacChuyenDeMoGiaoVienThamGia()
         {
-            this.dsChuyenDeGVThamGiaDangMo = BUS.BUS_ChuyenDeDangMo.LayDsChuyenDeGiaoVienThamGiaDangMo(this.dsChuyenDeGiaoVienThamGia);
+            this.dsChuyenDeGVThamGiaDangMo = BUS.BUS_ThongTinChuyenDeMo.LayDsThongTinChuyenDeMoGiaoVienThamGia(this.dsChuyenDeGiaoVienThamGia);
 
         }
 
         private void GanDuLieuDeXuatTimKiem()
         {
-            foreach (DTO.DTO_ChuyenDeDangMo i in dsChuyenDeGVThamGiaDangMo)
+            foreach (DTO.DTO_ThongTinChuyenDeMo i in dsChuyenDeGVThamGiaDangMo)
             {
                 txtSearch.AutoCompleteCustomSource.Add(BUS.BUS_ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe);
             }
@@ -143,7 +143,7 @@ namespace GUI.UserControls
                 MessageBox.Show("Thời khoản thời gian không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            bool ketqua = BUS_ChuyenDeDangMo.CapNhatThongTinChuyenDeDangMo(chuyenDeMo);
+            bool ketqua = BUS_ThongTinChuyenDeMo.CapNhatThongTinChuyenDeMo(chuyenDeMo);
             if (ketqua)
             {
                 CapNhatDuLieu();
@@ -196,10 +196,10 @@ namespace GUI.UserControls
             toolTip.ShowAlways = true;
             toolTip.SetToolTip(this.lblTenChuyenDe, this.lblTenChuyenDe.Text);
         }
-        DTO.DTO_ChuyenDeDangMo chuyenDeMo = null;
+        DTO.DTO_ThongTinChuyenDeMo chuyenDeMo = null;
         private void lvChuyenDeMo_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            chuyenDeMo = e.Item.Tag as DTO.DTO_ChuyenDeDangMo;
+            chuyenDeMo = e.Item.Tag as DTO.DTO_ThongTinChuyenDeMo;
             if (chuyenDeMo != null)
             {
                 lblTenChuyenDe.Text = e.Item.Text;
