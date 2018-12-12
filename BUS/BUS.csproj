@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS_DANGKY_LOP_CHUYENDE.cs" />
     <Compile Include="BUS_KetQua.cs" />
     <Compile Include="BUS_ChuyenDe.cs" />
     <Compile Include="BUS_ChuyenDeDangMo.cs" />
@@ -84,6 +85,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

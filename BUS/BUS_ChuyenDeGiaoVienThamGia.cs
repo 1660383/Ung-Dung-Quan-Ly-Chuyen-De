@@ -15,6 +15,7 @@ namespace BUS
         public static List<DTO_ChuyenDeGiaoVienThamGia> LayDsChuyenDeGiaoVienThamGia()
         {
             DataTable dt;
+            
             string maGiaoVien = BUS.Properties.Settings.Default.TaiKhoanHienTai.IdTaiKhoan;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT gv.MAGV, MACD, NAM, MAHK FROM GIAOVIEN_THAMGIA_CHUYENDE  gvtgcd, GIAOVIEN gv WHERE gv.USERID = '{0}' AND gvtgcd.MAGV = gv.MAGV", maGiaoVien);
