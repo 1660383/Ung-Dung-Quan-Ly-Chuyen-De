@@ -116,6 +116,7 @@ namespace GUI.Dashboards
             item = new UC_NavigationItem();
             item.Icon =global::GUI.Properties.Resources.ic_register;
             item.Text = "Thông tin đăng ký chuyên đề";
+            item.NavItemClick += Item_NavItemThongTinDangKeChuyenDeClick;
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;        
             this.navMenu.AddItem(item);
 
@@ -128,6 +129,7 @@ namespace GUI.Dashboards
             item = new UC_NavigationItem();
             item.Icon =global::GUI.Properties.Resources.ic_find;
             item.Text = "Tra cứu điểm sinh viên";
+            item.NavItemClick += Item_NavItemClick3;
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
             this.navMenu.AddItem(item);
         }
@@ -142,7 +144,16 @@ namespace GUI.Dashboards
             //toolTip.SetToolTip(((UC_NavigationItem)sender).Title, ((UC_NavigationItem)sender).Text);
             toolTip.SetToolTip(((UC_NavigationItem)sender).pbIcon, ((UC_NavigationItem)sender).Text);
         }
-
+        private void Item_NavItemThongTinDangKeChuyenDeClick(object sender, EventArgs e)
+        {
+            if ((this.userControl as UC_ThongTinDangKyChuyenDe) == null)
+            {
+                this.pnlChinh.Controls.Clear();
+                this.userControl = new UC_ThongTinDangKyChuyenDe();
+                this.userControl.Dock = DockStyle.Fill;
+                this.pnlChinh.Controls.Add(userControl);
+            }
+        }
         private void Item_NavItemClick3(object sender, EventArgs e)
         {
             if ((this.userControl as UC_TraCuuDiemSinhVien) == null)

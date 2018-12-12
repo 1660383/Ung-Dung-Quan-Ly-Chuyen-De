@@ -44,6 +44,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtSearch = new GUI.UserControls.MyTextBox();
             this.cbHocKi = new System.Windows.Forms.ComboBox();
             this.cbNamHoc = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -70,7 +71,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtSearch = new GUI.UserControls.MyTextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -185,6 +185,21 @@
             this.label5.Size = new System.Drawing.Size(64, 16);
             this.label5.TabIndex = 2;
             this.label5.Text = "Năm học:";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtSearch.ForeColor = System.Drawing.Color.Gray;
+            this.txtSearch.Hint = "Nhập tên Chuyên đề";
+            this.txtSearch.HintColor = System.Drawing.Color.Gray;
+            this.txtSearch.Location = new System.Drawing.Point(16, 7);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(146, 22);
+            this.txtSearch.TabIndex = 1;
+            this.txtSearch.Text = "Nhập tên Chuyên đề";
+            this.txtSearch.TextColor = System.Drawing.SystemColors.WindowText;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // cbHocKi
             // 
@@ -488,21 +503,6 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 0;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtSearch.ForeColor = System.Drawing.Color.Gray;
-            this.txtSearch.Hint = "Nhập tên Chuyên đề";
-            this.txtSearch.HintColor = System.Drawing.Color.Gray;
-            this.txtSearch.Location = new System.Drawing.Point(16, 7);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(146, 22);
-            this.txtSearch.TabIndex = 1;
-            this.txtSearch.Text = "Nhập tên Chuyên đề";
-            this.txtSearch.TextColor = System.Drawing.SystemColors.WindowText;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // UC_CapNhatTrangThaiChuyenDe
             // 

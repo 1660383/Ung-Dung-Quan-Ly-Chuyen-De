@@ -54,6 +54,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dgvKetQua = new System.Windows.Forms.DataGridView();
             this.pcbLoad = new System.Windows.Forms.PictureBox();
+
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -63,6 +64,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKetQua)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbLoad)).BeginInit();
+
             this.SuspendLayout();
             // 
             // groupBox1
@@ -152,9 +154,9 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)|System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.pcbLoad);
+
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
@@ -167,7 +169,7 @@
             this.groupBox3.Size = new System.Drawing.Size(397, 114);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tra Cứu Điểm Lớp Học";
+            this.groupBox3.Text = "Tìm Điểm Lớp Học";
             // 
             // label9
             // 
@@ -408,6 +410,7 @@
             this.pcbLoad.TabIndex = 13;
             this.pcbLoad.TabStop = false;
             this.pcbLoad.Click += new System.EventHandler(this.pcbLoad_Click);
+
             // 
             // UC_TraCuuDiemSinhVien
             // 
@@ -429,6 +432,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKetQua)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbLoad)).EndInit();
+
             this.ResumeLayout(false);
 
         }
@@ -461,5 +465,6 @@
         private MyTextBox txtMssv;
         private System.Windows.Forms.DataGridView dgvKetQua;
         private System.Windows.Forms.PictureBox pcbLoad;
+
     }
 }

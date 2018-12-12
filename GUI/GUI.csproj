@@ -97,6 +97,12 @@
     <Compile Include="UserControls\UC_GiaoChuyenDe.Designer.cs">
       <DependentUpon>UC_GiaoChuyenDe.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UC_ThongTinDangKyChuyenDe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_ThongTinDangKyChuyenDe.Designer.cs">
+      <DependentUpon>UC_ThongTinDangKyChuyenDe.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UC_TraCuuDiemSinhVien.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_GiaoChuyenDe.resx">
       <DependentUpon>UC_GiaoChuyenDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_ThongTinDangKyChuyenDe.resx">
+      <DependentUpon>UC_ThongTinDangKyChuyenDe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_TraCuuDiemSinhVien.resx">
       <DependentUpon>UC_TraCuuDiemSinhVien.cs</DependentUpon>

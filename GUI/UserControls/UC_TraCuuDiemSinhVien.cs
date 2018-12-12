@@ -55,6 +55,7 @@ namespace GUI.UserControls
         {
             dgvKetQua.DataSource = null; 
             layDuLieu();
+
         }
         private void layDuLieu()
         {
@@ -77,6 +78,7 @@ namespace GUI.UserControls
             if (tb.Text == tb.Hint) return "";
             return tb.Text;
         }
+
         private bool kiemTraDaChonTatCaCombobox()
         {
             if (chuyende != -1 && namhoc != -1 && hocky != -1) return true;
@@ -125,6 +127,7 @@ namespace GUI.UserControls
             cbHocKy.SelectedIndex = -1;
             cbMaCD.SelectedIndex = -1;
             cbNamHoc.SelectedIndex = -1;
+
         }
     }
 }
