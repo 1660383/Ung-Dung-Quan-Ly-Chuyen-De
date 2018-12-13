@@ -35,6 +35,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pcbLoad = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -53,18 +54,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvKetQua = new System.Windows.Forms.DataGridView();
-            this.pcbLoad = new System.Windows.Forms.PictureBox();
-
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKetQua)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbLoad)).BeginInit();
-
             this.SuspendLayout();
             // 
             // groupBox1
@@ -154,9 +152,9 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)|System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.pcbLoad);
-
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
@@ -170,6 +168,18 @@
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tìm Điểm Lớp Học";
+            // 
+            // pcbLoad
+            // 
+            this.pcbLoad.BackgroundImage = global::GUI.Properties.Resources.ic_load;
+            this.pcbLoad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pcbLoad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pcbLoad.Location = new System.Drawing.Point(360, 15);
+            this.pcbLoad.Name = "pcbLoad";
+            this.pcbLoad.Size = new System.Drawing.Size(31, 24);
+            this.pcbLoad.TabIndex = 13;
+            this.pcbLoad.TabStop = false;
+            this.pcbLoad.Click += new System.EventHandler(this.pcbLoad_Click);
             // 
             // label9
             // 
@@ -238,6 +248,7 @@
             this.btnInPhieu.TabIndex = 5;
             this.btnInPhieu.Text = "In Phiếu";
             this.btnInPhieu.UseVisualStyleBackColor = true;
+            this.btnInPhieu.Click += new System.EventHandler(this.btnInPhieu_Click);
             // 
             // splitContainer1
             // 
@@ -399,19 +410,6 @@
             this.dgvKetQua.Size = new System.Drawing.Size(885, 312);
             this.dgvKetQua.TabIndex = 0;
             // 
-            // pcbLoad
-            // 
-            this.pcbLoad.BackgroundImage = global::GUI.Properties.Resources.ic_load;
-            this.pcbLoad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pcbLoad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pcbLoad.Location = new System.Drawing.Point(360, 15);
-            this.pcbLoad.Name = "pcbLoad";
-            this.pcbLoad.Size = new System.Drawing.Size(31, 24);
-            this.pcbLoad.TabIndex = 13;
-            this.pcbLoad.TabStop = false;
-            this.pcbLoad.Click += new System.EventHandler(this.pcbLoad_Click);
-
-            // 
             // UC_TraCuuDiemSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -424,6 +422,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbLoad)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -431,8 +430,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKetQua)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbLoad)).EndInit();
-
             this.ResumeLayout(false);
 
         }

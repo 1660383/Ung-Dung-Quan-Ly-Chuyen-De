@@ -81,35 +81,35 @@ namespace BUS
             StringBuilder query = new StringBuilder(); 
             if(macd !="" && mahk!="" && nam!="")
             {
-                query.AppendFormat("SELECT kq.MASV,(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK,kq.Nam,kq.Diem FROM KETQUA kq where kq.MACD = '{0}' and kq.NAM = {1} and kq.MAHK = '{2}' ", macd, nam, mahk);
+                query.AppendFormat("SELECT kq.MASV N'Mã Sinh Viên',(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK N'Học Kỳ',kq.Nam N'Năm Học',kq.Diem N'Điểm'  FROM KETQUA kq where kq.MACD = '{0}' and kq.NAM = {1} and kq.MAHK = '{2}' ", macd, nam, mahk);
             }else
             {
                 if(macd != "" && mahk!="")
                 {
-                    query.AppendFormat("SELECT kq.MASV,(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK,kq.Nam,kq.Diem FROM KETQUA kq where kq.MACD = '{0}' and kq.MAHK = '{1}' ", macd, mahk);
+                    query.AppendFormat("SELECT kq.MASV N'Mã Sinh Viên',(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK N'Học Kỳ',kq.Nam N'Năm Học',kq.Diem N'Điểm' FROM KETQUA kq where kq.MACD = '{0}' and kq.MAHK = '{1}' ", macd, mahk);
                 }else if(macd !="" && nam !="")
                 {
-                    query.AppendFormat("SELECT kq.MASV,(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK,kq.Nam,kq.Diem FROM KETQUA kq where kq.MACD = '{0}' and kq.NAM = {1} ", macd, nam);
+                    query.AppendFormat("SELECT kq.MASV N'Mã Sinh Viên',(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK N'Học Kỳ',kq.Nam N'Năm Học',kq.Diem N'Điểm' FROM KETQUA kq where kq.MACD = '{0}' and kq.NAM = {1} ", macd, nam);
                 }else if(mahk !="" && nam !="")
                 {
-                    query.AppendFormat("SELECT kq.MASV,(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK,kq.Nam,kq.Diem FROM KETQUA kq where kq.NAM = {0} and kq.MAHK = '{1}' ", nam, mahk);
+                    query.AppendFormat("SELECT kq.MASV N'Mã Sinh Viên',(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK N'Học Kỳ',kq.Nam N'Năm Học',kq.Diem N'Điểm' FROM KETQUA kq where kq.NAM = {0} and kq.MAHK = '{1}' ", nam, mahk);
                 }else
                 {
                     if (macd != "")
                     {
-                        query.AppendFormat("SELECT kq.MASV,(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK,kq.Nam,kq.Diem FROM KETQUA kq where kq.MACD = '{0}'",macd);
+                        query.AppendFormat("SELECT kq.MASV N'Mã Sinh Viên',(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK N'Học Kỳ',kq.Nam N'Năm Học',kq.Diem N'Điểm' FROM KETQUA kq where kq.MACD = '{0}'", macd);
                     }
                     else if(mahk!="")
                     {
-                        query.AppendFormat("SELECT kq.MASV,(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK,kq.Nam,kq.Diem FROM KETQUA kq where kq.MAHK = '{0}'", mahk);
+                        query.AppendFormat("SELECT kq.MASV N'Mã Sinh Viên',(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK N'Học Kỳ',kq.Nam N'Năm Học',kq.Diem N'Điểm' FROM KETQUA kq where kq.MAHK = '{0}'", mahk);
                     }
                     else if(nam!="")
                     {
-                        query.AppendFormat("SELECT kq.MASV,(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK,kq.Nam,kq.Diem FROM KETQUA kq where kq.NAM = {0}", nam);
+                        query.AppendFormat("SELECT kq.MASV N'Mã Sinh Viên',(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK N'Học Kỳ',kq.Nam N'Năm Học',kq.Diem N'Điểm' FROM KETQUA kq where kq.NAM = {0}", nam);
                     }
                     else
                     {
-                        query.AppendFormat("SELECT kq.MASV,(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK,kq.Nam,kq.Diem FROM KETQUA kq where 1=1  ");
+                        query.AppendFormat("SELECT kq.MASV N'Mã Sinh Viên',(select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK N'Học Kỳ',kq.Nam N'Năm Học',kq.Diem N'Điểm' FROM KETQUA kq where 1=1  ");
                     }
                 }
             }
