@@ -38,6 +38,44 @@ namespace BUS
             return dsChuyenDe;
         }
 
+        public static List<DTO_ChuyenDeDangMo>LayDsChuyenDeDangMo()
+        {
+            List<DTO_ChuyenDeDangMo> dsChuyenDe = new List<DTO_ChuyenDeDangMo>();
+            {
+                StringBuilder query = new StringBuilder();
+                query.AppendFormat("SELECT * FROM THONGTIN_CHUYENDE_MO");
+                DAO.DataProvider.Connect();
+                DataTable dt = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+                DAO.DataProvider.Disconnect();
+                foreach (DataRow row in dt.Rows)
+                {
+                    DTO_ChuyenDeDangMo chuyenDeMo = new DTO_ChuyenDeDangMo();
+                    chuyenDeMo.MaChuyenDe = row[0].ToString().Trim();
+                    chuyenDeMo.NamHoc = int.Parse(row[1].ToString().Trim());
+                    chuyenDeMo.HocKy = row[2].ToString().Trim();
+                    chuyenDeMo.MaGiaoVu = row[3].ToString().Trim();
+                    chuyenDeMo.ThoiGianBD = DateTime.Parse(row[4].ToString().Trim());
+                    chuyenDeMo.ThoiGianKT = DateTime.Parse(row[5].ToString().Trim());
+                    chuyenDeMo.SlSinhVienToiDa = int.Parse(row[6].ToString().Trim());
+                    chuyenDeMo.SlNhomToiDa = int.Parse(row[7].ToString().Trim());
+                    chuyenDeMo.TrangThai= row[8].ToString().Trim();
+                    dsChuyenDe.Add(chuyenDeMo);
+                }
+            }
+            return dsChuyenDe;
+        }
+        public static bool CapNhatTrangThaiChuyenDeMo(DTO_ChuyenDeDangMo chuyenDeMo)
+        {
+            StringBuilder query = new StringBuilder();
+            query.AppendFormat("UPDATE THONGTIN_CHUYENDE_MO SET TrangThai = N'{0}' where MACD = '{1}' and NAM = {2} and MAHK = '{3}'",chuyenDeMo.TrangThai,chuyenDeMo.MaChuyenDe,chuyenDeMo.NamHoc,chuyenDeMo.HocKy);
+            DAO.DataProvider.Connect();
+            int result = DAO.DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString());
+            DAO.DataProvider.Disconnect();
+            if (result > 0) return true;
+            return false;
+        }
+
+
         public static bool CapNhatThongTinChuyenDeDangMo(DTO_ChuyenDeDangMo chuyenDeMo)
         {
 

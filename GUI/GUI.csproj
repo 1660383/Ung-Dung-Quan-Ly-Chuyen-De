@@ -70,6 +70,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\UC_CapNhatTrangThaiChuyenDe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_CapNhatTrangThaiChuyenDe.Designer.cs">
+      <DependentUpon>UC_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UC_MyTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -85,11 +91,11 @@
     <Compile Include="UserControls\UC_NavigationItem.Designer.cs">
       <DependentUpon>UC_NavigationItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UC_CapNhatTrangThaiChuyenDe.cs">
+    <Compile Include="UserControls\UC_CapNhatThongTinChuyenDe.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UC_CapNhatTrangThaiChuyenDe.Designer.cs">
-      <DependentUpon>UC_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
+    <Compile Include="UserControls\UC_CapNhatThongTinChuyenDe.Designer.cs">
+      <DependentUpon>UC_CapNhatThongTinChuyenDe.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UC_GiaoChuyenDe.cs">
       <SubType>UserControl</SubType>
@@ -122,14 +128,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\UC_CapNhatTrangThaiChuyenDe.resx">
+      <DependentUpon>UC_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_NavigationDrawer.resx">
       <DependentUpon>UC_NavigationDrawer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_NavigationItem.resx">
       <DependentUpon>UC_NavigationItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UC_CapNhatTrangThaiChuyenDe.resx">
-      <DependentUpon>UC_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UC_CapNhatThongTinChuyenDe.resx">
+      <DependentUpon>UC_CapNhatThongTinChuyenDe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_GiaoChuyenDe.resx">
       <DependentUpon>UC_GiaoChuyenDe.cs</DependentUpon>

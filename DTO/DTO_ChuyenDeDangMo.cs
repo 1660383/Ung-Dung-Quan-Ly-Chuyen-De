@@ -16,6 +16,7 @@ namespace DTO
         private DateTime thoiGianKT;
         private int slSinhVienToiDa;
         private int slNhomToiDa;
+        private string trangThai;
 
         public string MaChuyenDe
         {
@@ -118,6 +119,19 @@ namespace DTO
             set
             {
                 slNhomToiDa = value;
+            }
+        }
+
+        public string TrangThai
+        {
+            get
+            {
+                return trangThai;
+            }
+
+            set
+            {
+                trangThai = value;
             }
         }
     }

@@ -121,7 +121,8 @@ namespace GUI.Dashboards
 
             item = new UC_NavigationItem();
             item.Icon =global::GUI.Properties.Resources.ic_details;
-            item.Text = "Chi tiết chuyên đề";
+            item.Text = "Trạng thái chuyên đề";
+            item.NavItemClick += Item_NavItemClick4;
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
             this.navMenu.AddItem(item);
 
@@ -131,6 +132,18 @@ namespace GUI.Dashboards
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
             this.navMenu.AddItem(item);
         }
+
+        private void Item_NavItemClick4(object sender, EventArgs e)
+        {
+            if ((this.userControl as UC_CapNhatTrangThaiChuyenDe) == null)
+            {
+                this.pnlChinh.Controls.Clear();
+                this.userControl = new UC_CapNhatTrangThaiChuyenDe();
+                this.userControl.Dock = DockStyle.Fill;
+                this.pnlChinh.Controls.Add(this.userControl);
+            }
+        }
+
         private void Item_NavItem_MouseEnter(object sender, EventArgs e)
         {
             ToolTip toolTip = new ToolTip();
@@ -150,16 +163,16 @@ namespace GUI.Dashboards
                 this.pnlChinh.Controls.Clear();
                 this.userControl = new UC_TraCuuDiemSinhVien();
                 this.userControl.Dock = DockStyle.Fill;
-                this.pnlChinh.Controls.Add(new UC_TraCuuDiemSinhVien());
+                this.pnlChinh.Controls.Add(this.userControl);
             }
         }
 
         private void Item_NavItemClick2(object sender, EventArgs e)
         {
-            if ((this.userControl as UC_CapNhatTrangThaiChuyenDe) == null)
+            if ((this.userControl as UC_CapNhatThongTinChuyenDe) == null)
             {
                 this.pnlChinh.Controls.Clear();
-                this.userControl = new UC_CapNhatTrangThaiChuyenDe();
+                this.userControl = new UC_CapNhatThongTinChuyenDe();
                 this.userControl.Dock = DockStyle.Fill;
                 this.pnlChinh.Controls.Add(this.userControl);
             }
