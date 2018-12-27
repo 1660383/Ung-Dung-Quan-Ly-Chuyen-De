@@ -94,7 +94,16 @@ namespace DAO
             }
         }
 
-
+        public static object ExecuteScala(string cmdText, params SqlParameter[] parameters)
+        {
+            using (SqlCommand cmd = mConnection.CreateCommand())
+            {
+                cmd.CommandText = cmdText;
+                if (parameters != null && parameters.Length > 0)
+                    cmd.Parameters.AddRange(parameters);
+                return cmd.ExecuteScalar() as byte[];
+            }
+        }
 
 
         public static DataTable Select(CommandType cmdType, String cmdText)

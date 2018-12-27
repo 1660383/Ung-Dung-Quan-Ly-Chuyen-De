@@ -9,6 +9,8 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace BUS
 {
@@ -23,9 +25,9 @@ namespace BUS
         {
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM NOIDUNG_LOP_CHUYENDE WHERE MACD = '{0}' AND MAGV = '{1}' AND MAHK= '{2}' AND NAM = {3}",
-                chuyende.MaChuyenDe,chuyende.MaGiaoVienThamGia, chuyende.MaHocKy,chuyende.NamHoc);
+                chuyende.MaChuyenDe, chuyende.MaGiaoVienThamGia, chuyende.MaHocKy, chuyende.NamHoc);
             DAO.DAO_DataProvider.Connect();
-            DataTable dt =DAO.DAO_DataProvider.Select(System.Data.CommandType.Text, query.ToString());
+            DataTable dt = DAO.DAO_DataProvider.Select(System.Data.CommandType.Text, query.ToString());
             DAO.DAO_DataProvider.Disconnect();
             List<DTO.DTO_NoiDungLopChuyenDe> dsNDlopChuyenDe = null;
             if (dt.Rows.Count > 0)
@@ -45,13 +47,21 @@ namespace BUS
                         NoiDungChuyenDe = ObjectToByteArray(row[7]),
                         TheLoai = row[8].ToString().Trim(),
                         ThoiGianBatDau = DateTime.Parse(row[9].ToString().Trim()),
-                        ThoiGianKetThuc = DateTime.Parse(row[10].ToString().Trim())
+                        ThoiGianKetThuc = DateTime.Parse(row[10].ToString().Trim()),
+                        Icon = ObjectToByteArray(row[11])
+
                     };
                     dsNDlopChuyenDe.Add(ndLopChuyenDe);
                 }
             }
             return dsNDlopChuyenDe;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         private static byte[] ObjectToByteArray(Object obj)
         {
             if (obj == null)
@@ -61,6 +71,35 @@ namespace BUS
             bf.Serialize(ms, obj);
             return ms.ToArray();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public static byte[] ImageToBytes(Image icon)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                icon.Save(ms,ImageFormat.Png);
+                return ms.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        public static Image BytesToImage(byte[] bytes)
+        {
+
+            using (var ms = new MemoryStream(bytes))
+            {
+                return Image.FromStream(ms);
+            }
+        }
+
         /// <summary>
         /// Tạo Khóa chính của NOIDUNG_LOP_CHUYENDE tự động.
         /// </summary>
@@ -72,7 +111,7 @@ namespace BUS
             {
                 Direction = System.Data.ParameterDirection.Output
             };
-            DAO.DAO_DataProvider.ExecuteNonQuery(System.Data.CommandType.StoredProcedure,"usp_TaoMaNoiDungLopChuyenDe",param);
+            DAO.DAO_DataProvider.ExecuteNonQuery(System.Data.CommandType.StoredProcedure, "usp_TaoMaNoiDungLopChuyenDe", param);
             DAO.DAO_DataProvider.Disconnect();
             return param.Value.ToString().Trim();
         }
@@ -84,9 +123,9 @@ namespace BUS
         /// <returns>Trả về true nếu lưu thành công. Ngược lại trả về false.</returns>
         public static bool LuuTapTinVaoDataBase(DTO_NoiDungLopChuyenDe ndLopChuyenDe)
         {
-            String query = "INSERT INTO [dbo].[NOIDUNG_LOP_CHUYENDE] ([MAND],[GIA_MACD],[MAGV],[MACD],[NAM],[MAHK],[TENND],[NOIDUNGCD],[THELOAI],[THOIGIANBT],[THOIGIANKT]) VALUES(@MAND,@GIA_MACD,@MAGV,@MACD,@NAM,@MAHK,@TENND,@NOIDUNGCD,@THELOAI,@THOIGIANBT,@THOIGIANKT)";
+            String query = "INSERT INTO [dbo].[NOIDUNG_LOP_CHUYENDE] ([MAND],[GIA_MACD],[MAGV],[MACD],[NAM],[MAHK],[TENND],[NOIDUNGCD],[THELOAI],[THOIGIANBT],[THOIGIANKT],[ICON]) VALUES(@MAND,@GIA_MACD,@MAGV,@MACD,@NAM,@MAHK,@TENND,@NOIDUNGCD,@THELOAI,@THOIGIANBT,@THOIGIANKT,@ICON)";
 
-            SqlParameter[] Params = new SqlParameter[11];
+            SqlParameter[] Params = new SqlParameter[12];
             Params[0] = new SqlParameter("@MAND", ndLopChuyenDe.MaNoiDung);
             Params[1] = new SqlParameter("@GIA_MACD", ndLopChuyenDe.MaNoiDungChuyenDeGiao);
             Params[2] = new SqlParameter("@MAGV", ndLopChuyenDe.MaGiaoVien);
@@ -99,13 +138,79 @@ namespace BUS
             Params[8] = new SqlParameter("@THELOAI", ndLopChuyenDe.TheLoai);
             Params[9] = new SqlParameter("@THOIGIANBT", ndLopChuyenDe.ThoiGianBatDau);
             Params[10] = new SqlParameter("@THOIGIANKT", ndLopChuyenDe.ThoiGianKetThuc);
+            Params[11] = new SqlParameter("@ICON", ndLopChuyenDe.Icon);
 
             DAO.DAO_DataProvider.Connect();
             int kq = DAO.DAO_DataProvider.ExecuteNonQuery(System.Data.CommandType.Text, query, Params);
             DAO.DAO_DataProvider.Disconnect();
+
             if (kq > 0)
                 return true;
             return false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="maNoiDung"></param>
+        /// <returns></returns>
+        public static byte[] LayIconNoiDung(string maNoiDung)
+        {
+            DAO.DAO_DataProvider.Connect();
+            string query = "SELECT ICON FROM NOIDUNG_LOP_CHUYENDE WHERE MAND = @MAND";
+            byte[] bytes = (byte[])DAO.DAO_DataProvider.ExecuteScala(query.ToString(), new SqlParameter("@MAND", maNoiDung));
+            DAO.DAO_DataProvider.Disconnect();
+            return bytes;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="maNoiDung"></param>
+        /// <returns></returns>
+        public static byte[] LayNoiDungChuyenDe(string maNoiDung)
+        {
+            DAO.DAO_DataProvider.Connect();
+            string query = "SELECT NOIDUNGCD FROM NOIDUNG_LOP_CHUYENDE WHERE MAND = @MAND";
+            byte[] bytes = (byte[])DAO.DAO_DataProvider.ExecuteScala(query.ToString(), new SqlParameter("@MAND", maNoiDung));
+            DAO.DAO_DataProvider.Disconnect();
+            return bytes;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="maNoiDung"></param>
+        /// <returns></returns>
+        public static bool XoaNoiDungChuyenDe(string maNoiDung)
+        {
+            string query = "DELETE NOIDUNG_LOP_CHUYENDE WHERE MAND = @MAND";
+            DAO.DAO_DataProvider.Connect();
+            int kq = DAO_DataProvider.ExecuteNonQuery(CommandType.Text, query, new SqlParameter("@MAND", maNoiDung));
+            DAO.DAO_DataProvider.Disconnect();
+            if (kq <= 0)
+            {
+                return false;
+            }
+            return true;
+        }
+        
+        public static bool CapNhapDungChuyenDe(DTO.DTO_NoiDungLopChuyenDe noiDungLopChuyenDe)
+        {
+            string query = "UPDATE NOIDUNG_LOP_CHUYENDE SET TENND = @TENND, THOIGIANBT = @THOIGIANBT, THOIGIANKT = @THOIGIANKT WHERE MAND = @MAND";
+            DAO.DAO_DataProvider.Connect();
+            int kq = DAO_DataProvider.ExecuteNonQuery(CommandType.Text, query, new SqlParameter[] {
+                new SqlParameter("@TENND",noiDungLopChuyenDe.TenNoiDung),
+                new SqlParameter("@THOIGIANBT",noiDungLopChuyenDe.ThoiGianBatDau.ToString()),
+                new SqlParameter("THOIGIANKT",noiDungLopChuyenDe.ThoiGianKetThuc.ToString()),
+                new SqlParameter("@MAND",noiDungLopChuyenDe.MaNoiDung)
+            });
+            DAO.DAO_DataProvider.Disconnect();
+            if (kq <= 0)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

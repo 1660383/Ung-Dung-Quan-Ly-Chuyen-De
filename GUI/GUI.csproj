@@ -56,6 +56,18 @@
     <Compile Include="Dashboard\GUI_FrmBangDieuKhien.Designer.cs">
       <DependentUpon>GUI_FrmBangDieuKhien.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetailForm\Detail_ChinhSuaNoiDungChuyenDe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailForm\Detail_ChinhSuaNoiDungChuyenDe.Designer.cs">
+      <DependentUpon>Detail_ChinhSuaNoiDungChuyenDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailForm\Detail_NoiDungLopChuyenDe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailForm\Detail_NoiDungLopChuyenDe.Designer.cs">
+      <DependentUpon>Detail_NoiDungLopChuyenDe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\GUI_DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +81,12 @@
       <DependentUpon>GUI_ThongTinCaNhan.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProgressForm\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressForm\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\UC_MyTextBox.cs">
       <SubType>Component</SubType>
@@ -106,11 +124,20 @@
     <EmbeddedResource Include="Dashboard\GUI_FrmBangDieuKhien.resx">
       <DependentUpon>GUI_FrmBangDieuKhien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetailForm\Detail_ChinhSuaNoiDungChuyenDe.resx">
+      <DependentUpon>Detail_ChinhSuaNoiDungChuyenDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailForm\Detail_NoiDungLopChuyenDe.resx">
+      <DependentUpon>Detail_NoiDungLopChuyenDe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login\GUI_DangNhap.resx">
       <DependentUpon>GUI_DangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profile\GUI_ThongTinCaNhan.resx">
       <DependentUpon>GUI_ThongTinCaNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressForm\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

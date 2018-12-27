@@ -18,6 +18,7 @@ namespace DTO
         private DateTime thoiGianBatDau;
         private DateTime thoiGianKetThuc;
         private byte[] noiDungChuyenDe;
+        private byte[] icon;
         private string theLoai;
 
         public DTO_NoiDungLopChuyenDe()
@@ -99,6 +100,13 @@ namespace DTO
             get { return maNoiDungChuyenDeGiao; }
 
             set { maNoiDungChuyenDeGiao = value; }
+        }
+
+        public byte[] Icon
+        {
+            get { return icon; }
+
+            set { icon = value; }
         }
     }
 }

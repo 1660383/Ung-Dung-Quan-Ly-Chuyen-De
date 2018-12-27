@@ -49,7 +49,6 @@ namespace GUI.UserControls
                     cbNamHoc.Items.Add(i.NamHoc);
                 }
             }
-
         }
 
         private void TaiVaKhoiTaoDuLieuTuDataBase()
@@ -225,7 +224,6 @@ namespace GUI.UserControls
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-
             string query = (txtSearch.Text != txtSearch.Hint) ? txtSearch.Text : "";            
             dataView.RowFilter = String.Format("TenChuyenDe like '%{0}%'", query);
             GanDuLieuVaoListView();
