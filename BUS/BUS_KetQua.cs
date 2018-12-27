@@ -16,9 +16,9 @@ namespace BUS
             DataTable dt;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM KETQUA");
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
+            DAO_DataProvider.Connect();
+            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+            DAO_DataProvider.Disconnect();
             
             foreach (DataRow row in dt.Rows)
             {
@@ -33,9 +33,9 @@ namespace BUS
             DataTable dt;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM KETQUA kq where kq.MASV= '{0}'",masv);
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
+            DAO_DataProvider.Connect();
+            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+            DAO_DataProvider.Disconnect();
             return dt.Rows.Count;
         }
         //public static List<DTO_KetQua> LayDanhSachKetQuaTheoMaSinhVien(string masv)
@@ -44,9 +44,9 @@ namespace BUS
         //    DataTable dt;
         //    StringBuilder query = new StringBuilder();
         //    query.AppendFormat("SELECT * FROM KETQUA kq where kq.MASV ='{0}'",masv);
-        //    DataProvider.Connect();
-        //    dt = DataProvider.Select(CommandType.Text, query.ToString());
-        //    DataProvider.Disconnect();
+        //    DAO_DataProvider.Connect();
+        //    dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+        //    DAO_DataProvider.Disconnect();
 
         //    foreach (DataRow row in dt.Rows)
         //    {
@@ -61,9 +61,9 @@ namespace BUS
             DataTable dt;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT (select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK,kq.Nam,kq.Diem FROM KETQUA kq where kq.MASV ='{0}'", masv);
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
+            DAO_DataProvider.Connect();
+            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+            DAO_DataProvider.Disconnect();
             return dt;
         }
 
@@ -71,9 +71,9 @@ namespace BUS
         {
             List<DTO_KetQua> lkq = new List<DTO_KetQua>();
             DataTable dt;
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, layCauTruyVanChung(masv,tensv,macd,mahk,nam).ToString());
-            DataProvider.Disconnect();
+            DAO_DataProvider.Connect();
+            dt = DAO_DataProvider.Select(CommandType.Text, layCauTruyVanChung(masv,tensv,macd,mahk,nam).ToString());
+            DAO_DataProvider.Disconnect();
             return dt;
         }
         private static StringBuilder layCauTruyVanConbobox(string macd,string mahk,string nam)

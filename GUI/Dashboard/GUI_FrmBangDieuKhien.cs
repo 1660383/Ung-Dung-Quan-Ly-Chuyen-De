@@ -90,7 +90,7 @@ namespace GUI.Dashboards
 
             item = new UC_NavigationItem();
             item.Icon =global::GUI.Properties.Resources.ic_update;
-            item.Text = "Cập nhật trạng thái chuyên đề";
+            item.Text = "Cập nhật thông tin chuyên đề";
             item.NavItemClick += Item_NavItemClick2;
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
             this.navMenu.AddItem(item);
@@ -178,10 +178,10 @@ namespace GUI.Dashboards
 
         private void Item_NavItemClick1(object sender, EventArgs e)
         {
-            if ((this.userControl as UC_GiaoChuyenDe) == null)
+            if ((this.userControl as UC_GiaoNoiDungChuyenDe) == null)
             {
                 this.pnlChinh.Controls.Clear();
-                this.userControl = new UC_GiaoChuyenDe();
+                this.userControl = new UC_GiaoNoiDungChuyenDe();
                 this.userControl.Dock = DockStyle.Fill;
                 this.pnlChinh.Controls.Add(this.userControl);
             }
@@ -278,7 +278,7 @@ namespace GUI.Dashboards
 
         private void GUI_BangDieuKhien_Load(object sender, EventArgs e)
         {
-            lblTenNguoDung.Text = BUS_TaiKhoan.LayTenNguoiDung();
+            lblTenNguoDung.Text = BUS_Users.LayTenNguoiDung();
         }
 
         private void miCaNhan_Click(object sender, EventArgs e)

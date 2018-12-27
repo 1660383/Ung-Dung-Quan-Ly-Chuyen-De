@@ -16,9 +16,9 @@ namespace BUS
             DataTable dt;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM Nhom");
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
+            DAO_DataProvider.Connect();
+            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+            DAO_DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
                 DTO_Nhom Nhom = new DTO_Nhom((int)row[0], row[1].ToString(), (int)row[2], row[3].ToString(), row[4].ToString(), (int)row[5]);
@@ -32,9 +32,9 @@ namespace BUS
             DataTable dt;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from NHOM n where n.MANHOM = '{0}'", manhom);
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
+            DAO_DataProvider.Connect();
+            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+            DAO_DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
                 nhom = new DTO_Nhom((int)row[0], row[1].ToString(), (int)row[2], row[3].ToString(), row[4].ToString(), (int)row[5]);

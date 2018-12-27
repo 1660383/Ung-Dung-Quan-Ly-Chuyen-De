@@ -16,9 +16,9 @@ namespace BUS
             DataTable dt;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM SINHVIEN");
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
+            DAO_DataProvider.Connect();
+            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+            DAO_DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
                 DTO_SinhVien sinhvien = new DTO_SinhVien(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString(), (DateTime)row[6]);
@@ -32,9 +32,9 @@ namespace BUS
             DataTable dt;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from SINHVIEN sv where sv.MASV = '{0}'", masv);
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
+            DAO_DataProvider.Connect();
+            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+            DAO_DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
                 sinhvien = new DTO_SinhVien(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString(), (DateTime)row[6]);

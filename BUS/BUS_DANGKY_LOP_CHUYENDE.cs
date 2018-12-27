@@ -17,9 +17,9 @@ namespace BUS
             string maGiaoVien = BUS.Properties.Settings.Default.TaiKhoanHienTai.IdTaiKhoan;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from DANGKY_LOP_CHUYENDE");
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
+            DAO_DataProvider.Connect();
+            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+            DAO_DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
                 DTO.DTO_DANGKY_LOP_CHUYENDE dklcd = new DTO.DTO_DANGKY_LOP_CHUYENDE();
@@ -40,9 +40,9 @@ namespace BUS
             string maGiaoVien = BUS.Properties.Settings.Default.TaiKhoanHienTai.IdTaiKhoan;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from DANGKY_LOP_CHUYENDE cd where cd.MACD = '{0}' and cd.NAM ={1} and MAHK = '{2}'",cdm.MaChuyenDe,cdm.NamHoc,cdm.HocKy);
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
+            DAO_DataProvider.Connect();
+            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+            DAO_DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
                 dklcd = new DTO.DTO_DANGKY_LOP_CHUYENDE();
@@ -61,9 +61,9 @@ namespace BUS
             string maGiaoVien = BUS.Properties.Settings.Default.TaiKhoanHienTai.IdTaiKhoan;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from DANGKY_LOP_CHUYENDE cd where cd.MACD = '{0}' and cd.NAM ={1} and MAHK = '{2}'", cdm.MaChuyenDe, cdm.NamHoc, cdm.HocKy);
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
+            DAO_DataProvider.Connect();
+            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+            DAO_DataProvider.Disconnect();
             return dt.Rows.Count;
         }
         

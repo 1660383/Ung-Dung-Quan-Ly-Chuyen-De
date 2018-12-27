@@ -16,9 +16,9 @@ namespace BUS
             DataTable dt;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM Nganh");
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
+            DAO_DataProvider.Connect();
+            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+            DAO_DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
                 DTO_Nganh nganh = new DTO_Nganh(row[0].ToString(), row[1].ToString(), (int)row[2]);
@@ -32,9 +32,9 @@ namespace BUS
             DataTable dt;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from NGANH n where n.MANGANH = '{0}'", manganh);
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
+            DAO_DataProvider.Connect();
+            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+            DAO_DataProvider.Disconnect();
             foreach(DataRow row in dt.Rows)
             {
                 nganh = new DTO_Nganh(row[0].ToString(), row[1].ToString(), (int)row[2]);

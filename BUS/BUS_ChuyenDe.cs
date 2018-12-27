@@ -11,15 +11,20 @@ namespace BUS
 {
     public class BUS_ChuyenDe
     {
+        /// <summary>
+        /// Lấy tất cả thông tin gốc của 1 chuyên đề
+        /// </summary>
+        /// <param name="maChuyenDe">Mã chuyên đề cần lấy thông tin</param>
+        /// <returns>Trả về null nếu không tìm thấy. Ngươc lại trả về DTO_ChuyenDe</returns>
         public static DTO_ChuyenDe LayThongTinChuyenDe(string maChuyenDe)
         {
-            DataTable dt;
+          
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM CHUYENDE WHERE MACD = '{0}'", maChuyenDe);
-            DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
-            DTO_ChuyenDe chuyenDe = null;
+            DAO.DAO_DataProvider.Connect();
+            DataTable dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
+            DAO.DAO_DataProvider.Disconnect();
+            DTO.DTO_ChuyenDe chuyenDe = null;
             if (dt != null)
             {
                 foreach (DataRow row in dt.Rows)
