@@ -12,17 +12,17 @@ namespace GUI.DetailForm
 {
     public partial class Detail_ChinhSuaNoiDungChuyenDe : Form
     {
-        DTO.DTO_NoiDungLopChuyenDe noiDungChuyenDe;
+        DTO.NoiDungLopChuyenDe noiDungChuyenDe;
         public Detail_ChinhSuaNoiDungChuyenDe()
         {
             InitializeComponent();
         }
 
-        public Detail_ChinhSuaNoiDungChuyenDe(DTO.DTO_NoiDungLopChuyenDe noiDungChuyenDe)
+        public Detail_ChinhSuaNoiDungChuyenDe(DTO.NoiDungLopChuyenDe noiDungChuyenDe)
         {
             InitializeComponent();
             this.noiDungChuyenDe = noiDungChuyenDe;
-            Image img = BUS.BUS_NoiDungLopChuyenDe.BytesToImage(BUS.BUS_NoiDungLopChuyenDe.LayIconNoiDung(noiDungChuyenDe.MaNoiDung));
+            Image img = BUS.NoiDungLopChuyenDe.BytesToImage(BUS.NoiDungLopChuyenDe.LayIconNoiDung(noiDungChuyenDe.MaNoiDung));
             Bitmap thumb = (Bitmap)img.GetThumbnailImage(64, 64, null, IntPtr.Zero);
             thumb.MakeTransparent();
             this.Icon = Icon.FromHandle(thumb.GetHicon());
@@ -58,7 +58,7 @@ namespace GUI.DetailForm
             this.noiDungChuyenDe.ThoiGianBatDau = dtpThoiGianBatDau.Value;
             this.noiDungChuyenDe.ThoiGianKetThuc = dtpThoiGianKetThuc.Value;         
 
-            bool kq = BUS.BUS_NoiDungLopChuyenDe.CapNhapDungChuyenDe(this.noiDungChuyenDe);
+            bool kq = BUS.NoiDungLopChuyenDe.CapNhapDungChuyenDe(this.noiDungChuyenDe);
             if (kq)
             {
                 btnHuy.Text = "Đóng";
@@ -67,6 +67,11 @@ namespace GUI.DetailForm
             {
                 MessageBox.Show("Không thể thực hiên yêu cầu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Detail_ChinhSuaNoiDungChuyenDe_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

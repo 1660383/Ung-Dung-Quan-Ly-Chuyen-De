@@ -40,18 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO_ChuyenDeDangMo.cs" />
-    <Compile Include="DTO_DANGKY_LOP_CHUYENDE.cs" />
-    <Compile Include="DTO_KetQua.cs" />
-    <Compile Include="DTO_ChuyenDe.cs" />
-    <Compile Include="DTO_ThongTinChuyenDeMo.cs" />
-    <Compile Include="DTO_ChuyenDeGiaoVienThamGia.cs" />
-    <Compile Include="DTO_Nganh.cs" />
-    <Compile Include="DTO_Nhom.cs" />
-    <Compile Include="DTO_NoiDungLopChuyenDe.cs" />
-    <Compile Include="DTO_Users.cs" />
+    <Compile Include="ThongTinChuyenDeMo.cs" />
+    <Compile Include="DangKyLopChuyenDe.cs" />
+    <Compile Include="KetQua.cs" />
+    <Compile Include="ChuyenDe.cs" />
+    <Compile Include="GiaoVienThamGiaChuyenDe.cs" />
+    <Compile Include="Nganh.cs" />
+    <Compile Include="Nhom.cs" />
+    <Compile Include="NoiDungLopChuyenDe.cs" />
+    <Compile Include="Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DTO_SinhVien.cs" />
+    <Compile Include="SinhVien.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

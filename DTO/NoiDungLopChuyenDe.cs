@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DTO_NoiDungLopChuyenDe
+    public class NoiDungLopChuyenDe
     {
         private string maNoiDung;
         private string maNoiDungChuyenDeGiao;
@@ -21,7 +21,7 @@ namespace DTO
         private byte[] icon;
         private string theLoai;
 
-        public DTO_NoiDungLopChuyenDe()
+        public NoiDungLopChuyenDe()
         {
 
         }

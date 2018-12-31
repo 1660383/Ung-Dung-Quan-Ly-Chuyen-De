@@ -9,27 +9,27 @@ using System.Threading.Tasks;
 
 namespace BUS
 {
-    public class BUS_ChuyenDeGiaoVienThamGia
+    public class GiaoVienThamGiaChuyenDe
     {
         /// <summary>
         /// Lấy danh sách chuyên đề mà giáo viên(Đang đang nhập) tham gia bằng mã giáo viên được lưu trong BUS Setting.
         /// </summary>
         /// <returns>Danh sách chuyên đề mà giáo viên tham gia</returns>
-        public static List<DTO_ChuyenDeGiaoVienThamGia> LayDsChuyenDeGiaoVienThamGia()
+        public static List<DTO.GiaoVienThamGiaChuyenDe> LayDsChuyenDeGiaoVienThamGia()
         {
-            string maGiaoVien = BUS.BUS_Users.LayMaNguoiDung().Trim();
+            string maGiaoVien = BUS.Users.LayMaNguoiDung().Trim();
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM GIAOVIEN_THAMGIA_CHUYENDE WHERE MAGV = '{0}'", maGiaoVien);
-            DAO_DataProvider.Connect();
-            DataTable dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
-            DAO_DataProvider.Disconnect();
-            List<DTO_ChuyenDeGiaoVienThamGia> dsChuyenDe = null;
+            DAO.DataProvider.Connect();
+            DataTable dt = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+            DAO.DataProvider.Disconnect();
+            List<DTO.GiaoVienThamGiaChuyenDe> dsChuyenDe = null;
             if (dt.Rows.Count > 0)
             {
-                dsChuyenDe = new List<DTO_ChuyenDeGiaoVienThamGia>();
+                dsChuyenDe = new List<DTO.GiaoVienThamGiaChuyenDe>();
                 foreach (DataRow row in dt.Rows)
                 {
-                    DTO_ChuyenDeGiaoVienThamGia chuyenDe = new DTO_ChuyenDeGiaoVienThamGia()
+                    DTO.GiaoVienThamGiaChuyenDe chuyenDe = new DTO.GiaoVienThamGiaChuyenDe()
                     {
                         MaChuyenDeGiao = row[0].ToString(),
                         MaGiaoVienThamGia = row[1].ToString().Trim(),
@@ -48,20 +48,20 @@ namespace BUS
         /// </summary>
         /// <param name="maChuyenDe"></param>
         /// <returns>Trả về null nếu không tim thấy ngược lại trả về DTO_ChuyenDeGiaoVienThamGia</returns>
-        public static DTO_ChuyenDeGiaoVienThamGia LayChuyenDeGiaoVienThamGia(string maChuyenDe)
+        public static DTO.GiaoVienThamGiaChuyenDe LayChuyenDeGiaoVienThamGia(string maChuyenDe)
         {
-            string maGiaoVien = BUS.BUS_Users.LayMaNguoiDung().Trim();
+            string maGiaoVien = BUS.Users.LayMaNguoiDung().Trim();
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM GIAOVIEN_THAMGIA_CHUYENDE WHERE MAGV = '{0}' AND MACD = '{1}'", maGiaoVien, maChuyenDe);
-            DAO_DataProvider.Connect();
-            DataTable dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
-            DAO_DataProvider.Disconnect();
-            DTO_ChuyenDeGiaoVienThamGia chuyenDe = null;
+            DAO.DataProvider.Connect();
+            DataTable dt = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+            DAO.DataProvider.Disconnect();
+            DTO.GiaoVienThamGiaChuyenDe chuyenDe = null;
             if (dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)
                 {
-                    chuyenDe = new DTO_ChuyenDeGiaoVienThamGia()
+                    chuyenDe = new DTO.GiaoVienThamGiaChuyenDe()
                     {
                         MaChuyenDeGiao = row[0].ToString(),
                         MaGiaoVienThamGia = row[1].ToString().Trim(),

@@ -44,29 +44,29 @@ namespace GUI
             }
             matKhau = txtMatKhau.Text.Trim();
 
-            BUS_Users.LoaiTaiKhoan loaiTaiKhoan = BUS_Users.DangNhap(tenDangNhap, matKhau);
+            Users.LoaiTaiKhoan loaiTaiKhoan = Users.DangNhap(tenDangNhap, matKhau);
             GUI_BangDieuKhien guiBangDieuKhien;
             switch (loaiTaiKhoan)
             {
-                case BUS_Users.LoaiTaiKhoan.SINHVIEN:
+                case Users.LoaiTaiKhoan.SINHVIEN:
                     LuuThongTinDangNhap();
                     guiBangDieuKhien = new GUI_BangDieuKhien(GUI_BangDieuKhien.NguoiDung.SinhVien);
                     guiBangDieuKhien.Show();
                     this.Hide();
                     break;
-                case BUS_Users.LoaiTaiKhoan.GIAOVIEN:
+                case Users.LoaiTaiKhoan.GIAOVIEN:
                     LuuThongTinDangNhap();
                     guiBangDieuKhien = new GUI_BangDieuKhien(GUI_BangDieuKhien.NguoiDung.GiaoVien);
                     guiBangDieuKhien.Show();
                     this.Hide();
                     break;
-                case BUS_Users.LoaiTaiKhoan.GIAOVU:
+                case Users.LoaiTaiKhoan.GIAOVU:
                     LuuThongTinDangNhap();
                     guiBangDieuKhien = new GUI_BangDieuKhien(GUI_BangDieuKhien.NguoiDung.GiaoVu);
                     guiBangDieuKhien.Show();
                     this.Hide();
                     break;
-                case BUS_Users.LoaiTaiKhoan.WRONG:
+                case Users.LoaiTaiKhoan.WRONG:
                     MessageBox.Show("Thông tin đăng nhập không chính xác!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }

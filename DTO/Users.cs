@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DTO_Users
+    public class Users
     {
         private string idTaiKhoan;
         private string idPhanHe;
         private string tenDangNhap;
         private string matKhau;
 
-        public DTO_Users()
+        public Users()
         {
 
         }
@@ -45,7 +45,7 @@ namespace DTO
             set { matKhau = value; }
         }
 
-        public DTO_Users(string idTaiKhoan, string idPhanHe, string tenDangNhap, string matKhau)
+        public Users(string idTaiKhoan, string idPhanHe, string tenDangNhap, string matKhau)
         {
             this.idTaiKhoan = idTaiKhoan;
             this.idPhanHe = idPhanHe;

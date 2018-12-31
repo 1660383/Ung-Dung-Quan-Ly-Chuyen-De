@@ -17,10 +17,10 @@ namespace GUI.DetailForm
             InitializeComponent();
         }
 
-        public Detail_NoiDungLopChuyenDe(DTO.DTO_NoiDungLopChuyenDe noiDungChuyenDe)
+        public Detail_NoiDungLopChuyenDe(DTO.NoiDungLopChuyenDe noiDungChuyenDe)
         {
             InitializeComponent();
-            Image img = BUS.BUS_NoiDungLopChuyenDe.BytesToImage(BUS.BUS_NoiDungLopChuyenDe.LayIconNoiDung(noiDungChuyenDe.MaNoiDung));
+            Image img = BUS.NoiDungLopChuyenDe.BytesToImage(BUS.NoiDungLopChuyenDe.LayIconNoiDung(noiDungChuyenDe.MaNoiDung));
             Bitmap thumb = (Bitmap)img.GetThumbnailImage(64, 64, null, IntPtr.Zero);
             thumb.MakeTransparent();
             this.Icon = Icon.FromHandle(thumb.GetHicon());

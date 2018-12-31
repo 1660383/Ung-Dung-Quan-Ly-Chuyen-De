@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DTO_SinhVien
+    public class SinhVien
     {
         private string masv;
         private string manganh;
@@ -23,7 +23,7 @@ namespace DTO
         public string DiaChi { get { return diachi; }set { diachi = value; } }
         public string Phai { get { return phai; }set { phai = value; } }
         public DateTime NgaySinh { get { return ngaysinh; }set { ngaysinh = value; } }
-        public DTO_SinhVien(string masv,string manganh,string userid,string tensv,string diachi,string phai,DateTime ngaysinh)
+        public SinhVien(string masv,string manganh,string userid,string tensv,string diachi,string phai,DateTime ngaysinh)
         {
             this.masv = masv;
             this.manganh = manganh;

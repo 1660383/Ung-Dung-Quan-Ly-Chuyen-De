@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    public class DAO_DataProvider
+    public class DataProvider
     {
         static String mConnectionString = ConfigurationManager.ConnectionStrings["QLCD"].ConnectionString;
         static SqlConnection mConnection;
-        public DAO_DataProvider()
+        public DataProvider()
         {
 
         }
@@ -52,10 +52,10 @@ namespace DAO
                 cmd.CommandText = cmdText;
                 return cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
 
-                throw ex;
+                return ex.ErrorCode;
             }
 
 
@@ -71,9 +71,9 @@ namespace DAO
                     cmd.Parameters.AddRange(parameters);
                 return cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                throw ex;
+                return ex.ErrorCode;
             }
         }
 
@@ -88,7 +88,7 @@ namespace DAO
             }
             catch (SqlException e)
             {
-                throw e;
+                return null;
             }
         }
 

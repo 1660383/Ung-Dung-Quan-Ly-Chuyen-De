@@ -8,7 +8,7 @@ using System.Data;
 
 namespace BUS
 {
-    public class BUS_Users
+    public class Users
     {
         /// <summary>
         /// Định nghĩa loại người dùng.
@@ -26,12 +26,12 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM USERS WHERE USERNAME ='{0}' AND PASSWORD = '{1}'",
                 tenDangNhap, matKhau);
-            DAO.DAO_DataProvider.Connect();
-            DataTable tb = DAO.DAO_DataProvider.Select(CommandType.Text, query.ToString());
-            DAO.DAO_DataProvider.Disconnect();
+            DAO.DataProvider.Connect();
+            DataTable tb = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+            DAO.DataProvider.Disconnect();
             if (tb.Rows.Count > 0)
             {
-                DTO_Users taiKhoan = new DTO_Users(tb.Rows[0][0].ToString().Trim(), tb.Rows[0][1].ToString().Trim(),
+                DTO.Users taiKhoan = new DTO.Users(tb.Rows[0][0].ToString().Trim(), tb.Rows[0][1].ToString().Trim(),
                     tb.Rows[0][2].ToString().Trim(), tb.Rows[0][3].ToString().Trim());
                 switch (taiKhoan.IdPhanHe)
                 {
@@ -57,7 +57,7 @@ namespace BUS
         /// Lưu thong tin tai khoảng người dùng hiện tại vào BUS Setting.
         /// </summary>
         /// <param name="taiKhoan">Tài khoảng cần lưu</param>
-        private static void LuuThongTinTaiKhoan(DTO_Users taiKhoan)
+        private static void LuuThongTinTaiKhoan(DTO.Users taiKhoan)
         {
             BUS.Properties.Settings.Default.TaiKhoanHienTai = taiKhoan;
             BUS.Properties.Settings.Default.Save();
@@ -87,9 +87,9 @@ namespace BUS
                     break;
             }
 
-            DAO.DAO_DataProvider.Connect();
-            DataTable tb = DAO.DAO_DataProvider.Select(CommandType.Text, query.ToString());
-            DAO.DAO_DataProvider.Disconnect();
+            DAO.DataProvider.Connect();
+            DataTable tb = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+            DAO.DataProvider.Disconnect();
 
             if (tb.Rows.Count > 0)
             {
@@ -122,9 +122,9 @@ namespace BUS
                     break;
             }
 
-            DAO.DAO_DataProvider.Connect();
-            DataTable tb = DAO.DAO_DataProvider.Select(CommandType.Text, query.ToString());
-            DAO.DAO_DataProvider.Disconnect();
+            DAO.DataProvider.Connect();
+            DataTable tb = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+            DAO.DataProvider.Disconnect();
             return tb.Rows[0][0].ToString();
         }
     }

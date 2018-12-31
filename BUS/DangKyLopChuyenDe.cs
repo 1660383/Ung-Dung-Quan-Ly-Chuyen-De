@@ -7,22 +7,22 @@ using System.Data;
 using DAO;
 namespace BUS
 {
-    public class BUS_DANGKY_LOP_CHUYENDE
+    public class DangKyLopChuyenDe
     {
-        public static List<DTO.DTO_DANGKY_LOP_CHUYENDE> LayDanhSachDangKyLopChuyenDe()
+        public static List<DTO.DangKyLopChuyenDe> LayDanhSachDangKyLopChuyenDe()
         {
-            List<DTO.DTO_DANGKY_LOP_CHUYENDE> ldklcd = new List<DTO.DTO_DANGKY_LOP_CHUYENDE>();
+            List<DTO.DangKyLopChuyenDe> ldklcd = new List<DTO.DangKyLopChuyenDe>();
             DataTable dt;
 
             string maGiaoVien = BUS.Properties.Settings.Default.TaiKhoanHienTai.IdTaiKhoan;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from DANGKY_LOP_CHUYENDE");
-            DAO_DataProvider.Connect();
-            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
-            DAO_DataProvider.Disconnect();
+            DataProvider.Connect();
+            dt = DataProvider.Select(CommandType.Text, query.ToString());
+            DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
-                DTO.DTO_DANGKY_LOP_CHUYENDE dklcd = new DTO.DTO_DANGKY_LOP_CHUYENDE();
+                DTO.DangKyLopChuyenDe dklcd = new DTO.DangKyLopChuyenDe();
                 dklcd.MACD = row[0].ToString();
                 dklcd.NAM = int.Parse(row[1].ToString());
                 dklcd.MAHK = row[2].ToString();
@@ -32,20 +32,20 @@ namespace BUS
             }
             return ldklcd;
         }
-        public static DTO.DTO_DANGKY_LOP_CHUYENDE LayDangKyLopChuyenDe(DTO.DTO_ChuyenDeDangMo cdm)
+        public static DTO.DangKyLopChuyenDe LayDangKyLopChuyenDe(DTO.ThongTinChuyenDeMo cdm)
         {
-            DTO.DTO_DANGKY_LOP_CHUYENDE dklcd = null;
+            DTO.DangKyLopChuyenDe dklcd = null;
             DataTable dt;
 
             string maGiaoVien = BUS.Properties.Settings.Default.TaiKhoanHienTai.IdTaiKhoan;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from DANGKY_LOP_CHUYENDE cd where cd.MACD = '{0}' and cd.NAM ={1} and MAHK = '{2}'",cdm.MaChuyenDe,cdm.NamHoc,cdm.HocKy);
-            DAO_DataProvider.Connect();
-            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
-            DAO_DataProvider.Disconnect();
+            DataProvider.Connect();
+            dt = DataProvider.Select(CommandType.Text, query.ToString());
+            DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
-                dklcd = new DTO.DTO_DANGKY_LOP_CHUYENDE();
+                dklcd = new DTO.DangKyLopChuyenDe();
                 dklcd.MACD = row[0].ToString();
                 dklcd.NAM = int.Parse(row[1].ToString());
                 dklcd.MAHK = row[2].ToString();
@@ -55,15 +55,15 @@ namespace BUS
             }
             return dklcd;
         }
-        public static int SoLuongNguoiDangKy(DTO.DTO_ChuyenDeDangMo cdm)
+        public static int SoLuongNguoiDangKy(DTO.ThongTinChuyenDeMo cdm)
         {
             DataTable dt;
             string maGiaoVien = BUS.Properties.Settings.Default.TaiKhoanHienTai.IdTaiKhoan;
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from DANGKY_LOP_CHUYENDE cd where cd.MACD = '{0}' and cd.NAM ={1} and MAHK = '{2}'", cdm.MaChuyenDe, cdm.NamHoc, cdm.HocKy);
-            DAO_DataProvider.Connect();
-            dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
-            DAO_DataProvider.Disconnect();
+            DataProvider.Connect();
+            dt = DataProvider.Select(CommandType.Text, query.ToString());
+            DataProvider.Disconnect();
             return dt.Rows.Count;
         }
         

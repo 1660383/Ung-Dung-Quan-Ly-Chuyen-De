@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DTO_ChuyenDe
+    public class ChuyenDe
     {
         protected string maChuyenDe;
         protected string maNganh;
         private string tenChuyenDe;
-        public DTO_ChuyenDe()
+        public ChuyenDe()
         {
 
         }
 
-        public DTO_ChuyenDe(string maChuyenDe, string maNganh, string tenChuyenDe)
+        public ChuyenDe(string maChuyenDe, string maNganh, string tenChuyenDe)
         {
             this.maChuyenDe = maChuyenDe;
             this.maNganh = maNganh;

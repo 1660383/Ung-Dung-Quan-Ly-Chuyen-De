@@ -105,6 +105,12 @@
     <Compile Include="UserControls\UC_CapNhatTrangThaiChuyenDe.Designer.cs">
       <DependentUpon>UC_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UC_DanhSachChuyenDe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_DanhSachChuyenDe.Designer.cs">
+      <DependentUpon>UC_DanhSachChuyenDe.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UC_MyTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\UC_CapNhatTrangThaiChuyenDe.resx">
       <DependentUpon>UC_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_DanhSachChuyenDe.resx">
+      <DependentUpon>UC_DanhSachChuyenDe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_NavigationDrawer.resx">
       <DependentUpon>UC_NavigationDrawer.cs</DependentUpon>
@@ -384,6 +393,30 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_update2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-upload-to-the-cloud-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-upload-to-the-cloud-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-documents-folder-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancel-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-plus-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-row-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-bin-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

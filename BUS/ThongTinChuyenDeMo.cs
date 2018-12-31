@@ -8,22 +8,22 @@ using System.Data;
 using DAO;
 namespace BUS
 {
-    public class BUS_ChuyenDeDangMo
+    public class ThongTinChuyenDeMo
     {
 
-        public static List<DTO_ChuyenDeDangMo> LayDsChuyenDeGiaoVienThamGiaDangMo(List<DTO_ChuyenDeGiaoVienThamGia> dsChuyenDeGiaoVienThamGia)
+        public static List<DTO.ThongTinChuyenDeMo> LayDsChuyenDeGiaoVienThamGiaDangMo(List<DTO.GiaoVienThamGiaChuyenDe> dsChuyenDeGiaoVienThamGia)
         {
-            List<DTO_ChuyenDeDangMo> dsChuyenDe = new List<DTO_ChuyenDeDangMo>();
-            foreach (DTO_ChuyenDeGiaoVienThamGia i in dsChuyenDeGiaoVienThamGia)
+            List<DTO.ThongTinChuyenDeMo> dsChuyenDe = new List<DTO.ThongTinChuyenDeMo>();
+            foreach (DTO.GiaoVienThamGiaChuyenDe i in dsChuyenDeGiaoVienThamGia)
             {
                 StringBuilder query = new StringBuilder();
                 query.AppendFormat("SELECT * FROM THONGTIN_CHUYENDE_MO WHERE MACD = '{0}' AND NAM = {1} AND MAHK = '{2}'", i.MaChuyenDe, i.NamHoc, i.MaHocKy);
-               DAO_DataProvider.Connect();
-                DataTable dt =DAO_DataProvider.Select(CommandType.Text, query.ToString());
-               DAO_DataProvider.Disconnect();
+                DataProvider.Connect();
+                DataTable dt = DataProvider.Select(CommandType.Text, query.ToString());
+                DataProvider.Disconnect();
                 foreach (DataRow row in dt.Rows)
                 {
-                    DTO_ChuyenDeDangMo chuyenDeMo = new DTO_ChuyenDeDangMo();
+                    DTO.ThongTinChuyenDeMo chuyenDeMo = new DTO.ThongTinChuyenDeMo();
                     chuyenDeMo.MaChuyenDe = row[0].ToString().Trim();
                     chuyenDeMo.NamHoc = int.Parse(row[1].ToString().Trim());
                     chuyenDeMo.HocKy = row[2].ToString().Trim();
@@ -38,18 +38,18 @@ namespace BUS
             }
             return dsChuyenDe;
         }
-        public static List<DTO_ChuyenDeDangMo> LayDsTatCaChuyenDeDangMo()
+        public static List<DTO.ThongTinChuyenDeMo> LayDsTatCaChuyenDeDangMo()
         {
-            List<DTO_ChuyenDeDangMo> dsChuyenDe = new List<DTO_ChuyenDeDangMo>();
+            List<DTO.ThongTinChuyenDeMo> dsChuyenDe = new List<DTO.ThongTinChuyenDeMo>();
 
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM THONGTIN_CHUYENDE_MO");
-           DAO_DataProvider.Connect();
-            DataTable dt =DAO_DataProvider.Select(CommandType.Text, query.ToString());
-           DAO_DataProvider.Disconnect();
+           DataProvider.Connect();
+            DataTable dt =DataProvider.Select(CommandType.Text, query.ToString());
+           DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
-                DTO_ChuyenDeDangMo chuyenDeMo = new DTO_ChuyenDeDangMo();
+                DTO.ThongTinChuyenDeMo chuyenDeMo = new DTO.ThongTinChuyenDeMo();
                 chuyenDeMo.MaChuyenDe = row[0].ToString().Trim();
                 chuyenDeMo.NamHoc = int.Parse(row[1].ToString().Trim());
                 chuyenDeMo.HocKy = row[2].ToString().Trim();
@@ -58,24 +58,24 @@ namespace BUS
                 chuyenDeMo.ThoiGianKT = DateTime.Parse(row[5].ToString().Trim());
                 chuyenDeMo.SlSinhVienToiDa = int.Parse(row[6].ToString().Trim());
                 chuyenDeMo.SlNhomToiDa = int.Parse(row[7].ToString().Trim());
-               // chuyenDeMo.TrangThai = row[8].ToString();
+                chuyenDeMo.TrangThai = row[8].ToString();
                 dsChuyenDe.Add(chuyenDeMo);
             }
             return dsChuyenDe;
         }
 
-        public static List<DTO_ChuyenDeDangMo>LayDsChuyenDeDangMo()
+        public static List<DTO.ThongTinChuyenDeMo>LayDsChuyenDeDangMo()
         {
-            List<DTO_ChuyenDeDangMo> dsChuyenDe = new List<DTO_ChuyenDeDangMo>();
+            List<DTO.ThongTinChuyenDeMo> dsChuyenDe = new List<DTO.ThongTinChuyenDeMo>();
             {
                 StringBuilder query = new StringBuilder();
                 query.AppendFormat("SELECT * FROM THONGTIN_CHUYENDE_MO");
-                DAO_DataProvider.Connect();
-                DataTable dt = DAO_DataProvider.Select(CommandType.Text, query.ToString());
-                DAO_DataProvider.Disconnect();
+                DataProvider.Connect();
+                DataTable dt = DataProvider.Select(CommandType.Text, query.ToString());
+                DataProvider.Disconnect();
                 foreach (DataRow row in dt.Rows)
                 {
-                    DTO_ChuyenDeDangMo chuyenDeMo = new DTO_ChuyenDeDangMo();
+                    DTO.ThongTinChuyenDeMo chuyenDeMo = new DTO.ThongTinChuyenDeMo();
                     chuyenDeMo.MaChuyenDe = row[0].ToString().Trim();
                     chuyenDeMo.NamHoc = int.Parse(row[1].ToString().Trim());
                     chuyenDeMo.HocKy = row[2].ToString().Trim();
@@ -90,19 +90,19 @@ namespace BUS
             }
             return dsChuyenDe;
         }
-        public static bool CapNhatTrangThaiChuyenDeMo(DTO_ChuyenDeDangMo chuyenDeMo)
+        public static bool CapNhatTrangThaiChuyenDeMo(DTO.ThongTinChuyenDeMo chuyenDeMo)
         {
             StringBuilder query = new StringBuilder();
             query.AppendFormat("UPDATE THONGTIN_CHUYENDE_MO SET TrangThai = N'{0}' where MACD = '{1}' and NAM = {2} and MAHK = '{3}'",chuyenDeMo.TrangThai,chuyenDeMo.MaChuyenDe,chuyenDeMo.NamHoc,chuyenDeMo.HocKy);
-            DAO_DataProvider.Connect();
-            int result = DAO_DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString());
-            DAO_DataProvider.Disconnect();
+            DataProvider.Connect();
+            int result = DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString());
+            DataProvider.Disconnect();
             if (result > 0) return true;
             return false;
         }
 
 
-        public static bool CapNhatThongTinChuyenDeDangMo(DTO_ChuyenDeDangMo chuyenDeMo)
+        public static bool CapNhatThongTinChuyenDeDangMo(DTO.ThongTinChuyenDeMo chuyenDeMo)
         {
 
             StringBuilder query = new StringBuilder();
@@ -115,27 +115,27 @@ namespace BUS
                 chuyenDeMo.NamHoc,
                 chuyenDeMo.HocKy);
 
-           DAO_DataProvider.Connect();
-            int result =DAO_DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString());
-           DAO_DataProvider.Disconnect();
+           DataProvider.Connect();
+            int result =DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString());
+           DataProvider.Disconnect();
             if (result <= 0)
             {
                 return false;
             }
             return true;
         }
-        public static List<DTO.DTO_ChuyenDeDangMo> LayDanhSachChuyenDeMoCoDieuKiem(string macd, string mahk, string nam)
+        public static List<DTO.ThongTinChuyenDeMo> LayDanhSachChuyenDeMoCoDieuKiem(string macd, string mahk, string nam)
         {
-            List<DTO_ChuyenDeDangMo> dsChuyenDe = new List<DTO_ChuyenDeDangMo>();
+            List<DTO.ThongTinChuyenDeMo> dsChuyenDe = new List<DTO.ThongTinChuyenDeMo>();
 
             StringBuilder query = new StringBuilder();
             query.AppendFormat(layCauTruyVanConbobox(macd,mahk,nam).ToString());
-           DAO_DataProvider.Connect();
-            DataTable dt =DAO_DataProvider.Select(CommandType.Text, query.ToString());
-           DAO_DataProvider.Disconnect();
+           DataProvider.Connect();
+            DataTable dt =DataProvider.Select(CommandType.Text, query.ToString());
+           DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
-                DTO_ChuyenDeDangMo chuyenDeMo = new DTO_ChuyenDeDangMo();
+                DTO.ThongTinChuyenDeMo chuyenDeMo = new DTO.ThongTinChuyenDeMo();
                 chuyenDeMo.MaChuyenDe = row[0].ToString().Trim();
                 chuyenDeMo.NamHoc = int.Parse(row[1].ToString().Trim());
                 chuyenDeMo.HocKy = row[2].ToString().Trim();

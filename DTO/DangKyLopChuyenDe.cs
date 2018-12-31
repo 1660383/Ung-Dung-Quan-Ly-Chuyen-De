@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DTO_DANGKY_LOP_CHUYENDE
+    public class DangKyLopChuyenDe
     {
         private string macd;
         private int nam;

@@ -17,8 +17,8 @@ namespace GUI.UserControls
         private PopupNotifier popup;
         private DataView dataView;
         private DataTable dataTable;
-        private List<DTO.DTO_ChuyenDeDangMo> dsChuyenDeGVThamGiaDangMo;
-        private List<DTO.DTO_ChuyenDeGiaoVienThamGia> dsChuyenDeGiaoVienThamGia;
+        private List<DTO.ThongTinChuyenDeMo> dsChuyenDeGVThamGiaDangMo;
+        private List<DTO.GiaoVienThamGiaChuyenDe> dsChuyenDeGiaoVienThamGia;
         private List<int> dsNamHoc;
         public UC_CapNhatThongTinChuyenDe()
         {
@@ -28,10 +28,6 @@ namespace GUI.UserControls
             this.popup.AnimationDuration = 100;
             this.popup.IsRightToLeft = true;
             this.components.Add(popup);
-            lbl1.Hide();
-            lbl2.Hide();
-            lbl3.Hide();
-            lbl4.Hide();
             groupBox2.Hide();
             btnCapNhat.Enabled = true;
             rbBieuTuongLon.Checked = true;
@@ -41,7 +37,7 @@ namespace GUI.UserControls
         {
             cbNamHoc.Items.Clear();
             dsNamHoc = new List<int>();
-            foreach (DTO.DTO_ChuyenDeDangMo i in dsChuyenDeGVThamGiaDangMo)
+            foreach (DTO.ThongTinChuyenDeMo i in dsChuyenDeGVThamGiaDangMo)
             {
                 if (dsNamHoc.BinarySearch(i.NamHoc) < 0)
                 {
@@ -64,7 +60,7 @@ namespace GUI.UserControls
         private void LayThongTinCacChuyenDeGiaoVienThamGia()
         {
 
-            this.dsChuyenDeGiaoVienThamGia = BUS_ChuyenDeGiaoVienThamGia.LayDsChuyenDeGiaoVienThamGia();
+            this.dsChuyenDeGiaoVienThamGia = GiaoVienThamGiaChuyenDe.LayDsChuyenDeGiaoVienThamGia();
 
         }
 
@@ -76,24 +72,24 @@ namespace GUI.UserControls
             dataTable.Columns.Add("HocKy");
             dataTable.Columns.Add("NamHoc");
 
-            foreach (DTO.DTO_ChuyenDeDangMo i in dsChuyenDeGVThamGiaDangMo)
+            foreach (DTO.ThongTinChuyenDeMo i in dsChuyenDeGVThamGiaDangMo)
             {
-                dataTable.Rows.Add(i.MaChuyenDe, BUS_ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe, i.HocKy, i.NamHoc);
+                dataTable.Rows.Add(i.MaChuyenDe, (object)ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe, i.HocKy, i.NamHoc);
             }
             dataView = new DataView(dataTable);
         }
 
         private void LayThongTinCacChuyenDeMoGiaoVienThamGia()
         {
-            this.dsChuyenDeGVThamGiaDangMo = BUS.BUS_ChuyenDeDangMo.LayDsChuyenDeGiaoVienThamGiaDangMo(this.dsChuyenDeGiaoVienThamGia);
+            this.dsChuyenDeGVThamGiaDangMo = BUS.ThongTinChuyenDeMo.LayDsChuyenDeGiaoVienThamGiaDangMo(this.dsChuyenDeGiaoVienThamGia);
 
         }
 
         private void GanDuLieuDeXuatTimKiem()
         {
-            foreach (DTO.DTO_ChuyenDeDangMo i in dsChuyenDeGVThamGiaDangMo)
+            foreach (DTO.ThongTinChuyenDeMo i in dsChuyenDeGVThamGiaDangMo)
             {
-                txtSearch.AutoCompleteCustomSource.Add(BUS.BUS_ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe);
+                txtSearch.AutoCompleteCustomSource.Add((string)BUS.ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe);
             }
         }
 
@@ -144,7 +140,7 @@ namespace GUI.UserControls
                 MessageBox.Show("Thời khoản thời gian không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            bool ketqua = BUS_ChuyenDeDangMo.CapNhatThongTinChuyenDeDangMo(chuyenDeMo);
+            bool ketqua = ThongTinChuyenDeMo.CapNhatThongTinChuyenDeDangMo(chuyenDeMo);
             if (ketqua)
             {
                 CapNhatDuLieu();
@@ -197,10 +193,10 @@ namespace GUI.UserControls
             toolTip.ShowAlways = true;
             toolTip.SetToolTip(this.lblTenChuyenDe, this.lblTenChuyenDe.Text);
         }
-        DTO.DTO_ChuyenDeDangMo chuyenDeMo = null;
+        DTO.ThongTinChuyenDeMo chuyenDeMo = null;
         private void lvChuyenDeMo_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            chuyenDeMo = e.Item.Tag as DTO.DTO_ChuyenDeDangMo;
+            chuyenDeMo = e.Item.Tag as DTO.ThongTinChuyenDeMo;
             if (chuyenDeMo != null)
             {
                 lblTenChuyenDe.Text = e.Item.Text;
@@ -249,10 +245,11 @@ namespace GUI.UserControls
                         && this.dsChuyenDeGVThamGiaDangMo[i].NamHoc == int.Parse(row[3].ToString()))
                     {
                         ListViewItem item = new ListViewItem();
-                        item.Text = BUS_ChuyenDe.LayThongTinChuyenDe(this.dsChuyenDeGVThamGiaDangMo[i].MaChuyenDe).TenChuyenDe;
+                        item.Text = ChuyenDe.LayThongTinChuyenDe(this.dsChuyenDeGVThamGiaDangMo[i].MaChuyenDe).TenChuyenDe;
                         item.Tag = this.dsChuyenDeGVThamGiaDangMo[i];
                         item.ImageIndex = 0;
                         lvChuyenDeMo.Items.Add(item);
+                        
                     }
                 }
 

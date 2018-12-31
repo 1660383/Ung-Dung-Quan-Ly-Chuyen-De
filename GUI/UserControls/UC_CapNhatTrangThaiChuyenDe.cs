@@ -17,10 +17,8 @@ namespace GUI.UserControls
 
         private DataView dataView;
         private DataTable dataTable;
-        private List<DTO.DTO_ChuyenDeDangMo> dsChuyenDeDangMo;
+        private List<DTO.ThongTinChuyenDeMo> dsChuyenDeDangMo;
         private List<int> dsNamHoc;
-        private DTO.DTO_ChuyenDeDangMo chuyenDeMo = null;
-
         public UC_CapNhatTrangThaiChuyenDe()
         {
             InitializeComponent();
@@ -42,32 +40,22 @@ namespace GUI.UserControls
 
         private void GanDuLieuCanTimKiem()
         {
-            foreach (DTO.DTO_ChuyenDeDangMo i in dsChuyenDeDangMo)
+            foreach (DTO.ThongTinChuyenDeMo i in dsChuyenDeDangMo)
             {
-                txtTimKiem.AutoCompleteCustomSource.Add(BUS.BUS_ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe);
+                txtTimKiem.AutoCompleteCustomSource.Add((string)BUS.ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe);
             }
         }
 
         private void GanDuLieuVaoListview()
         {
             lvChuyenDeMo.Clear();
-            foreach (DataRow row in dataView.ToTable().Rows)
+            foreach (DTO.ThongTinChuyenDeMo i in dsChuyenDeDangMo)
             {
-                for (int i = 0; i < this.dsChuyenDeDangMo.Count; i++)
-                {
-                    if (this.dsChuyenDeDangMo[i].MaChuyenDe == row[0].ToString()
-                        && this.dsChuyenDeDangMo[i].HocKy == row[2].ToString()
-                        && this.dsChuyenDeDangMo[i].NamHoc == int.Parse(row[3].ToString())
-                        && this.dsChuyenDeDangMo[i].TrangThai == row[4].ToString())
-                    {
-                        ListViewItem item = new ListViewItem();
-                        item.Text = BUS_ChuyenDe.LayThongTinChuyenDe(this.dsChuyenDeDangMo[i].MaChuyenDe).TenChuyenDe;
-                        item.Tag = this.dsChuyenDeDangMo[i];
-                        item.ImageIndex = 0;
-                        lvChuyenDeMo.Items.Add(item);
-                    }
-                }
-
+                ListViewItem item = new ListViewItem();
+                item.Text = ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe;
+                item.Tag = i;
+                item.ImageIndex = 0;
+                lvChuyenDeMo.Items.Add(item);
             }
         }
 
@@ -80,23 +68,23 @@ namespace GUI.UserControls
             dataTable.Columns.Add("NamHoc");
             dataTable.Columns.Add("TrangThai");
 
-            foreach (DTO.DTO_ChuyenDeDangMo i in dsChuyenDeDangMo)
+            foreach (DTO.ThongTinChuyenDeMo i in dsChuyenDeDangMo)
             {
-                dataTable.Rows.Add(i.MaChuyenDe, BUS_ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe, i.HocKy, i.NamHoc, i.TrangThai);
+                dataTable.Rows.Add(i.MaChuyenDe, (object)ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe, i.HocKy, i.NamHoc, i.TrangThai);
             }
             dataView = new DataView(dataTable);
         }
 
         private void LayThongTinCacChuyenDeMo()
         {
-            this.dsChuyenDeDangMo = BUS.BUS_ChuyenDeDangMo.LayDsChuyenDeDangMo();
+            this.dsChuyenDeDangMo = BUS.ThongTinChuyenDeMo.LayDsChuyenDeDangMo();
         }
 
         private void GanDuLieuCbNamHoc()
         {
             cbNamHoc.Items.Clear();
             dsNamHoc = new List<int>();
-            foreach (DTO.DTO_ChuyenDeDangMo i in dsChuyenDeDangMo)
+            foreach (DTO.ThongTinChuyenDeMo i in dsChuyenDeDangMo)
             {
                 if (dsNamHoc.BinarySearch(i.NamHoc) < 0)
                 {
@@ -108,19 +96,34 @@ namespace GUI.UserControls
         }
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            DTO.DTO_ChuyenDe cd = BUS.BUS_ChuyenDe.LayThongTinChuyenDe(chuyenDeMo.MaChuyenDe); 
-            if (chuyenDeMo != null)
+            if(!rbVoHieuHoa.Checked && !rbMoChuyenDe.Checked)
             {
-                if (BUS.BUS_ChuyenDeDangMo.CapNhatTrangThaiChuyenDeMo(chuyenDeMo))
-                {
-                    MessageBox.Show(" Chuyên đề \n\t" + "\n\t Mã CD : "+cd.MaChuyenDe+ "\n\t Chuyên Đề : " + cd.TenChuyenDe);
-                }
-                else
-                {
-                    MessageBox.Show(" Trạng Thái chuyên đề cần được cập nhật ");
-                }
+                MessageBox.Show("Hãy chọn trạng thái cần cập nhật!","Lỗi",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
             }
 
+            if(lvChuyenDeMo.SelectedItems.Count > 0)
+            {
+                DTO.ThongTinChuyenDeMo chuyenDeMo = lvChuyenDeMo.SelectedItems[0].Tag as DTO.ThongTinChuyenDeMo;
+
+                if (rbMoChuyenDe.Checked)
+                {
+                    chuyenDeMo.TrangThai = rbMoChuyenDe.Text;
+
+                }else if (rbVoHieuHoa.Checked)
+                {
+                    chuyenDeMo.TrangThai = rbVoHieuHoa.Text;
+                }
+
+                if (BUS.ThongTinChuyenDeMo.CapNhatTrangThaiChuyenDeMo(chuyenDeMo))
+                {
+                    MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }else
+                {
+                    MessageBox.Show("Không thể cập nhật!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
 
         }
 
@@ -157,39 +160,40 @@ namespace GUI.UserControls
         }
         private void lvChuyenDeMo_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            chuyenDeMo = e.Item.Tag as DTO.DTO_ChuyenDeDangMo;
-            if (chuyenDeMo != null)
+            if (lvChuyenDeMo.SelectedItems.Count > 0)
             {
-                lblTenChuyenDe.Text = e.Item.Text;
-                lblHocKi.Text = chuyenDeMo.HocKy;
-                lblNamHoc.Text = chuyenDeMo.NamHoc.ToString();
-                lbMaChuyenDe.Text =chuyenDeMo.MaChuyenDe;
-                if(chuyenDeMo.TrangThai == rbMoChuyenDe.Text)
+                DTO.ThongTinChuyenDeMo chuyenDeMo = lvChuyenDeMo.SelectedItems[0].Tag as DTO.ThongTinChuyenDeMo;
+                if (chuyenDeMo != null)
                 {
-                    rbMoChuyenDe.Checked = true;
-                }else if(chuyenDeMo.TrangThai == rbVoHieuHoa.Text)
-                {
-                    rbVoHieuHoa.Checked = true;
+                    rbMoChuyenDe.Checked = false;
+                    rbVoHieuHoa.Checked = false;
+
+                    lblTenChuyenDe.Text = BUS.ChuyenDe.LayThongTinChuyenDe(chuyenDeMo.MaChuyenDe).TenChuyenDe;
+                    lblHocKi.Text = chuyenDeMo.HocKy;
+                    lblNamHoc.Text = chuyenDeMo.NamHoc.ToString();
+                    lbMaChuyenDe.Text = chuyenDeMo.MaChuyenDe;
+                    if (chuyenDeMo.TrangThai.Equals(rbMoChuyenDe.Text))
+                    {
+                        rbMoChuyenDe.Checked = true;
+                    }
+                    else if (chuyenDeMo.TrangThai.Equals(rbVoHieuHoa.Text))
+                    {
+                        rbVoHieuHoa.Checked = true;
+                    }
+                    groupBox2.Show();
+
                 }
-                groupBox2.Show();
-
+                else
+                {
+                    chuyenDeMo = null;
+                    groupBox2.Hide();
+                }
             }
-            else
-            {
-                chuyenDeMo = null;
-                groupBox2.Hide();
-            }
-        }
+        }      
 
-        private void rbMoChuyenDe_CheckedChanged(object sender, EventArgs e)
+        private void lvChuyenDeMo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chuyenDeMo.TrangThai = rbMoChuyenDe.Text;
-
-        }
-
-        private void rbVoHieuHoa_CheckedChanged(object sender, EventArgs e)
-        {
-            chuyenDeMo.TrangThai = rbVoHieuHoa.Text;
+          
         }
     }
 }

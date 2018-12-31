@@ -19,9 +19,7 @@ namespace GUI.Dashboards
         public GUI_BangDieuKhien()
         {
             InitializeComponent();
-            this.userControl.Click += UserControl_Click;
-
-           
+            this.userControl.Click += UserControl_Click;           
         }
 
         private void UserControl_Click(object sender, EventArgs e)
@@ -111,12 +109,14 @@ namespace GUI.Dashboards
             item.Icon =global::GUI.Properties.Resources.ic_book1;
             item.Text = "Danh sách chuyên đề";
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
+            item.NavItemClick += Item_NavItemClick7;
             this.navMenu.AddItem(item);
 
             item = new UC_NavigationItem();
             item.Icon =global::GUI.Properties.Resources.ic_register;
             item.Text = "Thông tin đăng ký chuyên đề";
-            item.NavItem_MouseEnter += Item_NavItem_MouseEnter;        
+            item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
+            item.NavItemClick += Item_NavItemClick6;       
             this.navMenu.AddItem(item);
 
             item = new UC_NavigationItem();
@@ -129,8 +129,42 @@ namespace GUI.Dashboards
             item = new UC_NavigationItem();
             item.Icon =global::GUI.Properties.Resources.ic_find;
             item.Text = "Tra cứu điểm sinh viên";
+            item.NavItemClick += Item_NavItemClick5;
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
             this.navMenu.AddItem(item);
+        }
+
+        private void Item_NavItemClick7(object sender, EventArgs e)
+        {
+            if ((this.userControl as UC_DanhSachChuyenDe) == null)
+            {
+                this.pnlChinh.Controls.Clear();
+                this.userControl = new UC_DanhSachChuyenDe();
+                this.userControl.Dock = DockStyle.Fill;
+                this.pnlChinh.Controls.Add(this.userControl);
+            }
+        }
+
+        private void Item_NavItemClick6(object sender, EventArgs e)
+        {
+            if ((this.userControl as UC_ThongTinDangKyChuyenDe) == null)
+            {
+                this.pnlChinh.Controls.Clear();
+                this.userControl = new UC_ThongTinDangKyChuyenDe();
+                this.userControl.Dock = DockStyle.Fill;
+                this.pnlChinh.Controls.Add(this.userControl);
+            }
+        }
+
+        private void Item_NavItemClick5(object sender, EventArgs e)
+        {
+            if ((this.userControl as UC_TraCuuDiemSinhVien) == null)
+            {
+                this.pnlChinh.Controls.Clear();
+                this.userControl = new UC_TraCuuDiemSinhVien();
+                this.userControl.Dock = DockStyle.Fill;
+                this.pnlChinh.Controls.Add(this.userControl);
+            }
         }
 
         private void Item_NavItemClick4(object sender, EventArgs e)
@@ -280,7 +314,7 @@ namespace GUI.Dashboards
 
         private void GUI_BangDieuKhien_Load(object sender, EventArgs e)
         {
-            lblTenNguoDung.Text = BUS_Users.LayTenNguoiDung();
+            lblTenNguoDung.Text = Users.LayTenNguoiDung();
         }
 
         private void miCaNhan_Click(object sender, EventArgs e)

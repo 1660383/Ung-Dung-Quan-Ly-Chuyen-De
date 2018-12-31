@@ -25,9 +25,9 @@ namespace BUS.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::DTO.DTO_Users TaiKhoanHienTai {
+        public global::DTO.Users TaiKhoanHienTai {
             get {
-                return ((global::DTO.DTO_Users)(this["TaiKhoanHienTai"]));
+                return ((global::DTO.Users)(this["TaiKhoanHienTai"]));
             }
             set {
                 this["TaiKhoanHienTai"] = value;

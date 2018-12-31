@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DTO_KetQua
+    public class KetQua
     {
         private string ketquaid;
         private string macd;
@@ -20,7 +20,7 @@ namespace DTO
         public string MaHK { get { return mahk; } set { mahk = value; } }
         public string MSSV { get { return mssv; } set { mssv = value; } }
         public Decimal Diem { get { return diem; } set { diem = value; } }
-        public DTO_KetQua(string ketquaid,string macd,int nam,string mahk,string mssv,Decimal diem)
+        public KetQua(string ketquaid,string macd,int nam,string mahk,string mssv,Decimal diem)
         {
             this.ketquaid = ketquaid;
             this.macd = macd;
