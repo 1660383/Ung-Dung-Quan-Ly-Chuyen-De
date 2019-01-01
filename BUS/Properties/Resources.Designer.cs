@@ -23,7 +23,6 @@ namespace BUS.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
-
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -38,7 +37,6 @@ namespace BUS.Properties {
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         public static global::System.Resources.ResourceManager ResourceManager {
-
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BUS.Properties.Resources", typeof(Resources).Assembly);
@@ -54,7 +52,6 @@ namespace BUS.Properties {
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         public static global::System.Globalization.CultureInfo Culture {
-
             get {
                 return resourceCulture;
             }

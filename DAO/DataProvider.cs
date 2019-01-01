@@ -15,12 +15,11 @@ namespace DAO
         static SqlConnection mConnection;
         public DataProvider()
         {
-           
+
         }
 
         public static void Connect()
         {
-
             try
             {
                 if (mConnection == null)
@@ -53,10 +52,10 @@ namespace DAO
                 cmd.CommandText = cmdText;
                 return cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
 
-                throw ex;
+                return ex.ErrorCode;
             }
 
 
@@ -68,13 +67,13 @@ namespace DAO
                 SqlCommand cmd = mConnection.CreateCommand();
                 cmd.CommandType = cmdType;
                 cmd.CommandText = cmdText;
-                if(parameters!= null && parameters.Length >0)
+                if (parameters != null && parameters.Length > 0)
                     cmd.Parameters.AddRange(parameters);
                 return cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                throw ex;
+                return ex.ErrorCode;
             }
         }
 
@@ -89,10 +88,22 @@ namespace DAO
             }
             catch (SqlException e)
             {
-                Console.WriteLine(e.Message);
                 return null;
             }
         }
+
+        public static object ExecuteScala(string cmdText, params SqlParameter[] parameters)
+        {
+            using (SqlCommand cmd = mConnection.CreateCommand())
+            {
+                cmd.CommandText = cmdText;
+                if (parameters != null && parameters.Length > 0)
+                    cmd.Parameters.AddRange(parameters);
+                return cmd.ExecuteScalar() as byte[];
+            }
+        }
+
+
         public static DataTable Select(CommandType cmdType, String cmdText)
         {
             SqlCommand cmd = mConnection.CreateCommand();

@@ -12,8 +12,8 @@ namespace GUI.UserControls
 {
     public partial class UC_ThongTinDangKyChuyenDe : UserControl
     {
-        private List<DTO.DTO_ChuyenDeDangMo> lchuyenDeMo = new List<DTO.DTO_ChuyenDeDangMo>();
-        private DTO.DTO_ChuyenDeDangMo chuyenDeMo = null;
+        private List<DTO.ThongTinChuyenDeMo> lchuyenDeMo = new List<DTO.ThongTinChuyenDeMo>();
+        private DTO.ThongTinChuyenDeMo chuyenDeMo = null;
         private int macd = -1;
         private int hocky = -1;
         private int nam = -1;
@@ -26,15 +26,15 @@ namespace GUI.UserControls
         }
         private void khoiTaoDuLieuChoChuyenDeMo()
         {
-            lchuyenDeMo = BUS.BUS_ChuyenDeDangMo.LayDsTatCaChuyenDeDangMo();
+            lchuyenDeMo = BUS.ThongTinChuyenDeMo.LayDsTatCaChuyenDeDangMo();
         }
         private void GanDuLieuVaoListView()
         {
             lvChuyenDeMo.Clear();
-            foreach(DTO.DTO_ChuyenDeDangMo row in lchuyenDeMo)
+            foreach(DTO.ThongTinChuyenDeMo row in lchuyenDeMo)
             {
                 ListViewItem item = new ListViewItem();
-                item.Text = BUS.BUS_ChuyenDe.LayThongTinChuyenDe(row.MaChuyenDe).TenChuyenDe;
+                item.Text = BUS.ChuyenDe.LayThongTinChuyenDe(row.MaChuyenDe).TenChuyenDe;
                 item.Tag = row;
                 item.ImageIndex = 0;
                 lvChuyenDeMo.Items.Add(item);
@@ -42,7 +42,7 @@ namespace GUI.UserControls
         }
         private void GanDuLieuVaoCombobox()
         {
-            foreach (DTO.DTO_ChuyenDeDangMo row in lchuyenDeMo)
+            foreach (DTO.ThongTinChuyenDeMo row in lchuyenDeMo)
             {
                 cbHocKy.Items.Add(row.HocKy);
                 cbMaCD.Items.Add(row.MaChuyenDe);
@@ -82,14 +82,14 @@ namespace GUI.UserControls
         }
         private void lvChuyenDeMo_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            chuyenDeMo = e.Item.Tag as DTO.DTO_ChuyenDeDangMo;
+            chuyenDeMo = e.Item.Tag as DTO.ThongTinChuyenDeMo;
             if (chuyenDeMo != null)
             {
                 lblTenChuyenDe.Text = e.Item.Text;
                 lblMaChuyenDe.Text = chuyenDeMo.MaChuyenDe;
                 txtSLNhom.Text = chuyenDeMo.SlNhomToiDa.ToString();
                 dtpBatDau.Value = chuyenDeMo.ThoiGianBD;
-                this.txtSLDK.Text = BUS.BUS_DANGKY_LOP_CHUYENDE.SoLuongNguoiDangKy(chuyenDeMo).ToString();
+                this.txtSLDK.Text = BUS.DangKyLopChuyenDe.SoLuongNguoiDangKy(chuyenDeMo).ToString();
                 dtpKetThuc.Value = chuyenDeMo.ThoiGianKT;
                 lblMaChuyenDe.Text = chuyenDeMo.MaChuyenDe;
                 txtTrangThai.Text = chuyenDeMo.TrangThai;
@@ -110,21 +110,21 @@ namespace GUI.UserControls
         private void cbMaCD_SelectedIndexChanged(object sender, EventArgs e)
         {
             macd = cbMaCD.SelectedIndex;
-            lchuyenDeMo = BUS.BUS_ChuyenDeDangMo.LayDanhSachChuyenDeMoCoDieuKiem(getOrNull(cbMaCD,macd).ToString(),getOrNull(cbHocKy, hocky).ToString(), getOrNull(cbNamHoc, nam).ToString());
+            lchuyenDeMo = BUS.ThongTinChuyenDeMo.LayDanhSachChuyenDeMoCoDieuKiem(getOrNull(cbMaCD,macd).ToString(),getOrNull(cbHocKy, hocky).ToString(), getOrNull(cbNamHoc, nam).ToString());
             GanDuLieuVaoListView();
         }
 
         private void cbHocKy_SelectedIndexChanged(object sender, EventArgs e)
         {
             hocky = cbHocKy.SelectedIndex;
-            lchuyenDeMo = BUS.BUS_ChuyenDeDangMo.LayDanhSachChuyenDeMoCoDieuKiem(getOrNull(cbMaCD, macd).ToString(), getOrNull(cbHocKy, hocky).ToString(), getOrNull(cbNamHoc, nam).ToString());
+            lchuyenDeMo = BUS.ThongTinChuyenDeMo.LayDanhSachChuyenDeMoCoDieuKiem(getOrNull(cbMaCD, macd).ToString(), getOrNull(cbHocKy, hocky).ToString(), getOrNull(cbNamHoc, nam).ToString());
             GanDuLieuVaoListView();
         }
 
         private void cbNamHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
             nam = cbNamHoc.SelectedIndex;
-            lchuyenDeMo = BUS.BUS_ChuyenDeDangMo.LayDanhSachChuyenDeMoCoDieuKiem(getOrNull(cbMaCD, macd).ToString(), getOrNull(cbHocKy, hocky).ToString(), getOrNull(cbNamHoc, nam).ToString());
+            lchuyenDeMo = BUS.ThongTinChuyenDeMo.LayDanhSachChuyenDeMoCoDieuKiem(getOrNull(cbMaCD, macd).ToString(), getOrNull(cbHocKy, hocky).ToString(), getOrNull(cbNamHoc, nam).ToString());
             GanDuLieuVaoListView();
         }
 
@@ -138,6 +138,11 @@ namespace GUI.UserControls
             cbHocKy.SelectedIndex = -1;
             khoiTaoDuLieuChoChuyenDeMo();
             GanDuLieuVaoListView();
+        }
+
+        private void lvChuyenDeMo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DTO;
-using BUS;
 using System.IO;
 using Word = Microsoft.Office.Interop.Word;
 using System.Diagnostics;
@@ -19,7 +17,7 @@ namespace GUI.UserControls
     {
         // take data from namepase BUS
         private Word.Document oDoc = new Word.Document();
-        private List<DTO_KetQua> listKetQua = BUS_KetQua.LayDanhSachKetQua();
+        private List<DTO.KetQua> listKetQua = BUS.KetQua.LayDanhSachKetQua();
         private int chuyende = -1;
         private int hocky = -1;
         private int namhoc = -1;
@@ -31,7 +29,7 @@ namespace GUI.UserControls
         }
         private void themDuLieuDenCombobox()
         {
-            foreach (DTO_KetQua kq in listKetQua)
+            foreach (DTO.KetQua kq in listKetQua)
             {
                 cbMaCD.Items.Add(kq.MaCD);
                 cbNamHoc.Items.Add(kq.Nam);
@@ -42,17 +40,17 @@ namespace GUI.UserControls
         {
             dgvKetQua.DataSource = sender;
         }
-        private void themDuLieuThongTinSinhVien(DTO_SinhVien sinhvien)
+        private void themDuLieuThongTinSinhVien(DTO.SinhVien sinhvien)
         {
 
             if (sinhvien != null)
             {
-                themDuLieuDenDataGridView(BUS_KetQua.LayDanhSachKetQuaTheoMaSinhVien(sinhvien.MASV));
-                DTO_Nganh nganh = BUS_Nganh.LayNganh(sinhvien.MaNganh);
+                themDuLieuDenDataGridView(BUS.KetQua.LayDanhSachKetQuaTheoMaSinhVien(sinhvien.MASV));
+                DTO.Nganh nganh = BUS.Nganh.LayNganh(sinhvien.MaNganh);
                 lblHoTenSV.Text = sinhvien.TENSV;
                 lblMSSV.Text = sinhvien.MASV;
                 lblNganh.Text = nganh.TenNganh;
-                lblSoChiHoanthanh.Text = BUS_KetQua.SoMonDauCuaSinhVien(sinhvien.MASV) + "/" + nganh.SoChuyenDeToiDa;
+                lblSoChiHoanthanh.Text = BUS.KetQua.SoMonDauCuaSinhVien(sinhvien.MASV) + "/" + nganh.SoChuyenDeToiDa;
             }
 
         }
@@ -65,7 +63,7 @@ namespace GUI.UserControls
         private void layDuLieu()
         {
             AnThongTinSinhVien();
-            themDuLieuDenDataGridView(BUS_KetQua.LayDanhSachKetQua(layDuLieuTextBox(txtMssv).ToString(), layDuLieuTextBox(txtTensv).ToString(), getOrNull(cbMaCD, chuyende).ToString(), getOrNull(cbHocKy, hocky).ToString(), getOrNull(cbNamHoc, namhoc).ToString()));
+            themDuLieuDenDataGridView(BUS.KetQua.LayDanhSachKetQua(layDuLieuTextBox(txtMssv).ToString(), layDuLieuTextBox(txtTensv).ToString(), getOrNull(cbMaCD, chuyende).ToString(), getOrNull(cbHocKy, hocky).ToString(), getOrNull(cbNamHoc, namhoc).ToString()));
         }
         private void cbMaCD_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -108,7 +106,7 @@ namespace GUI.UserControls
         }
         private bool AnThongTinSinhVien()
         {
-            DTO_SinhVien sinhvien = BUS_SinhVien.LaySinhVien(txtMssv.Text);
+            DTO.SinhVien sinhvien = BUS.SinhVien.LaySinhVien(txtMssv.Text);
             if (this.txtMssv.Text == txtMssv.Hint || sinhvien == null)
             {
                 splitContainer1.Panel1Collapsed = true;

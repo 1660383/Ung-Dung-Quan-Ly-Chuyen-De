@@ -67,6 +67,18 @@
     <Compile Include="Dashboard\GUI_FrmBangDieuKhien.Designer.cs">
       <DependentUpon>GUI_FrmBangDieuKhien.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetailForm\Detail_ChinhSuaNoiDungChuyenDe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailForm\Detail_ChinhSuaNoiDungChuyenDe.Designer.cs">
+      <DependentUpon>Detail_ChinhSuaNoiDungChuyenDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailForm\Detail_NoiDungLopChuyenDe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailForm\Detail_NoiDungLopChuyenDe.Designer.cs">
+      <DependentUpon>Detail_NoiDungLopChuyenDe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\GUI_DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,7 +92,25 @@
       <DependentUpon>GUI_ThongTinCaNhan.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProgressForm\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressForm\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\UC_CapNhatTrangThaiChuyenDe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_CapNhatTrangThaiChuyenDe.Designer.cs">
+      <DependentUpon>UC_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_DanhSachChuyenDe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_DanhSachChuyenDe.Designer.cs">
+      <DependentUpon>UC_DanhSachChuyenDe.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UC_MyTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -96,17 +126,17 @@
     <Compile Include="UserControls\UC_NavigationItem.Designer.cs">
       <DependentUpon>UC_NavigationItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UC_CapNhatTrangThaiChuyenDe.cs">
+    <Compile Include="UserControls\UC_CapNhatThongTinChuyenDe.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UC_CapNhatTrangThaiChuyenDe.Designer.cs">
-      <DependentUpon>UC_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
+    <Compile Include="UserControls\UC_CapNhatThongTinChuyenDe.Designer.cs">
+      <DependentUpon>UC_CapNhatThongTinChuyenDe.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UC_GiaoChuyenDe.cs">
+    <Compile Include="UserControls\UC_GiaoNoiDungChuyenDe.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UC_GiaoChuyenDe.Designer.cs">
-      <DependentUpon>UC_GiaoChuyenDe.cs</DependentUpon>
+    <Compile Include="UserControls\UC_GiaoNoiDungChuyenDe.Designer.cs">
+      <DependentUpon>UC_GiaoNoiDungChuyenDe.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UC_ThongTinDangKyChuyenDe.cs">
       <SubType>UserControl</SubType>
@@ -123,11 +153,20 @@
     <EmbeddedResource Include="Dashboard\GUI_FrmBangDieuKhien.resx">
       <DependentUpon>GUI_FrmBangDieuKhien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetailForm\Detail_ChinhSuaNoiDungChuyenDe.resx">
+      <DependentUpon>Detail_ChinhSuaNoiDungChuyenDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailForm\Detail_NoiDungLopChuyenDe.resx">
+      <DependentUpon>Detail_NoiDungLopChuyenDe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login\GUI_DangNhap.resx">
       <DependentUpon>GUI_DangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profile\GUI_ThongTinCaNhan.resx">
       <DependentUpon>GUI_ThongTinCaNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressForm\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -139,17 +178,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\UC_CapNhatTrangThaiChuyenDe.resx">
+      <DependentUpon>UC_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_DanhSachChuyenDe.resx">
+      <DependentUpon>UC_DanhSachChuyenDe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_NavigationDrawer.resx">
       <DependentUpon>UC_NavigationDrawer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_NavigationItem.resx">
       <DependentUpon>UC_NavigationItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UC_CapNhatTrangThaiChuyenDe.resx">
-      <DependentUpon>UC_CapNhatTrangThaiChuyenDe.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UC_CapNhatThongTinChuyenDe.resx">
+      <DependentUpon>UC_CapNhatThongTinChuyenDe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UC_GiaoChuyenDe.resx">
-      <DependentUpon>UC_GiaoChuyenDe.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UC_GiaoNoiDungChuyenDe.resx">
+      <DependentUpon>UC_GiaoNoiDungChuyenDe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_ThongTinDangKyChuyenDe.resx">
       <DependentUpon>UC_ThongTinDangKyChuyenDe.cs</DependentUpon>
@@ -348,6 +393,30 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_update2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-upload-to-the-cloud-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-upload-to-the-cloud-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-documents-folder-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancel-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-plus-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-row-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-bin-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
