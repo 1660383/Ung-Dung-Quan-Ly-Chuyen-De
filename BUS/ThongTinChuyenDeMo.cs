@@ -77,7 +77,8 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM THONGTIN_CHUYENDE_MO");
             DataProvider.Connect();
-            DataTable dt = DataProvider.Select(CommandType.Text, query.ToString());
+            DataTable dt = DataProvider.GetReader(CommandType.StoredProcedure, "LayDsTatCaChuyenDeDangMo");
+             //= DataProvider.Select(CommandType.Text, query.ToString());
             DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {

@@ -21,7 +21,9 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM GIAOVIEN_THAMGIA_CHUYENDE WHERE MAGV = '{0}'", gv.MaGV);
             DAO.DataProvider.Connect();
-            DataTable dt = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+            DataTable dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayDsChuyenDeGiaoVienThamGia",
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@MaGV", Value = gv.MaGV, Direction = ParameterDirection.Input });
+                //DAO.DataProvider.Select(CommandType.Text, query.ToString());
             DAO.DataProvider.Disconnect();
             List<DTO.GiaoVienThamGiaChuyenDe> dsChuyenDe = null;
             if (dt.Rows.Count > 0)
@@ -57,7 +59,10 @@ namespace BUS
                 StringBuilder query = new StringBuilder();
                 query.AppendFormat("SELECT * FROM GIAOVIEN_THAMGIA_CHUYENDE WHERE MAGV = '{0}' AND MACD = '{1}'", gv.MaGV, maChuyenDe);
                 DAO.DataProvider.Connect();
-                DataTable dt = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+                DataTable dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayChuyenDeGiaoVienThamGia",
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@MaGV", Value = gv.MaGV, Direction = ParameterDirection.Input },
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@maChuyenDe", Value = maChuyenDe, Direction = ParameterDirection.Input });
+                //DAO.DataProvider.Select(CommandType.Text, query.ToString());
                 DAO.DataProvider.Disconnect();               
                 if (dt.Rows.Count > 0)
                 {

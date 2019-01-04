@@ -77,14 +77,39 @@ namespace DAO
             }
         }
 
-        public static SqlDataReader GetReader(CommandType cmdType, String cmdText)
+        public static DataTable GetReader(CommandType cmdType, String cmdText)
         {
             try
             {
                 SqlCommand cmd = mConnection.CreateCommand();
                 cmd.CommandType = cmdType;
                 cmd.CommandText = cmdText;
-                return cmd.ExecuteReader();
+                DataTable db = new DataTable();
+                db.Load(cmd.ExecuteReader());
+                return db;
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+        public static DataTable GetReader(CommandType cmdType, String cmdText, params SqlParameter[] parameters)
+        {
+            try
+            {
+                SqlCommand cmd = mConnection.CreateCommand();
+                cmd.CommandType = cmdType;
+                cmd.CommandText = cmdText;
+                if (parameters != null && parameters.Length > 0)
+                {
+                    cmd.Parameters.AddRange(parameters);
+
+                }
+                DataTable db = new DataTable();
+                db.Load(cmd.ExecuteReader());
+                    
+                return db;
             }
             catch (SqlException e)
             {

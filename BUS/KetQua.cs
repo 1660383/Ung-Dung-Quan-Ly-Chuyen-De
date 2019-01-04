@@ -17,12 +17,11 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM KETQUA");
             DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
+            dt = DataProvider.GetReader(CommandType.StoredProcedure, "LayDanhSachKetQua",null);
+            //DataProvider.Select(CommandType.Text, query.ToString());
             DataProvider.Disconnect();
-            
             foreach (DataRow row in dt.Rows)
             {
-
                 DTO.KetQua kq = new DTO.KetQua(row[0].ToString(), row[1].ToString(),(int)row[2], row[3].ToString(), row[4].ToString(),(Decimal)row[5]);
                 lkq.Add(kq);
             }
@@ -34,8 +33,11 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM KETQUA kq where kq.MASV= '{0}'",masv);
             DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
-            DataProvider.Disconnect();
+            dt = DataProvider.GetReader(CommandType.StoredProcedure, "SoMonDauCuaSinhVien",
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@masv",Direction = ParameterDirection.Input,Value = masv}); 
+
+                //DataProvider.Select(CommandType.Text, query.ToString());
+                    DataProvider.Disconnect();
             return dt.Rows.Count;
         }
         //public static List<DTO_KetQua> LayDanhSachKetQuaTheoMaSinhVien(string masv)
@@ -60,9 +62,17 @@ namespace BUS
             List<DTO.KetQua> lkq = new List<DTO.KetQua>();
             DataTable dt;
             StringBuilder query = new StringBuilder();
+            
             query.AppendFormat("SELECT (select cd.TENCD from CHUYENDE cd where cd.MACD = kq.MACD) N'Tên  Chuyên Đề',kq.MAHK,kq.Nam,kq.Diem FROM KETQUA kq where kq.MASV ='{0}'", masv);
             DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
+            dt = DataProvider.GetReader(CommandType.StoredProcedure, "LayDanhSachKetQuaTheoMaSinhVien",
+                new System.Data.SqlClient.SqlParameter
+                {
+                    ParameterName = "@masv",
+                    Direction = ParameterDirection.Input,
+                    Value = masv
+                });
+                //DataProvider.Select(CommandType.Text, query.ToString());
             DataProvider.Disconnect();
             return dt;
         }
@@ -71,6 +81,15 @@ namespace BUS
         {
             List<DTO.KetQua> lkq = new List<DTO.KetQua>();
             DataTable dt;
+            //DataProvider.GetReader(CommandType.StoredProcedure, "LayDanhSachKetQuaTimKiem",
+            //    new System.Data.SqlClient.SqlParameter
+            //    {
+            //        ParameterName = "@masv",
+            //        Direction = ParameterDirection.Input,
+            //        Value = masv
+            //    }
+
+            //    );
             DataProvider.Connect();
             dt = DataProvider.Select(CommandType.Text, layCauTruyVanChung(masv,tensv,macd,mahk,nam).ToString());
             DataProvider.Disconnect();

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 using System.Data;
-
+using System.Data.SqlClient;
 namespace BUS
 {
     public class Users
@@ -27,8 +27,14 @@ namespace BUS
             query.AppendFormat("SELECT * FROM USERS WHERE USERNAME ='{0}' AND PASSWORD = '{1}'",
                 tenDangNhap, matKhau);
             DAO.DataProvider.Connect();
-            DataTable tb = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+            DataTable tb;
+            //tb = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+            tb = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "DangNhap",
+                new SqlParameter { ParameterName = "@tenDangNhap", Value = tenDangNhap, Direction = ParameterDirection.Input, SqlDbType = SqlDbType.Char, Size = 15 },
+                new SqlParameter { ParameterName = "@matkhau", Value = matKhau, Direction = ParameterDirection.Input, SqlDbType = SqlDbType.Char, Size = 30 }
+                );
             DAO.DataProvider.Disconnect();
+            Console.WriteLine(tb.Rows[0][0].ToString());
             if (tb.Rows.Count > 0)
             {
                 DTO.Users taiKhoan = new DTO.Users(tb.Rows[0][0].ToString().Trim(), tb.Rows[0][1].ToString().Trim(),

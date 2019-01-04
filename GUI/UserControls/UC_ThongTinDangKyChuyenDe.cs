@@ -165,5 +165,10 @@ namespace GUI.UserControls
             khoiTaoDuLieuChoChuyenDeMo();
             GanDuLieuVaoListView();
         }
+
+        private void txtSLNhom_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

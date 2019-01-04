@@ -24,6 +24,7 @@ namespace GUI.UserControls
         public UC_TraCuuDiemSinhVien()
         {
             InitializeComponent();
+             Console.WriteLine(BUS.KetQua.LayDanhSachKetQua().Count);
             themDuLieuDenCombobox();
             layDuLieu();
         }

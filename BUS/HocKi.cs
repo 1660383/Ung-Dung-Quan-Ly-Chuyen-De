@@ -16,7 +16,10 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM HOCKY WHERE MAHK = '{0}' AND NAM = {1}", hocki.MaHK, hocki.Nam);
             DAO.DataProvider.Connect();
-            dt = DAO.DataProvider.Select(System.Data.CommandType.Text, query.ToString());
+            dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "TonTaiHocKy",
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@MaHK", Value = hocki.MaHK, Direction = ParameterDirection.Input },
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@Nam", Value = hocki.Nam, Direction = ParameterDirection.Input });
+                //DAO.DataProvider.Select(System.Data.CommandType.Text, query.ToString());
             DAO.DataProvider.Disconnect();
             if (dt.Rows.Count > 0) return true;
             return false;
