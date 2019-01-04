@@ -51,7 +51,14 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM THONGTIN_CHUYENDE_MO WHERE MACD = '{0}' AND NAM = {1} AND MAHK = '{2}'", maCD, namhoc, hk);
             DataProvider.Connect();
-            DataTable dt = DataProvider.Select(CommandType.Text, query.ToString());
+            DataTable dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayDsChuyenDeGiaoVienThamGiaDangMo",
+
+                new SqlParameter { ParameterName = "@MaChuyenDe", Value = maCD, Direction = ParameterDirection.Input },
+                new SqlParameter { ParameterName = "@NamHoc", Value =  namhoc, Direction = ParameterDirection.Input },
+                new SqlParameter { ParameterName = "@MaHocKy", Value = hk, Direction = ParameterDirection.Input }
+                );
+                
+                //DataProvider.Select(CommandType.Text, query.ToString());
             DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
@@ -103,7 +110,8 @@ namespace BUS
                 StringBuilder query = new StringBuilder();
                 query.AppendFormat("SELECT * FROM THONGTIN_CHUYENDE_MO");
                 DataProvider.Connect();
-                DataTable dt = DataProvider.Select(CommandType.Text, query.ToString());
+                DataTable dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayDsChuyenDeDangMo");
+                    //DataProvider.Select(CommandType.Text, query.ToString());
                 DataProvider.Disconnect();
                 foreach (DataRow row in dt.Rows)
                 {
@@ -161,7 +169,11 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat(layCauTruyVanConbobox(macd, mahk, nam).ToString());
             DataProvider.Connect();
-            DataTable dt = DataProvider.Select(CommandType.Text, query.ToString());
+            DataTable dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayDanhSachChuyenDeMoCoDieuKiem",
+               new SqlParameter { ParameterName = "@macd", Value = macd, Direction = ParameterDirection.Input },
+                new SqlParameter { ParameterName = "@mahk", Value = mahk, Direction = ParameterDirection.Input },
+                new SqlParameter { ParameterName = "@nam", Value = nam, Direction = ParameterDirection.Input });
+                //DataProvider.Select(CommandType.Text, query.ToString());
             DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
