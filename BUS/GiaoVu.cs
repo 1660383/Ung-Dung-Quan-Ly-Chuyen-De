@@ -14,7 +14,9 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM GIAOVU WHERE USERID = '{0}'", userID);
             DAO.DataProvider.Connect();
-            DataTable tb  = DAO.DataProvider.Select(System.Data.CommandType.Text,query.ToString()  );
+            DataTable tb = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayThongTinGiaoVu",
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@userID", Value = userID, Direction = ParameterDirection.Input });
+                //DAO.DataProvider.Select(System.Data.CommandType.Text,query.ToString()  );
             DAO.DataProvider.Disconnect();
             DTO.GiaoVu gvu = null;
             if(tb!= null)

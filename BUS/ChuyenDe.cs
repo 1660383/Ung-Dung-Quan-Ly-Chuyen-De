@@ -16,11 +16,12 @@ namespace BUS
         /// <returns>Trả về null nếu không tìm thấy. Ngươc lại trả về DTO_ChuyenDe</returns>
         public static DTO.ChuyenDe LayThongTinChuyenDe(string maChuyenDe)
         {
-
+            
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM CHUYENDE WHERE MACD = N'{0}'", maChuyenDe);
             DAO.DataProvider.Connect();
-            DataTable dt = DAO.DataProvider.Select(CommandType.Text, query.ToString().Trim());
+            DataTable dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayThongTinChuyenDe",
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@maChuyenDe", Direction = ParameterDirection.Input, Value = maChuyenDe });
             DAO.DataProvider.Disconnect();
             DTO.ChuyenDe chuyenDe = null;
             if (dt != null)
@@ -41,7 +42,7 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM CHUYENDE");
             DAO.DataProvider.Connect();
-            DataTable dt = DAO.DataProvider.Select(CommandType.Text, query.ToString().Trim());
+            DataTable dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayDSChuyenDe");
             DAO.DataProvider.Disconnect();
             List<DTO.ChuyenDe> dsChuyenDe = null;
             if (dt != null)
@@ -63,6 +64,8 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("DELETE CHUYENDE WHERE MACD = N'{0}'", maChuyenDe);
             DAO.DataProvider.Connect();
+            //DAO.DataProvider.GetReader(CommandType.StoredProcedure, "XoaChuyenDe",
+            //    new System.Data.SqlClient.SqlParameter { ParameterName ="@maChuyenDe", Direction = ParameterDirection.Input ,Value=maChuyenDe});
             int result = DAO.DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString().Trim());
             DAO.DataProvider.Disconnect();
             if (result > 0)

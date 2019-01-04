@@ -320,6 +320,7 @@
             this.txtSLNhom.Name = "txtSLNhom";
             this.txtSLNhom.Size = new System.Drawing.Size(176, 22);
             this.txtSLNhom.TabIndex = 19;
+            this.txtSLNhom.TextChanged += new System.EventHandler(this.txtSLNhom_TextChanged);
             // 
             // txtSLDK
             // 

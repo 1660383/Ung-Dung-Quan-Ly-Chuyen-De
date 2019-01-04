@@ -18,7 +18,7 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from DANGKY_LOP_CHUYENDE");
             DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
+            dt = DataProvider.GetReader(CommandType.StoredProcedure, "LayDanhSachDangKyLopChuyenDe");
             DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
@@ -41,7 +41,11 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from DANGKY_LOP_CHUYENDE cd where cd.MACD = '{0}' and cd.NAM ={1} and MAHK = '{2}'",cdm.MaChuyenDe,cdm.NamHoc,cdm.HocKy);
             DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
+            dt=DataProvider.GetReader(CommandType.StoredProcedure, "LayDangKyLopChuyenDe", 
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@MaChuyenDe", Direction = ParameterDirection.Input, Value = cdm.MaChuyenDe },
+            new System.Data.SqlClient.SqlParameter { ParameterName = "@NamHoc", Direction = ParameterDirection.Input, Value = cdm.NamHoc },
+            new System.Data.SqlClient.SqlParameter { ParameterName = "@HocKy", Direction = ParameterDirection.Input, Value = cdm.HocKy }
+            );
             DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
@@ -62,7 +66,12 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from DANGKY_LOP_CHUYENDE cd where cd.MACD = '{0}' and cd.NAM ={1} and MAHK = '{2}'", cdm.MaChuyenDe, cdm.NamHoc, cdm.HocKy);
             DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, query.ToString());
+            dt = DataProvider.GetReader(CommandType.StoredProcedure, "SoLuongNguoiDangKy",
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@MaChuyenDe", Direction = ParameterDirection.Input, Value = cdm.MaChuyenDe },
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@NamHoc", Direction = ParameterDirection.Input, Value = cdm.NamHoc },
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@HocKy", Direction = ParameterDirection.Input, Value = cdm.HocKy }
+            );
+            //dt = DataProvider.Select(CommandType.Text, query.ToString());
             DataProvider.Disconnect();
             return dt.Rows.Count;
         }
