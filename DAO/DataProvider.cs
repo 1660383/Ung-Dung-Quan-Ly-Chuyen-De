@@ -88,6 +88,7 @@ namespace DAO
             }
             catch (SqlException e)
             {
+                Console.WriteLine(e.Message);
                 return null;
             }
         }
@@ -105,13 +106,16 @@ namespace DAO
 
 
         public static DataTable Select(CommandType cmdType, String cmdText)
-        {
+        {           
             SqlCommand cmd = mConnection.CreateCommand();
             cmd.CommandType = cmdType;
             cmd.CommandText = cmdText;
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable table = new DataTable();
-            adapter.Fill(table);
+            if (table != null)
+            {
+                adapter.Fill(table);
+            }
             return table;
         }
     }

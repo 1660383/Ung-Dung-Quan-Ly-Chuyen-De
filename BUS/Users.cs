@@ -34,17 +34,17 @@ namespace BUS
                 DTO.Users taiKhoan = new DTO.Users(tb.Rows[0][0].ToString().Trim(), tb.Rows[0][1].ToString().Trim(),
                     tb.Rows[0][2].ToString().Trim(), tb.Rows[0][3].ToString().Trim());
                 switch (taiKhoan.IdPhanHe)
-                {
-                    case "PH00001":
+                {                   
+                    case "PH0001":
                         LuuThongTinTaiKhoan(taiKhoan);
                         return LoaiTaiKhoan.GIAOVU;
-                    case "PH00002":
+                    case "PH0002":
                         LuuThongTinTaiKhoan(taiKhoan);
                         return LoaiTaiKhoan.GIAOVIEN;
-                    case "PH00003":
+                    case "PH0003":
                         LuuThongTinTaiKhoan(taiKhoan);
                         return LoaiTaiKhoan.SINHVIEN;
-                    case "PH00004":
+                    case "PH0004":
                         LuuThongTinTaiKhoan(taiKhoan);
                         return LoaiTaiKhoan.ADMIN;
                 }
@@ -67,65 +67,29 @@ namespace BUS
         /// Lấy tên người dùng thông qua tài khoảng đã lưu trong BUS Setting.
         /// </summary>
         /// <returns>Trả về Tên người dùng nến thành công. Ngược lại trả về giá trị mặc định là "Người dùng"</returns>
-        public static string LayTenNguoiDung()
+        public static object LayThongTinNguoiDung()
         {
             string idTaiKhoan = BUS.Properties.Settings.Default.TaiKhoanHienTai.IdTaiKhoan;
-            StringBuilder query = new StringBuilder();
+            object nguoiDung = null;
             switch (BUS.Properties.Settings.Default.TaiKhoanHienTai.IdPhanHe)
             {
-                case "PH00001":
-                    query.AppendFormat("SELECT {0} FROM {1} WHERE USERID = '{2}'", "TENGIAOVU", "GIAOVU", idTaiKhoan);
+                case "PH0001":
+                    nguoiDung = BUS.GiaoVu.LayThongTin(idTaiKhoan);
                     break;
-                case "PH00002":
-                    query.AppendFormat("SELECT {0} FROM {1} WHERE USERID = '{2}'", "TENGV", "GIAOVIEN", idTaiKhoan);
+                case "PH0002":
+                    nguoiDung = BUS.GiaoVien.LayThongTin(idTaiKhoan);
                     break;
-                case "PH00003":
-                    query.AppendFormat("SELECT {0} FROM {1} WHERE USERID = '{2}'", "TENSV", "SINHVIEN", idTaiKhoan);
-                    break;
-                case "PH00004":
-                    // query.AppendFormat("select {0} FROM {1} WHERE USERID = '{2}'", "TENGIAOVU", idTaiKhoan);
+                case "PH0003":
+                    nguoiDung = BUS.SinhVien.LayThongTin(idTaiKhoan);
                     break;
             }
-
-            DAO.DataProvider.Connect();
-            DataTable tb = DAO.DataProvider.Select(CommandType.Text, query.ToString());
-            DAO.DataProvider.Disconnect();
-
-            if (tb.Rows.Count > 0)
-            {
-                return tb.Rows[0][0].ToString();
-            }
-            return "Người dùng";
+            return nguoiDung;
         }
 
         /// <summary>
         /// Lấy tên người dùng thông qua tài khoảng đã lưu trong BUS Setting.
         /// </summary>
         /// <returns>Trả về Mã của người dùng hiện tại.</returns>
-        public static string LayMaNguoiDung()
-        {
-            string idTaiKhoan = BUS.Properties.Settings.Default.TaiKhoanHienTai.IdTaiKhoan;
-            StringBuilder query = new StringBuilder();
-            switch (BUS.Properties.Settings.Default.TaiKhoanHienTai.IdPhanHe)
-            {
-                case "PH00001":
-                    query.AppendFormat("SELECT MAGIAOVU FROM GIAOVU WHERE USERID = '{0}'", idTaiKhoan);
-                    break;
-                case "PH00002":
-                    query.AppendFormat("SELECT MAGV FROM GIAOVIEN WHERE USERID = '{0}'", idTaiKhoan);
-                    break;
-                case "PH00003":
-                    query.AppendFormat("SELECT MASV FROM SINHVIEN WHERE USERID = '{0}'", idTaiKhoan);
-                    break;
-                case "PH00004":
-                    // query.AppendFormat("select {0} FROM {1} WHERE USERID = '{2}'", "TENGIAOVU", idTaiKhoan);
-                    break;
-            }
-
-            DAO.DataProvider.Connect();
-            DataTable tb = DAO.DataProvider.Select(CommandType.Text, query.ToString());
-            DAO.DataProvider.Disconnect();
-            return tb.Rows[0][0].ToString();
-        }
+       
     }
 }

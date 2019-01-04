@@ -40,6 +40,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gbThongTinChiTiet = new System.Windows.Forms.GroupBox();
+            this.btnClean = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -69,50 +70,60 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(485, 31);
             this.panel1.TabIndex = 20;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // rbLat
             // 
+            this.rbLat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.rbLat.AutoSize = true;
-            this.rbLat.Location = new System.Drawing.Point(384, 6);
+            this.rbLat.Location = new System.Drawing.Point(414, 6);
             this.rbLat.Name = "rbLat";
             this.rbLat.Size = new System.Drawing.Size(42, 20);
             this.rbLat.TabIndex = 2;
             this.rbLat.TabStop = true;
             this.rbLat.Text = "lát";
             this.rbLat.UseVisualStyleBackColor = true;
+            this.rbLat.CheckedChanged += new System.EventHandler(this.rbLat_CheckedChanged);
             // 
             // rbDanhSach
             // 
+            this.rbDanhSach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.rbDanhSach.AutoSize = true;
-            this.rbDanhSach.Location = new System.Drawing.Point(292, 6);
+            this.rbDanhSach.Location = new System.Drawing.Point(297, 6);
             this.rbDanhSach.Name = "rbDanhSach";
             this.rbDanhSach.Size = new System.Drawing.Size(91, 20);
             this.rbDanhSach.TabIndex = 3;
             this.rbDanhSach.TabStop = true;
             this.rbDanhSach.Text = "danh sách";
             this.rbDanhSach.UseVisualStyleBackColor = true;
+            this.rbDanhSach.CheckedChanged += new System.EventHandler(this.rbDanhSach_CheckedChanged);
             // 
             // rbBieuTuongNho
             // 
+            this.rbBieuTuongNho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.rbBieuTuongNho.AutoSize = true;
-            this.rbBieuTuongNho.Location = new System.Drawing.Point(171, 6);
+            this.rbBieuTuongNho.Location = new System.Drawing.Point(153, 6);
             this.rbBieuTuongNho.Name = "rbBieuTuongNho";
             this.rbBieuTuongNho.Size = new System.Drawing.Size(124, 20);
             this.rbBieuTuongNho.TabIndex = 4;
             this.rbBieuTuongNho.TabStop = true;
             this.rbBieuTuongNho.Text = "biểu tượng nhỏ";
             this.rbBieuTuongNho.UseVisualStyleBackColor = true;
+            this.rbBieuTuongNho.CheckedChanged += new System.EventHandler(this.rbBieuTuongNho_CheckedChanged);
             // 
             // rbBieuTuongLon
             // 
+            this.rbBieuTuongLon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.rbBieuTuongLon.AutoSize = true;
-            this.rbBieuTuongLon.Location = new System.Drawing.Point(52, 6);
+            this.rbBieuTuongLon.Checked = true;
+            this.rbBieuTuongLon.Location = new System.Drawing.Point(16, 6);
             this.rbBieuTuongLon.Name = "rbBieuTuongLon";
             this.rbBieuTuongLon.Size = new System.Drawing.Size(121, 20);
             this.rbBieuTuongLon.TabIndex = 5;
             this.rbBieuTuongLon.TabStop = true;
             this.rbBieuTuongLon.Text = "biểu tượng lớn";
             this.rbBieuTuongLon.UseVisualStyleBackColor = true;
+            this.rbBieuTuongLon.CheckedChanged += new System.EventHandler(this.rbBieuTuongLon_CheckedChanged);
             // 
             // lvDsChuyenDe
             // 
@@ -169,6 +180,7 @@
             this.gbThongTinChiTiet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbThongTinChiTiet.Controls.Add(this.btnClean);
             this.gbThongTinChiTiet.Controls.Add(this.btnSua);
             this.gbThongTinChiTiet.Controls.Add(this.btnXoa);
             this.gbThongTinChiTiet.Controls.Add(this.btnThem);
@@ -178,6 +190,7 @@
             this.gbThongTinChiTiet.Controls.Add(this.label1);
             this.gbThongTinChiTiet.Controls.Add(this.txtTenChuyenDe);
             this.gbThongTinChiTiet.Controls.Add(this.txtMaChuyenDe);
+            this.gbThongTinChiTiet.Enabled = false;
             this.gbThongTinChiTiet.Location = new System.Drawing.Point(2, 1);
             this.gbThongTinChiTiet.MinimumSize = new System.Drawing.Size(393, 0);
             this.gbThongTinChiTiet.Name = "gbThongTinChiTiet";
@@ -187,8 +200,20 @@
             this.gbThongTinChiTiet.Text = "Thông tin chi tiết";
             this.gbThongTinChiTiet.Enter += new System.EventHandler(this.gbThongTinChiTiet_Enter);
             // 
+            // btnClean
+            // 
+            this.btnClean.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnClean.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClean.BackgroundImage")));
+            this.btnClean.Location = new System.Drawing.Point(340, 43);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(32, 32);
+            this.btnClean.TabIndex = 4;
+            this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
+            // 
             // btnSua
             // 
+            this.btnSua.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSua.Image = global::GUI.Properties.Resources.icons8_edit_row_32;
             this.btnSua.Location = new System.Drawing.Point(147, 172);
             this.btnSua.Name = "btnSua";
@@ -201,6 +226,7 @@
             // 
             // btnXoa
             // 
+            this.btnXoa.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnXoa.Image = global::GUI.Properties.Resources.icons8_delete_bin_32;
             this.btnXoa.Location = new System.Drawing.Point(264, 172);
             this.btnXoa.Name = "btnXoa";
@@ -213,6 +239,7 @@
             // 
             // btnThem
             // 
+            this.btnThem.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnThem.Image = global::GUI.Properties.Resources.icons8_plus_32;
             this.btnThem.Location = new System.Drawing.Point(28, 172);
             this.btnThem.Name = "btnThem";
@@ -225,6 +252,7 @@
             // 
             // cbMaNganh
             // 
+            this.cbMaNganh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.cbMaNganh.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMaNganh.FormattingEnabled = true;
             this.cbMaNganh.Items.AddRange(new object[] {
@@ -235,11 +263,12 @@
             "d"});
             this.cbMaNganh.Location = new System.Drawing.Point(147, 88);
             this.cbMaNganh.Name = "cbMaNganh";
-            this.cbMaNganh.Size = new System.Drawing.Size(123, 24);
+            this.cbMaNganh.Size = new System.Drawing.Size(225, 24);
             this.cbMaNganh.TabIndex = 2;
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(32, 131);
@@ -250,6 +279,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(32, 89);
@@ -260,6 +290,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(32, 50);
@@ -270,6 +301,7 @@
             // 
             // txtTenChuyenDe
             // 
+            this.txtTenChuyenDe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtTenChuyenDe.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenChuyenDe.Location = new System.Drawing.Point(147, 128);
             this.txtTenChuyenDe.Name = "txtTenChuyenDe";
@@ -278,12 +310,13 @@
             // 
             // txtMaChuyenDe
             // 
+            this.txtMaChuyenDe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtMaChuyenDe.Enabled = false;
             this.txtMaChuyenDe.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaChuyenDe.Location = new System.Drawing.Point(147, 48);
             this.txtMaChuyenDe.Name = "txtMaChuyenDe";
             this.txtMaChuyenDe.ReadOnly = true;
-            this.txtMaChuyenDe.Size = new System.Drawing.Size(123, 22);
+            this.txtMaChuyenDe.Size = new System.Drawing.Size(187, 22);
             this.txtMaChuyenDe.TabIndex = 0;
             // 
             // UC_DanhSachChuyenDe
@@ -327,5 +360,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTenChuyenDe;
         private System.Windows.Forms.TextBox txtMaChuyenDe;
+        private System.Windows.Forms.Button btnClean;
     }
 }

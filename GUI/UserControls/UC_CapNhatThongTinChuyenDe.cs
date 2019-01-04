@@ -28,7 +28,6 @@ namespace GUI.UserControls
             this.popup.AnimationDuration = 100;
             this.popup.IsRightToLeft = true;
             this.components.Add(popup);
-            groupBox2.Hide();
             btnCapNhat.Enabled = true;
             rbBieuTuongLon.Checked = true;
         }
@@ -36,18 +35,20 @@ namespace GUI.UserControls
         private void GanDuLieuVaoCbNamHoc()
         {
             cbNamHoc.Items.Clear();
-            dsNamHoc = new List<int>();
-            foreach (DTO.ThongTinChuyenDeMo i in dsChuyenDeGVThamGiaDangMo)
+            if (dsChuyenDeGiaoVienThamGia != null)
             {
-                if (dsNamHoc.BinarySearch(i.NamHoc) < 0)
+                dsNamHoc = new List<int>();
+                foreach (DTO.GiaoVienThamGiaChuyenDe i in dsChuyenDeGiaoVienThamGia)
                 {
-                    dsNamHoc.Add(i.NamHoc);
-                    cbNamHoc.Items.Add(i.NamHoc);
+                    if (dsNamHoc.BinarySearch(i.NamHoc) < 0)
+                    {
+                        dsNamHoc.Add(i.NamHoc);
+                        cbNamHoc.Items.Add(i.NamHoc);
+                    }
                 }
             }
 
         }
-
         private void TaiVaKhoiTaoDuLieuTuDataBase()
         {
             LayThongTinCacChuyenDeGiaoVienThamGia();
@@ -66,17 +67,20 @@ namespace GUI.UserControls
 
         private void KhoiTaoDuLieuChoFilter()
         {
-            dataTable = new DataTable();
-            dataTable.Columns.Add("MaChuyenDe");
-            dataTable.Columns.Add("TenChuyenDe");
-            dataTable.Columns.Add("HocKy");
-            dataTable.Columns.Add("NamHoc");
-
-            foreach (DTO.ThongTinChuyenDeMo i in dsChuyenDeGVThamGiaDangMo)
+            if (dsChuyenDeGVThamGiaDangMo != null)
             {
-                dataTable.Rows.Add(i.MaChuyenDe, (object)ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe, i.HocKy, i.NamHoc);
+                dataTable = new DataTable();
+                dataTable.Columns.Add("MaChuyenDe");
+                dataTable.Columns.Add("TenChuyenDe");
+                dataTable.Columns.Add("HocKy");
+                dataTable.Columns.Add("NamHoc");
+
+                foreach (DTO.ThongTinChuyenDeMo i in dsChuyenDeGVThamGiaDangMo)
+                {
+                    dataTable.Rows.Add(i.MaChuyenDe, (object)ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe, i.HocKy, i.NamHoc);
+                }
+                dataView = new DataView(dataTable);
             }
-            dataView = new DataView(dataTable);
         }
 
         private void LayThongTinCacChuyenDeMoGiaoVienThamGia()
@@ -87,9 +91,12 @@ namespace GUI.UserControls
 
         private void GanDuLieuDeXuatTimKiem()
         {
-            foreach (DTO.ThongTinChuyenDeMo i in dsChuyenDeGVThamGiaDangMo)
+            if (dsChuyenDeGVThamGiaDangMo != null)
             {
-                txtSearch.AutoCompleteCustomSource.Add((string)BUS.ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe);
+                foreach (DTO.ThongTinChuyenDeMo i in dsChuyenDeGVThamGiaDangMo)
+                {
+                    txtSearch.AutoCompleteCustomSource.Add((string)BUS.ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe);
+                }
             }
         }
 
@@ -138,6 +145,7 @@ namespace GUI.UserControls
             }else
             {
                 MessageBox.Show("Thời khoản thời gian không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             bool ketqua = ThongTinChuyenDeMo.CapNhatThongTinChuyenDeDangMo(chuyenDeMo);
@@ -201,19 +209,13 @@ namespace GUI.UserControls
             {
                 lblTenChuyenDe.Text = e.Item.Text;
                 nudSLSinhVienToiDa.Value = chuyenDeMo.SlSinhVienToiDa;
-
                 nudSLNhomToiDa.Value = chuyenDeMo.SlNhomToiDa;
                 dtpBatDau.Value = chuyenDeMo.ThoiGianBD;
                 dtpKetThuc.Value = chuyenDeMo.ThoiGianKT;
                 lblMaChuyenDe.Text = chuyenDeMo.MaChuyenDe;
-                groupBox2.Show();
+                groupBox2.Enabled = true;
 
-            }
-            else
-            {
-                chuyenDeMo = null;
-                groupBox2.Hide();
-            }
+            }           
         }
 
         private void lvChuyenDeMo_MouseLeave(object sender, EventArgs e)
@@ -223,10 +225,12 @@ namespace GUI.UserControls
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-
-            string query = (txtSearch.Text != txtSearch.Hint) ? txtSearch.Text : "";            
-            dataView.RowFilter = String.Format("TenChuyenDe like '%{0}%'", query);
-            GanDuLieuVaoListView();
+            if (dataView != null)
+            {
+                string query = (txtSearch.Text != txtSearch.Hint) ? txtSearch.Text : "";
+                dataView.RowFilter = String.Format("TenChuyenDe like '%{0}%'", query);
+                GanDuLieuVaoListView();
+            }
         }
 
         private void CapNhatDuLieu()
@@ -236,53 +240,54 @@ namespace GUI.UserControls
         private void GanDuLieuVaoListView()
         {
             lvChuyenDeMo.Clear();
-            foreach (DataRow row in dataView.ToTable().Rows)
+            if (dataTable != null)
             {
-                for (int i = 0; i < this.dsChuyenDeGVThamGiaDangMo.Count; i++)
+                foreach (DataRow row in dataView.ToTable().Rows)
                 {
-                    if (this.dsChuyenDeGVThamGiaDangMo[i].MaChuyenDe == row[0].ToString()
-                        && this.dsChuyenDeGVThamGiaDangMo[i].HocKy == row[2].ToString()
-                        && this.dsChuyenDeGVThamGiaDangMo[i].NamHoc == int.Parse(row[3].ToString()))
+                    for (int i = 0; i < this.dsChuyenDeGVThamGiaDangMo.Count; i++)
                     {
-                        ListViewItem item = new ListViewItem();
-                        item.Text = ChuyenDe.LayThongTinChuyenDe(this.dsChuyenDeGVThamGiaDangMo[i].MaChuyenDe).TenChuyenDe;
-                        item.Tag = this.dsChuyenDeGVThamGiaDangMo[i];
-                        item.ImageIndex = 0;
-                        lvChuyenDeMo.Items.Add(item);
-                        
+                        if (this.dsChuyenDeGVThamGiaDangMo[i].MaChuyenDe == row[0].ToString()
+                            && this.dsChuyenDeGVThamGiaDangMo[i].HocKy == row[2].ToString()
+                            && this.dsChuyenDeGVThamGiaDangMo[i].NamHoc == int.Parse(row[3].ToString()))
+                        {
+                            ListViewItem item = new ListViewItem();
+                            item.Text = ChuyenDe.LayThongTinChuyenDe(this.dsChuyenDeGVThamGiaDangMo[i].MaChuyenDe).TenChuyenDe;
+                            item.Tag = this.dsChuyenDeGVThamGiaDangMo[i];
+                            item.ImageIndex = 0;
+                            lvChuyenDeMo.Items.Add(item);
+
+                        }
                     }
                 }
-
             }
-
-
         }
 
         private void cbHocKi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string query = cbHocKi.Items[cbHocKi.SelectedIndex].ToString();
-            dataView.RowFilter = String.Format("HocKy like '%{0}%'", query);
-            GanDuLieuVaoListView();
+            if (dataView != null)
+            {
+                string query = cbHocKi.Items[cbHocKi.SelectedIndex].ToString();
+                dataView.RowFilter = String.Format("HocKy like '%{0}%'", query);
+                GanDuLieuVaoListView();
+            }
         }
 
         private void cbNamHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string query = cbNamHoc.Items[cbNamHoc.SelectedIndex].ToString();
-            dataView.RowFilter = String.Format("NamHoc = {0}", int.Parse(query));
-            GanDuLieuVaoListView();
-        }
-
-
-        private void cbHocKi_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
+            if (dataView != null)
             {
-                
+                string query = cbNamHoc.Items[cbNamHoc.SelectedIndex].ToString();
+                dataView.RowFilter = String.Format("NamHoc = {0}", int.Parse(query));
+                GanDuLieuVaoListView();
             }
         }
 
-
-
-        // private void Filt
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            txtSearch.Clear();
+            cbHocKi.Text = "";
+            cbNamHoc.Text = "";
+            TaiVaKhoiTaoDuLieuTuDataBase();
+        }
     }
 }

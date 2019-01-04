@@ -20,7 +20,7 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM CHUYENDE WHERE MACD = N'{0}'", maChuyenDe);
             DAO.DataProvider.Connect();
-            DataTable dt = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+            DataTable dt = DAO.DataProvider.Select(CommandType.Text, query.ToString().Trim());
             DAO.DataProvider.Disconnect();
             DTO.ChuyenDe chuyenDe = null;
             if (dt != null)
@@ -28,9 +28,9 @@ namespace BUS
                 foreach (DataRow row in dt.Rows)
                 {
                     chuyenDe = new DTO.ChuyenDe();
-                    chuyenDe.MaChuyenDe = row[0].ToString();
-                    chuyenDe.MaNganh = row[1].ToString();
-                    chuyenDe.TenChuyenDe = row[2].ToString();
+                    chuyenDe.MaChuyenDe = row[0].ToString().Trim();
+                    chuyenDe.MaNganh = row[1].ToString().Trim();
+                    chuyenDe.TenChuyenDe = row[2].ToString().Trim();
                 }
             }
             return chuyenDe;
@@ -41,7 +41,7 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM CHUYENDE");
             DAO.DataProvider.Connect();
-            DataTable dt = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+            DataTable dt = DAO.DataProvider.Select(CommandType.Text, query.ToString().Trim());
             DAO.DataProvider.Disconnect();
             List<DTO.ChuyenDe> dsChuyenDe = null;
             if (dt != null)
@@ -50,9 +50,9 @@ namespace BUS
                 foreach (DataRow row in dt.Rows)
                 {
                     DTO.ChuyenDe chuyenDe = new DTO.ChuyenDe();
-                    chuyenDe.MaChuyenDe = row[0].ToString();
-                    chuyenDe.MaNganh = row[1].ToString();
-                    chuyenDe.TenChuyenDe = row[2].ToString();
+                    chuyenDe.MaChuyenDe = row[0].ToString().Trim();
+                    chuyenDe.MaNganh = row[1].ToString().Trim();
+                    chuyenDe.TenChuyenDe = row[2].ToString().Trim();
                     dsChuyenDe.Add(chuyenDe);
                 }
             }
@@ -63,7 +63,7 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("DELETE CHUYENDE WHERE MACD = N'{0}'", maChuyenDe);
             DAO.DataProvider.Connect();
-            int result = DAO.DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString());
+            int result = DAO.DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString().Trim());
             DAO.DataProvider.Disconnect();
             if (result > 0)
             {
@@ -77,7 +77,7 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("INSERT INTO CHUYENDE VALUES(N'{0}',N'{1}',N'{2}')", chuyenDe.MaChuyenDe, chuyenDe.MaNganh,chuyenDe.TenChuyenDe);
             DAO.DataProvider.Connect();
-            int result = DAO.DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString());
+            int result = DAO.DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString().Trim());
             DAO.DataProvider.Disconnect();
             if (result > 0)
             {
@@ -91,7 +91,7 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("UPDATE CHUYENDE SET MANGANH = N'{0}', TENCD= N'{1}' WHERE MACD = N'{2}'", chuyenDe.MaNganh, chuyenDe.TenChuyenDe, chuyenDe.MaChuyenDe);
             DAO.DataProvider.Connect();
-            int result = DAO.DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString());
+            int result = DAO.DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString().Trim());
             DAO.DataProvider.Disconnect();
             if (result > 0)
             {

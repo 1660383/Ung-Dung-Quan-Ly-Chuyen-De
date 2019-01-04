@@ -41,7 +41,7 @@ namespace GUI.UserControls
             dsNganh = BUS.Nganh.LayDanhSachNganh();
             foreach (DTO.Nganh i in dsNganh)
             {
-                cbMaNganh.Items.Add(i.MaNganh);
+                cbMaNganh.Items.Add(i.MaNganh+", "+i.TenNganh);
             }
             cbMaNganh.SelectedIndex = 0;
         }
@@ -50,15 +50,17 @@ namespace GUI.UserControls
         {
             if (lvDsChuyenDe.SelectedItems.Count > 0)
             {
+                gbThongTinChiTiet.Enabled = true;
                 DTO.ChuyenDe chuyenDe = lvDsChuyenDe.SelectedItems[0].Tag as DTO.ChuyenDe;
                 txtMaChuyenDe.Text = chuyenDe.MaChuyenDe;
                 txtTenChuyenDe.Text = chuyenDe.TenChuyenDe;
-                for (int i = 0; i < cbMaNganh.Items.Count; i++)
+               
+                for(int i = 0; i < dsNganh.Count; i++)
                 {
-                    if (cbMaNganh.Items[i].ToString() == chuyenDe.MaNganh)
+                    if(dsNganh[i].MaNganh == chuyenDe.MaNganh)
                     {
                         cbMaNganh.SelectedIndex = i;
-                        return;
+                        break;
                     }
                 }
             }
@@ -76,7 +78,8 @@ namespace GUI.UserControls
                 MessageBox.Show("Tên chuyên đề không thể rỗng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            DTO.ChuyenDe chuyenDe = new DTO.ChuyenDe(txtMaChuyenDe.Text, cbMaNganh.Text, txtTenChuyenDe.Text);
+            string _maNganh = cbMaNganh.Text.Split(new char[] { ',' })[0];
+            DTO.ChuyenDe chuyenDe = new DTO.ChuyenDe(txtMaChuyenDe.Text, _maNganh, txtTenChuyenDe.Text);
             if (BUS.ChuyenDe.Sua(chuyenDe))
             {
                 XoaDuLieu();
@@ -115,25 +118,30 @@ namespace GUI.UserControls
             if (string.IsNullOrEmpty(cbMaNganh.Text))
             {
                 MessageBox.Show("Bạn chưa chọn Ngành cho Chuyên đề", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lvDsChuyenDe.SelectedItems.Clear();
                 return;
             }
             if (string.IsNullOrEmpty(txtTenChuyenDe.Text))
             {
                 MessageBox.Show("Tên chuyên đề không thể rỗng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lvDsChuyenDe.SelectedItems.Clear();
                 return;
             }
             string maChuyenDeMoi = BUS.ChuyenDe.TaoMaChuyenDe();
             string maChuyenDeCu = txtMaChuyenDe.Text;
             txtMaChuyenDe.Text = maChuyenDeMoi;
-            DTO.ChuyenDe chuyenDe = new DTO.ChuyenDe(maChuyenDeMoi, cbMaNganh.Text, txtTenChuyenDe.Text);
+            string _maNganh = cbMaNganh.Text.Split(new char[] { ',' })[0];
+            DTO.ChuyenDe chuyenDe = new DTO.ChuyenDe(maChuyenDeMoi, _maNganh, txtTenChuyenDe.Text);
             if (BUS.ChuyenDe.Them(chuyenDe))
             {
                 TaiDsChuyenDeVaoListView();
+                lvDsChuyenDe.SelectedItems.Clear();
                 MessageBox.Show("Thêm chuyên đề thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 txtMaChuyenDe.Text = maChuyenDeCu;
+                lvDsChuyenDe.SelectedItems.Clear();
                 MessageBox.Show("Không thể thêm chuyên đề!. Vui lòng kiểm tra lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             XoaDuLieu();
@@ -149,6 +157,39 @@ namespace GUI.UserControls
         private void gbThongTinChiTiet_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnClean_Click(object sender, EventArgs e)
+        {
+            lvDsChuyenDe.SelectedItems.Clear();
+            txtMaChuyenDe.Clear();
+            txtTenChuyenDe.Clear();
+            cbMaNganh.SelectedIndex = 0;
+        }
+
+        private void rbBieuTuongLon_CheckedChanged(object sender, EventArgs e)
+        {
+            lvDsChuyenDe.View = View.LargeIcon;
+        }
+
+        private void rbBieuTuongNho_CheckedChanged(object sender, EventArgs e)
+        {
+            lvDsChuyenDe.View = View.SmallIcon;
+        }
+
+        private void rbDanhSach_CheckedChanged(object sender, EventArgs e)
+        {
+            lvDsChuyenDe.View = View.List;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void rbLat_CheckedChanged(object sender, EventArgs e)
+        {
+            lvDsChuyenDe.View = View.Tile;
         }
     }
 }

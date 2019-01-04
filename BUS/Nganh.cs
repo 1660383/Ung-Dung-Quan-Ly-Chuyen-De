@@ -19,7 +19,7 @@ namespace BUS
             DAO.DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
-                DTO.Nganh nganh = new DTO.Nganh(row[0].ToString(), row[1].ToString(), (int)row[2]);
+                DTO.Nganh nganh = new DTO.Nganh(row[0].ToString().Trim(), row[1].ToString().Trim(), (int)row[2]);
                 nganhs.Add(nganh);
             }
             return nganhs;
@@ -35,7 +35,7 @@ namespace BUS
             DAO.DataProvider.Disconnect();
             foreach(DataRow row in dt.Rows)
             {
-                nganh = new DTO.Nganh(row[0].ToString(), row[1].ToString(), (int)row[2]);
+                nganh = new DTO.Nganh(row[0].ToString().Trim(), row[1].ToString().Trim(), (int)row[2]);
             }
             return nganh;
            

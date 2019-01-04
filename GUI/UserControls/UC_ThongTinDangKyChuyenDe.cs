@@ -42,11 +42,37 @@ namespace GUI.UserControls
         }
         private void GanDuLieuVaoCombobox()
         {
+            cbNamHoc.Items.Clear();
+            cbMaCD.Items.Clear();
             foreach (DTO.ThongTinChuyenDeMo row in lchuyenDeMo)
             {
-                cbHocKy.Items.Add(row.HocKy);
-                cbMaCD.Items.Add(row.MaChuyenDe);
-                cbNamHoc.Items.Add(row.NamHoc);
+               bool flag = true;
+               for(int i = 0; i < cbMaCD.Items.Count; i++)
+                {
+                    if(cbMaCD.Items[i].ToString().Trim() == row.MaChuyenDe.Trim())
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag)
+                {
+                    cbMaCD.Items.Add(row.MaChuyenDe.Trim());
+                }
+
+                flag = true;
+                for (int i = 0; i < cbNamHoc.Items.Count; i++)
+                {
+                    if ((int)cbNamHoc.Items[i] == row.NamHoc)
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag)
+                {
+                    cbNamHoc.Items.Add(row.NamHoc);
+                }               
             }
         }
         private void rbBieuTuongLon_CheckedChanged(object sender, EventArgs e)
@@ -89,7 +115,7 @@ namespace GUI.UserControls
                 lblMaChuyenDe.Text = chuyenDeMo.MaChuyenDe;
                 txtSLNhom.Text = chuyenDeMo.SlNhomToiDa.ToString();
                 dtpBatDau.Value = chuyenDeMo.ThoiGianBD;
-                this.txtSLDK.Text = BUS.DangKyLopChuyenDe.SoLuongNguoiDangKy(chuyenDeMo).ToString();
+                this.txtSLDK.Text = BUS.DangKyLopChuyenDe.SoLuongNguoiDangKy(chuyenDeMo).ToString()+"/"+chuyenDeMo.SlSinhVienToiDa;
                 dtpKetThuc.Value = chuyenDeMo.ThoiGianKT;
                 lblMaChuyenDe.Text = chuyenDeMo.MaChuyenDe;
                 txtTrangThai.Text = chuyenDeMo.TrangThai;
@@ -138,11 +164,6 @@ namespace GUI.UserControls
             cbHocKy.SelectedIndex = -1;
             khoiTaoDuLieuChoChuyenDeMo();
             GanDuLieuVaoListView();
-        }
-
-        private void lvChuyenDeMo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GUI.Dashboards;
-using BUS;
 namespace GUI
 {
     public partial class GUI_DangNhap : Form
@@ -44,29 +43,29 @@ namespace GUI
             }
             matKhau = txtMatKhau.Text.Trim();
 
-            Users.LoaiTaiKhoan loaiTaiKhoan = Users.DangNhap(tenDangNhap, matKhau);
+            BUS.Users.LoaiTaiKhoan loaiTaiKhoan = BUS.Users.DangNhap(tenDangNhap, matKhau);
             GUI_BangDieuKhien guiBangDieuKhien;
             switch (loaiTaiKhoan)
             {
-                case Users.LoaiTaiKhoan.SINHVIEN:
+                case BUS.Users.LoaiTaiKhoan.SINHVIEN:
                     LuuThongTinDangNhap();
                     guiBangDieuKhien = new GUI_BangDieuKhien(GUI_BangDieuKhien.NguoiDung.SinhVien);
                     guiBangDieuKhien.Show();
                     this.Hide();
                     break;
-                case Users.LoaiTaiKhoan.GIAOVIEN:
+                case BUS.Users.LoaiTaiKhoan.GIAOVIEN:
                     LuuThongTinDangNhap();
                     guiBangDieuKhien = new GUI_BangDieuKhien(GUI_BangDieuKhien.NguoiDung.GiaoVien);
                     guiBangDieuKhien.Show();
                     this.Hide();
                     break;
-                case Users.LoaiTaiKhoan.GIAOVU:
+                case BUS.Users.LoaiTaiKhoan.GIAOVU:
                     LuuThongTinDangNhap();
                     guiBangDieuKhien = new GUI_BangDieuKhien(GUI_BangDieuKhien.NguoiDung.GiaoVu);
                     guiBangDieuKhien.Show();
                     this.Hide();
                     break;
-                case Users.LoaiTaiKhoan.WRONG:
+                case BUS.Users.LoaiTaiKhoan.WRONG:
                     MessageBox.Show("Thông tin đăng nhập không chính xác!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }

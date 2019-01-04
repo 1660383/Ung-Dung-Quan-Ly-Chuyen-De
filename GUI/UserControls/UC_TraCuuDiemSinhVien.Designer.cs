@@ -29,20 +29,16 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pcbLoad = new System.Windows.Forms.PictureBox();
             this.txtTensv = new GUI.UserControls.MyTextBox();
             this.txtMssv = new GUI.UserControls.MyTextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.pcbLoad = new System.Windows.Forms.PictureBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbMaCD = new System.Windows.Forms.ComboBox();
-            this.cbNamHoc = new System.Windows.Forms.ComboBox();
-            this.cbHocKy = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnInPhieu = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblSoChiHoanthanh = new System.Windows.Forms.Label();
@@ -54,8 +50,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvKetQua = new System.Windows.Forms.DataGridView();
+            this.cbNamHoc = new System.Windows.Forms.ComboBox();
+            this.cbMaCD = new System.Windows.Forms.ComboBox();
+            this.cbHocKy = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -67,24 +65,42 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.groupBox1.Controls.Add(this.pcbLoad);
             this.groupBox1.Controls.Add(this.txtTensv);
             this.groupBox1.Controls.Add(this.txtMssv);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.btnTimKiem);
             this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.btnInPhieu);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.splitContainer1);
+            this.groupBox1.Controls.Add(this.cbNamHoc);
+            this.groupBox1.Controls.Add(this.cbMaCD);
+            this.groupBox1.Controls.Add(this.cbHocKy);
             this.groupBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(891, 517);
+            this.groupBox1.Size = new System.Drawing.Size(894, 520);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "TRA CỨU ĐIỂM CỦA SINH VIÊN";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // pcbLoad
+            // 
+            this.pcbLoad.BackgroundImage = global::GUI.Properties.Resources.icons8_synchronize_32;
+            this.pcbLoad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pcbLoad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pcbLoad.Location = new System.Drawing.Point(701, 9);
+            this.pcbLoad.Name = "pcbLoad";
+            this.pcbLoad.Size = new System.Drawing.Size(31, 24);
+            this.pcbLoad.TabIndex = 13;
+            this.pcbLoad.TabStop = false;
+            this.pcbLoad.Click += new System.EventHandler(this.pcbLoad_Click);
             // 
             // txtTensv
             // 
@@ -112,11 +128,21 @@
             this.txtMssv.TabIndex = 10;
             this.txtMssv.TextColor = System.Drawing.SystemColors.WindowText;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label9.Location = new System.Drawing.Point(638, 36);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 16);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Năm Học";
+            // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTimKiem.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnTimKiem.Location = new System.Drawing.Point(799, 67);
+            this.btnTimKiem.Location = new System.Drawing.Point(801, 54);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(75, 26);
             this.btnTimKiem.TabIndex = 9;
@@ -137,6 +163,17 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Họ Tên";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label8.Location = new System.Drawing.Point(515, 36);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 16);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Học Kỳ";
+            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -150,105 +187,10 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "MSSV";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.pcbLoad);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.cbMaCD);
-            this.groupBox3.Controls.Add(this.cbNamHoc);
-            this.groupBox3.Controls.Add(this.cbHocKy);
-            this.groupBox3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(383, -2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(397, 114);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tìm Điểm Lớp Học";
-            // 
-            // pcbLoad
-            // 
-            this.pcbLoad.BackgroundImage = global::GUI.Properties.Resources.ic_load;
-            this.pcbLoad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pcbLoad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pcbLoad.Location = new System.Drawing.Point(360, 15);
-            this.pcbLoad.Name = "pcbLoad";
-            this.pcbLoad.Size = new System.Drawing.Size(31, 24);
-            this.pcbLoad.TabIndex = 13;
-            this.pcbLoad.TabStop = false;
-            this.pcbLoad.Click += new System.EventHandler(this.pcbLoad_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label9.Location = new System.Drawing.Point(278, 40);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 16);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Năm Học";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label8.Location = new System.Drawing.Point(155, 40);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 16);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Học Kỳ";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(21, 40);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 16);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Mã CD";
-            // 
-            // cbMaCD
-            // 
-            this.cbMaCD.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMaCD.FormattingEnabled = true;
-            this.cbMaCD.Location = new System.Drawing.Point(25, 60);
-            this.cbMaCD.Name = "cbMaCD";
-            this.cbMaCD.Size = new System.Drawing.Size(96, 24);
-            this.cbMaCD.TabIndex = 9;
-            this.cbMaCD.SelectedIndexChanged += new System.EventHandler(this.cbMaCD_SelectedIndexChanged_1);
-            // 
-            // cbNamHoc
-            // 
-            this.cbNamHoc.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbNamHoc.FormattingEnabled = true;
-            this.cbNamHoc.Location = new System.Drawing.Point(282, 60);
-            this.cbNamHoc.Name = "cbNamHoc";
-            this.cbNamHoc.Size = new System.Drawing.Size(90, 24);
-            this.cbNamHoc.TabIndex = 8;
-            this.cbNamHoc.SelectedIndexChanged += new System.EventHandler(this.cbNamHoc_SelectedIndexChanged);
-            // 
-            // cbHocKy
-            // 
-            this.cbHocKy.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbHocKy.FormattingEnabled = true;
-            this.cbHocKy.Location = new System.Drawing.Point(159, 60);
-            this.cbHocKy.Name = "cbHocKy";
-            this.cbHocKy.Size = new System.Drawing.Size(85, 24);
-            this.cbHocKy.TabIndex = 7;
-            this.cbHocKy.SelectedIndexChanged += new System.EventHandler(this.cbHocKy_SelectedIndexChanged);
-            // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInPhieu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnInPhieu.Location = new System.Drawing.Point(799, 25);
+            this.btnInPhieu.Location = new System.Drawing.Point(801, 21);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(75, 26);
             this.btnInPhieu.TabIndex = 5;
@@ -256,10 +198,23 @@
             this.btnInPhieu.UseVisualStyleBackColor = true;
             this.btnInPhieu.Click += new System.EventHandler(this.btnInPhieu_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label7.Location = new System.Drawing.Point(381, 36);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 16);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Mã CD";
+            // 
             // splitContainer1
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(5, 90);
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(8, 90);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -420,6 +375,36 @@
             this.dgvKetQua.Size = new System.Drawing.Size(885, 312);
             this.dgvKetQua.TabIndex = 0;
             // 
+            // cbNamHoc
+            // 
+            this.cbNamHoc.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNamHoc.FormattingEnabled = true;
+            this.cbNamHoc.Location = new System.Drawing.Point(642, 56);
+            this.cbNamHoc.Name = "cbNamHoc";
+            this.cbNamHoc.Size = new System.Drawing.Size(90, 24);
+            this.cbNamHoc.TabIndex = 8;
+            this.cbNamHoc.SelectedIndexChanged += new System.EventHandler(this.cbNamHoc_SelectedIndexChanged);
+            // 
+            // cbMaCD
+            // 
+            this.cbMaCD.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMaCD.FormattingEnabled = true;
+            this.cbMaCD.Location = new System.Drawing.Point(385, 56);
+            this.cbMaCD.Name = "cbMaCD";
+            this.cbMaCD.Size = new System.Drawing.Size(96, 24);
+            this.cbMaCD.TabIndex = 9;
+            this.cbMaCD.SelectedIndexChanged += new System.EventHandler(this.cbMaCD_SelectedIndexChanged_1);
+            // 
+            // cbHocKy
+            // 
+            this.cbHocKy.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbHocKy.FormattingEnabled = true;
+            this.cbHocKy.Location = new System.Drawing.Point(519, 56);
+            this.cbHocKy.Name = "cbHocKy";
+            this.cbHocKy.Size = new System.Drawing.Size(85, 24);
+            this.cbHocKy.TabIndex = 7;
+            this.cbHocKy.SelectedIndexChanged += new System.EventHandler(this.cbHocKy_SelectedIndexChanged);
+            // 
             // UC_TraCuuDiemSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,8 +415,6 @@
             this.Size = new System.Drawing.Size(894, 520);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbLoad)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -457,7 +440,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblSoChiHoanthanh;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox cbNamHoc;
         private System.Windows.Forms.ComboBox cbHocKy;
         private System.Windows.Forms.ComboBox cbMaCD;

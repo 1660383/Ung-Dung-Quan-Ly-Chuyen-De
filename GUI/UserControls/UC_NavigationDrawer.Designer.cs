@@ -40,6 +40,7 @@ namespace GUI.UserControls
             // 
             // splitContainer1
             // 
+            this.splitContainer1.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
@@ -48,6 +49,7 @@ namespace GUI.UserControls
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer1.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.splitContainer1.Panel1.Controls.Add(this.btnHamberger);
             this.splitContainer1.Panel1.Click += new System.EventHandler(this.btnHamberger_Click);
             // 
@@ -75,9 +77,12 @@ namespace GUI.UserControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.Controls.Add(this.splitContainer1);
+            this.ForeColor = System.Drawing.Color.Transparent;
             this.Name = "UC_NavigationDrawer";
             this.Size = new System.Drawing.Size(50, 414);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UC_NavigationDrawer_MouseClick_1);
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);

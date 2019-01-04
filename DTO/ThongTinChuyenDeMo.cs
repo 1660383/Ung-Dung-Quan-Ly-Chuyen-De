@@ -20,119 +20,64 @@ namespace DTO
 
         public string MaChuyenDe
         {
-            get
-            {
-                return maChuyenDe;
-            }
+            get { return maChuyenDe; }
 
             set
-            {
-                maChuyenDe = value;
-            }
+            { maChuyenDe = value; }
         }
 
         public int NamHoc
         {
-            get
-            {
-                return namHoc;
-            }
+            get { return namHoc; }
 
-            set
-            {
-                namHoc = value;
-            }
+            set { namHoc = value; }
         }
 
         public string HocKy
         {
-            get
-            {
-                return hocKy;
-            }
+            get { return hocKy; }
 
-            set
-            {
-                hocKy = value;
-            }
+            set { hocKy = value; }
         }
 
         public string MaGiaoVu
         {
-            get
-            {
-                return maGiaoVu;
-            }
+            get { return maGiaoVu; }
 
-            set
-            {
-                maGiaoVu = value;
-            }
+            set { maGiaoVu = value; }
         }
 
         public DateTime ThoiGianBD
         {
-            get
-            {
-                return thoiGianBD;
-            }
+            get { return thoiGianBD; }
 
-            set
-            {
-                thoiGianBD = value;
-            }
+            set { thoiGianBD = value; }
         }
 
         public DateTime ThoiGianKT
         {
-            get
-            {
-                return thoiGianKT;
-            }
-
-            set
-            {
-                thoiGianKT = value;
-            }
+            get { return thoiGianKT; }
+            set { thoiGianKT = value; }
         }
 
         public int SlSinhVienToiDa
         {
-            get
-            {
-                return slSinhVienToiDa;
-            }
+            get { return slSinhVienToiDa; }
 
-            set
-            {
-                slSinhVienToiDa = value;
-            }
+            set { slSinhVienToiDa = value; }
         }
 
         public int SlNhomToiDa
         {
-            get
-            {
-                return slNhomToiDa;
-            }
+            get { return slNhomToiDa; }
 
-            set
-            {
-                slNhomToiDa = value;
-            }
+            set { slNhomToiDa = value; }
         }
 
         public string TrangThai
         {
-            get
-            {
-                return trangThai;
-            }
-
-            set
-            {
-                trangThai = value;
-            }
+            get { return trangThai; }
+            set { trangThai = value; }
         }
     }
 }

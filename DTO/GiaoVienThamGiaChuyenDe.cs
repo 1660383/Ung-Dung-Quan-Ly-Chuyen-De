@@ -50,80 +50,43 @@ namespace DTO
 
         public string MaChuyenDeGiao
         {
-            get
-            {
-                return maChuyenDeGiao;
-            }
+            get { return maChuyenDeGiao; }
 
-            set
-            {
-                maChuyenDeGiao = value;
-            }
+            set { maChuyenDeGiao = value; }
         }
 
         public string MaChuyenDeGiao1
         {
-            get
-            {
-                return maChuyenDeGiao;
-            }
+            get { return maChuyenDeGiao; }
 
-            set
-            {
-                maChuyenDeGiao = value;
-            }
+            set { maChuyenDeGiao = value; }
         }
 
         public string MaGiaoVienThamGia1
         {
-            get
-            {
-                return maGiaoVienThamGia;
-            }
+            get { return maGiaoVienThamGia; }
 
-            set
-            {
-                maGiaoVienThamGia = value;
-            }
+            set { maGiaoVienThamGia = value; }
         }
 
         public string MaChuyenDe1
         {
-            get
-            {
-                return maChuyenDe;
-            }
-
-            set
-            {
-                maChuyenDe = value;
-            }
+            get { return maChuyenDe; }
+            set { maChuyenDe = value; }
         }
 
         public int NamHoc1
         {
-            get
-            {
-                return namHoc;
-            }
+            get { return namHoc; }
 
-            set
-            {
-                namHoc = value;
-            }
+            set { namHoc = value; }
         }
 
         public string MaHocKy1
         {
-            get
-            {
-                return maHocKy;
-            }
+            get { return maHocKy; }
 
-            set
-            {
-                maHocKy = value;
-            }
+            set { maHocKy = value; }
         }
     }
 }

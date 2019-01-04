@@ -19,18 +19,17 @@ namespace GUI.UserControls
         private DataTable dataTable;
         private List<DTO.ThongTinChuyenDeMo> dsChuyenDeDangMo;
         private List<int> dsNamHoc;
+
         public UC_CapNhatTrangThaiChuyenDe()
         {
             InitializeComponent();
             TaiDuLieuTuDB();
-            groupBox2.Hide();
-            btnCapNhat.Enabled = true;
             rbBieuTuongLon.Checked = true;
+            groupBox2.Enabled = false;
         }
 
-        private void TaiDuLieuTuDB()
+        public void TaiDuLieuTuDB()
         {
-            //LayThongTinCacChuyenDeGiaoVienThamGia();
             LayThongTinCacChuyenDeMo();
             TaoDuLieuChoFilter();
             GanDuLieuVaoListview();
@@ -47,15 +46,18 @@ namespace GUI.UserControls
         }
 
         private void GanDuLieuVaoListview()
-        {
-            lvChuyenDeMo.Clear();
-            foreach (DTO.ThongTinChuyenDeMo i in dsChuyenDeDangMo)
+        { 
+            this.lvChuyenDeMo.Clear();
+            if (this.dataView != null)
             {
-                ListViewItem item = new ListViewItem();
-                item.Text = ChuyenDe.LayThongTinChuyenDe(i.MaChuyenDe).TenChuyenDe;
-                item.Tag = i;
-                item.ImageIndex = 0;
-                lvChuyenDeMo.Items.Add(item);
+                foreach (DataRow row in this.dataView.ToTable().Rows)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Text = row[1].ToString();
+                    item.ImageIndex = 0;
+                    item.Tag = BUS.ThongTinChuyenDeMo.LayThongTin(row[0].ToString().Trim(),row[2].ToString().Trim(),int.Parse(row[3].ToString()));
+                this.lvChuyenDeMo.Items.Add(item);
+                }
             }
         }
 
@@ -118,46 +120,15 @@ namespace GUI.UserControls
                 if (BUS.ThongTinChuyenDeMo.CapNhatTrangThaiChuyenDeMo(chuyenDeMo))
                 {
                     MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }else
+                    groupBox2.Enabled = btnCapNhat.Enabled = false;
+                } else
                 {
                     MessageBox.Show("Không thể cập nhật!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
             }
 
         }
-
-        private void rbBieuTuongLon_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.rbBieuTuongLon.Checked)
-            {
-                this.lvChuyenDeMo.View = View.LargeIcon;
-            }
-        }
-
-        private void rbBieuTuongNho_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.rbBieuTuongNho.Checked)
-            {
-                this.lvChuyenDeMo.View = View.SmallIcon;
-            }
-        }
-
-        private void rbDanhSach_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.rbDanhSach.Checked)
-            {
-                this.lvChuyenDeMo.View = View.List;
-            }
-        }
-
-        private void rbLat_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.rbLat.Checked)
-            {
-                this.lvChuyenDeMo.View = View.Tile;
-            }
-        }
+        
         private void lvChuyenDeMo_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             if (lvChuyenDeMo.SelectedItems.Count > 0)
@@ -172,33 +143,81 @@ namespace GUI.UserControls
                     lblHocKi.Text = chuyenDeMo.HocKy;
                     lblNamHoc.Text = chuyenDeMo.NamHoc.ToString();
                     lbMaChuyenDe.Text = chuyenDeMo.MaChuyenDe;
-                    if (chuyenDeMo.TrangThai.Equals(rbMoChuyenDe.Text))
+                    if (chuyenDeMo.TrangThai.Equals("mở"))
                     {
                         rbMoChuyenDe.Checked = true;
                     }
-                    else if (chuyenDeMo.TrangThai.Equals(rbVoHieuHoa.Text))
+                    else if (chuyenDeMo.TrangThai.Equals("vô hiệu hóa"))
                     {
                         rbVoHieuHoa.Checked = true;
                     }
-                    groupBox2.Show();
+                    groupBox2.Enabled = true;
 
-                }
-                else
-                {
-                    chuyenDeMo = null;
-                    groupBox2.Hide();
                 }
             }
-        }      
-
-        private void lvChuyenDeMo_SelectedIndexChanged(object sender, EventArgs e)
+        }           
+        
+        private void rbBieuTuongLon_CheckedChanged_1(object sender, EventArgs e)
         {
-          
+            lvChuyenDeMo.View = View.LargeIcon;
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
+        private void rbBieuTuongNho_CheckedChanged_1(object sender, EventArgs e)
         {
+            lvChuyenDeMo.View = View.SmallIcon;
+        }
 
+        private void rbDanhSach_CheckedChanged_1(object sender, EventArgs e)
+        {
+            lvChuyenDeMo.View = View.List;
+        }
+
+        private void rbLat_CheckedChanged_1(object sender, EventArgs e)
+        {
+            lvChuyenDeMo.View = View.Tile;
+        }
+
+        private void btnMoChuyenDe_Click(object sender, EventArgs e)
+        {
+            new DetailForm.Detail_MoChuyenDe(this).ShowDialog();
+        }
+
+        private void pcbLoad_Click(object sender, EventArgs e)
+        {
+            txtTimKiem.Clear();
+            cbNamHoc.Text = "";
+            cbHocKy.Text = "";
+            TaiDuLieuTuDB();
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            if (dataView != null)
+            {
+                string query = txtTimKiem.Text;
+                dataView.RowFilter = String.Format("TenChuyenDe like '%{0}%'", query);
+                GanDuLieuVaoListview();
+            }
+        }
+
+        private void cbHocKy_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (dataView != null)
+            {
+                string query = cbHocKy.Text;
+                dataView.RowFilter = String.Format("HocKy like '%{0}%'", query);
+                GanDuLieuVaoListview();
+            }
+        }
+
+        private void cbNamHoc_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (dataView != null)
+            {
+                string query = cbNamHoc.Text;
+                dataView.RowFilter = String.Format("NamHoc like '%{0}%'", query);
+                GanDuLieuVaoListview();
+            }
         }
     }
 }

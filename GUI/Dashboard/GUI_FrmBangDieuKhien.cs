@@ -14,17 +14,11 @@ namespace GUI.Dashboards
 {
     public partial class GUI_BangDieuKhien : Form
     {
-        public enum NguoiDung {SinhVien,GiaoVien,GiaoVu};
+        public enum NguoiDung { SinhVien, GiaoVien, GiaoVu };
         private UserControl userControl;
         public GUI_BangDieuKhien()
         {
             InitializeComponent();
-            this.userControl.Click += UserControl_Click;           
-        }
-
-        private void UserControl_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Dong");
         }
 
         public GUI_BangDieuKhien(NguoiDung nguoiDung)
@@ -47,30 +41,30 @@ namespace GUI.Dashboards
         {
             UC_NavigationItem item;
             item = new UC_NavigationItem();
-            item.Icon =global::GUI.Properties.Resources.ic_book1;
-            item.Text = "Chuyên đề đang mở";          
+            item.Icon = global::GUI.Properties.Resources.ic_book1;
+            item.Text = "Chuyên đề đang mở";
             item.NavItemClick += Item_NavItemClick;
-           // item.NavItem_MouseEnter += new EventHandler(this.Item_NavItem_MouseEnter);
-            this.navMenu.AddItem(item);        
+            // item.NavItem_MouseEnter += new EventHandler(this.Item_NavItem_MouseEnter);
+            this.navMenu.AddItem(item);
 
 
             item = new UC_NavigationItem();
-            item.Icon =global::GUI.Properties.Resources.ic_book_ok;
+            item.Icon = global::GUI.Properties.Resources.ic_book_ok;
             item.Text = "Chuyên đề đã đăng ký";
             this.navMenu.AddItem(item);
 
             item = new UC_NavigationItem();
-            item.Icon =global::GUI.Properties.Resources.ic_add_team;
+            item.Icon = global::GUI.Properties.Resources.ic_add_team;
             item.Text = "Đăng ký nhóm";
             this.navMenu.AddItem(item);
 
             item = new UC_NavigationItem();
-            item.Icon =global::GUI.Properties.Resources.ic_group_ok;
+            item.Icon = global::GUI.Properties.Resources.ic_group_ok;
             item.Text = "Nhóm đã đăng ký";
             this.navMenu.AddItem(item);
 
             item = new UC_NavigationItem();
-            item.Icon =global::GUI.Properties.Resources.ic_exam;
+            item.Icon = global::GUI.Properties.Resources.ic_exam;
             item.Text = "Kết quả học tập";
             this.navMenu.AddItem(item);
         }
@@ -80,21 +74,21 @@ namespace GUI.Dashboards
             UC_NavigationItem item;
 
             item = new UC_NavigationItem();
-            item.Icon =global::GUI.Properties.Resources.ic_book1;
-            item.Text = "Giao chuyên đề";
+            item.Icon = global::GUI.Properties.Resources.ic_book1;
+            item.Text = "Giao nội dung lớp chuyên đề";
             item.NavItemClick += Item_NavItemClick1;
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
             this.navMenu.AddItem(item);
 
             item = new UC_NavigationItem();
-            item.Icon =global::GUI.Properties.Resources.ic_update;
-            item.Text = "Cập nhật trạng thái chuyên đề";
+            item.Icon = global::GUI.Properties.Resources.ic_update;
+            item.Text = "Cập nhật thông tin chuyên đề";
             item.NavItemClick += Item_NavItemClick2;
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
             this.navMenu.AddItem(item);
 
             item = new UC_NavigationItem();
-            item.Icon =global::GUI.Properties.Resources.ic_find;
+            item.Icon = global::GUI.Properties.Resources.ic_find;
             item.Text = "Tra cứu điểm sinh viên";
             item.NavItemClick += Item_NavItemClick3;
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
@@ -106,28 +100,28 @@ namespace GUI.Dashboards
             UC_NavigationItem item;
 
             item = new UC_NavigationItem();
-            item.Icon =global::GUI.Properties.Resources.ic_book1;
-            item.Text = "Danh sách chuyên đề";
+            item.Icon = global::GUI.Properties.Resources.ic_book1;
+            item.Text = "Quản lý chuyên đề";
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
             item.NavItemClick += Item_NavItemClick7;
             this.navMenu.AddItem(item);
 
             item = new UC_NavigationItem();
-            item.Icon =global::GUI.Properties.Resources.ic_register;
+            item.Icon = global::GUI.Properties.Resources.ic_register;
             item.Text = "Thông tin đăng ký chuyên đề";
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
-            item.NavItemClick += Item_NavItemClick6;       
+            item.NavItemClick += Item_NavItemClick6;
             this.navMenu.AddItem(item);
 
             item = new UC_NavigationItem();
-            item.Icon =global::GUI.Properties.Resources.ic_details;
-            item.Text = "Trạng thái chuyên đề";
+            item.Icon = global::GUI.Properties.Resources.ic_details;
+            item.Text = "Cập nhật trạng thái chuyên đề";
             item.NavItemClick += Item_NavItemClick4;
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
             this.navMenu.AddItem(item);
 
             item = new UC_NavigationItem();
-            item.Icon =global::GUI.Properties.Resources.ic_find;
+            item.Icon = global::GUI.Properties.Resources.ic_find;
             item.Text = "Tra cứu điểm sinh viên";
             item.NavItemClick += Item_NavItemClick5;
             item.NavItem_MouseEnter += Item_NavItem_MouseEnter;
@@ -185,8 +179,6 @@ namespace GUI.Dashboards
             toolTip.AutoPopDelay = 5000;
             toolTip.ReshowDelay = 500;
             toolTip.ShowAlways = true;
-            //lblTenUngDung.Text = sender.ToString();
-            //toolTip.SetToolTip(((UC_NavigationItem)sender).Title, ((UC_NavigationItem)sender).Text);
             toolTip.SetToolTip(((UC_NavigationItem)sender).pbIcon, ((UC_NavigationItem)sender).Text);
         }
 
@@ -198,6 +190,7 @@ namespace GUI.Dashboards
                 this.userControl = new UC_TraCuuDiemSinhVien();
                 this.userControl.Dock = DockStyle.Fill;
                 this.pnlChinh.Controls.Add(this.userControl);
+
             }
         }
 
@@ -209,6 +202,7 @@ namespace GUI.Dashboards
                 this.userControl = new UC_CapNhatThongTinChuyenDe();
                 this.userControl.Dock = DockStyle.Fill;
                 this.pnlChinh.Controls.Add(this.userControl);
+
             }
         }
 
@@ -221,13 +215,14 @@ namespace GUI.Dashboards
                 this.userControl.Dock = DockStyle.Fill;
                 this.pnlChinh.Controls.Add(this.userControl);
             }
-        }      
+
+        }
 
         private void Item_NavItemClick(object sender, EventArgs e)
         {
             MessageBox.Show("Chuyên đề đang mở");
         }
-    
+
         private void btn_Click(object sender, EventArgs e)
         {
             MessageBox.Show("btn");
@@ -240,7 +235,7 @@ namespace GUI.Dashboards
 
         private void btnContext_Click(object sender, EventArgs e)
         {
-            contextMenuStrip1.Show(this.btnContext,0,this.btnContext.Height);
+            contextMenuStrip1.Show(this.btnContext, 0, this.btnContext.Height);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -262,9 +257,9 @@ namespace GUI.Dashboards
         private Size kichhThuocBanDau;
         private void miPhongTo_Click(object sender, EventArgs e)
         {
-            this.phongto = !this.phongto; 
+            this.phongto = !this.phongto;
             if (phongto)
-            {               
+            {
                 this.viTriBanDau = this.Location;
                 this.kichhThuocBanDau = this.Size;
                 this.miPhongTo.Text = "Thu nhỏ";
@@ -298,7 +293,7 @@ namespace GUI.Dashboards
         private void pnlBanner_MouseUp(object sender, MouseEventArgs e)
         {
             this.mouseDown = !this.mouseDown;
-            this.mouseDownPos = new Point(0,0);
+            this.mouseDownPos = new Point(0, 0);
         }
 
         private void lblTenUngDung_MouseDown(object sender, MouseEventArgs e)
@@ -308,13 +303,26 @@ namespace GUI.Dashboards
 
         private void miDangXuat_Click(object sender, EventArgs e)
         {
-            new GUI_DangNhap().Show();            
+            new GUI_DangNhap().Show();
             this.Hide();
         }
 
         private void GUI_BangDieuKhien_Load(object sender, EventArgs e)
         {
-            lblTenNguoDung.Text = Users.LayTenNguoiDung();
+            object nguoiDung = Users.LayThongTinNguoiDung();
+            if (nguoiDung is DTO.SinhVien)
+            {
+                lblTenNguoDung.Text = ((DTO.SinhVien)nguoiDung).TENSV;
+            }
+            else if (nguoiDung is DTO.GiaoVien)
+            {
+                lblTenNguoDung.Text = ((DTO.GiaoVien)nguoiDung).TenGV;
+            }
+            else
+            {
+                lblTenNguoDung.Text = ((DTO.GiaoVu)nguoiDung).TenGiaoVu;
+            }
+
         }
 
         private void miCaNhan_Click(object sender, EventArgs e)
@@ -325,6 +333,11 @@ namespace GUI.Dashboards
         private void lblTenNguoDung_Click(object sender, EventArgs e)
         {
             new GUI_ThongTinCaNhan().ShowDialog();
+        }
+
+        private void pnlChinh_Click(object sender, EventArgs e)
+        {
+            navMenu.Close();
         }
     }
 }

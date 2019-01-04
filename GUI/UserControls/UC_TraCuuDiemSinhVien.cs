@@ -106,17 +106,15 @@ namespace GUI.UserControls
         }
         private bool AnThongTinSinhVien()
         {
-            DTO.SinhVien sinhvien = BUS.SinhVien.LaySinhVien(txtMssv.Text);
+            DTO.SinhVien sinhvien = BUS.SinhVien.LayThongTin(txtMssv.Text);
             if (this.txtMssv.Text == txtMssv.Hint || sinhvien == null)
             {
                 splitContainer1.Panel1Collapsed = true;
-                groupBox3.Height = 93;
                 btnInPhieu.Location = new Point(btnInPhieu.Location.X, 10);
                 btnTimKiem.Location = new Point(btnInPhieu.Location.X, 56);
                 return true;
             }
             splitContainer1.Panel1Collapsed = false;
-            groupBox3.Height = 114;
             themDuLieuThongTinSinhVien(sinhvien);
             btnInPhieu.Location = new Point(btnInPhieu.Location.X, 25);
             btnTimKiem.Location = new Point(btnInPhieu.Location.X, 71);

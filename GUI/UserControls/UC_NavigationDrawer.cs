@@ -17,7 +17,7 @@ namespace GUI.UserControls
         private int maxWidth = 250;
         private int minWidth = 50;
         private bool autoSetItemWidth = true;
-        private bool flag = true;
+        private bool expand = false;
         private int speed = 20;
         private List<UC_NavigationItem> items;
 
@@ -25,8 +25,9 @@ namespace GUI.UserControls
         public UC_NavigationDrawer()
         {
             InitializeComponent();
-            this.items = new List<UC_NavigationItem>();
+            this.items = new List<UC_NavigationItem>();           
         }
+
         protected void onItemClick(EventArgs e)
         {
             ItemClick?.Invoke(this, e);
@@ -35,69 +36,36 @@ namespace GUI.UserControls
 
         public int Speed
         {
-            get
-            {
-                return speed;
-            }
+            get { return speed; }
 
-            set
-            {
-                speed = value;
-            }
+            set { speed = value; }
         }
 
-        public bool Flag
+        public bool Expand
         {
-            get
-            {
-                return flag;
-            }
+            get { return expand; }
 
-            set
-            {
-                flag = value;
-               // this.btnHamberger_Click(this,EventArgs.Empty);
-            }
+            set { expand = value; }
         }
 
         public int MaxWidth
         {
-            get
-            {
-                return maxWidth;
-            }
+            get { return maxWidth; }
 
-            set
-            {
-                maxWidth = value;
-
-            }
+            set { maxWidth = value; }
         }
 
         public int MinWidth
         {
-            get
-            {
-                return minWidth;
-            }
+            get { return minWidth; }
 
-            set
-            {
-                minWidth = value;
-            }
+            set { minWidth = value; }
         }
 
         public bool AutoSetItemWidth
         {
-            get
-            {
-                return autoSetItemWidth;
-            }
-
-            set
-            {
-                autoSetItemWidth = value;
-            }
+            get { return autoSetItemWidth; }
+            set { autoSetItemWidth = value; }
         }
 
         public List<UC_NavigationItem> GetItemList()
@@ -115,11 +83,11 @@ namespace GUI.UserControls
             if (UC_NavigationItem != null)
             {
                 int height = 0;
-                foreach(var item in this.items)
+                foreach (var item in this.items)
                 {
                     height += item.Height;
                 }
-                UC_NavigationItem.Location = new Point(0,height);
+                UC_NavigationItem.Location = new Point(0, height);
                 if (this.autoSetItemWidth) UC_NavigationItem.Width = this.maxWidth;
                 this.items.Add(UC_NavigationItem);
                 this.splitContainer1.Panel2.Controls.Add(UC_NavigationItem);
@@ -130,46 +98,86 @@ namespace GUI.UserControls
 
         private void btnHamberger_Click(object sender, EventArgs e)
         {
+
+            if (expand == false)
+            {
+                Open();
+            }
+            else
+            {
+                Close();
+            }
+
+        }
+
+
+
+        public void Open()
+        {
+            expand = true;
             for (int i = 0; i < this.items.Count; i++)
             {
                 this.items[i].Title.Hide();
             }
-
-            if (flag)
+            this.btnHamberger.Image = global::GUI.Properties.Resources.ic_V_hamberger_1;
+            for (int i = 0; i <= (this.MaxWidth - this.MinWidth) / this.speed; i++)
             {
-                flag = false;
-                this.btnHamberger.Image = global::GUI.Properties.Resources.ic_V_hamberger_1;              
-                for (int i = 0; i <= (this.MaxWidth - this.MinWidth) / this.speed; i++)
+                if (this.Size.Width + this.speed <= this.maxWidth)
                 {
-                    if (this.Size.Width + this.speed <= this.maxWidth)
-                    {
-                        this.Size = new Size(this.Size.Width + speed, this.Size.Height);
-                    }
-                    else
-                    {
-                        this.Size = new Size(this.MaxWidth, this.Size.Height);
-                    }
-                }              
-            }
-            else
-            {
-                flag = true;
-                this.btnHamberger.Image = global::GUI.Properties.Resources.ic_hamberger5;
-                for (int i = 0; i <= (this.MaxWidth - this.MinWidth) / this.speed; i++)
+                    this.Size = new Size(this.Size.Width + speed, this.Size.Height);
+                }
+                else
                 {
-                    if (this.Size.Width - this.speed > this.minWidth)
-                    {
-                        this.Size = new Size(this.Size.Width - speed, this.Size.Height);
-                    }
-                    else
-                    {
-                        this.Size = new Size(this.minWidth, this.Size.Height);
-                    }
+                    this.Size = new Size(this.MaxWidth, this.Size.Height);
                 }
             }
             for (int i = 0; i < this.items.Count; i++)
             {
                 this.items[i].Title.Show();
+            }
+        }
+        public void Close()
+        {
+            expand = false;
+            for (int i = 0; i < this.items.Count; i++)
+            {
+                this.items[i].Title.Hide();
+            }
+            this.btnHamberger.Image = global::GUI.Properties.Resources.ic_hamberger5;
+            for (int i = 0; i <= (this.MaxWidth - this.MinWidth) / this.speed; i++)
+            {
+                if (this.Size.Width - this.speed > this.minWidth)
+                {
+                    this.Size = new Size(this.Size.Width - speed, this.Size.Height);
+                }
+                else
+                {
+                    this.Size = new Size(this.minWidth, this.Size.Height);
+                }
+            }
+            for (int i = 0; i < this.items.Count; i++)
+            {
+                this.items[i].Title.Show();
+            }
+        }
+        private void UC_NavigationDrawer_MouseClick_1(object sender, MouseEventArgs e)
+        {
+            expand = false;
+            this.btnHamberger.Image = global::GUI.Properties.Resources.ic_hamberger5;
+            for (int i = 0; i <= (this.MaxWidth - this.MinWidth) / this.speed; i++)
+            {
+                if (this.Size.Width - this.speed > this.minWidth)
+                {
+                    this.Size = new Size(this.Size.Width - speed, this.Size.Height);
+                    //panel1.Size = new Size(this.Size.Width - speed, this.Size.Height);
+
+                }
+                else
+                {
+                    this.Size = new Size(this.minWidth, this.Size.Height);
+                    // panel1.Size = new Size(this.minWidth, this.Size.Height);
+
+                }
             }
         }
     }

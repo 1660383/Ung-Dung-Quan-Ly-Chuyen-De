@@ -18,31 +18,19 @@ namespace GUI.UserControls
 
         public Image Icon
         {
-            get
-            {
-                return this.pbIcon.Image;
-            }
+            get { return this.pbIcon.Image; }
 
-            set
-            {
-                this.pbIcon.Image = value;
-            }
+            set { this.pbIcon.Image = value; }
         }
         public override string Text
         {
-            get
-            {
-                return this.Title.Text;
-            }
+            get { return this.Title.Text; }
 
-            set
-            {
-                this.Title.Text = value;
-            }
+            set { this.Title.Text = value; }
         }
 
         public UC_NavigationItem()
-        {            
+        {
             InitializeComponent();
         }
         protected virtual void OnNavItemClick(EventArgs e)
@@ -60,13 +48,13 @@ namespace GUI.UserControls
         }
         private void Title_MouseEnter(object sender, EventArgs e)
         {
-            this.OnNavItem_MouseEnter(sender,e);
+            this.OnNavItem_MouseEnter(sender, e);
             this.Title.BackColor = Color.FromArgb(170, 197, 230);
             this.pbIcon.BackColor = Color.FromArgb(170, 197, 230);
         }
 
         private void Title_MouseLeave(object sender, EventArgs e)
-        {           
+        {
             this.Title.BackColor = Color.FromArgb(47, 85, 130);
             this.pbIcon.BackColor = Color.FromArgb(47, 85, 130);
         }

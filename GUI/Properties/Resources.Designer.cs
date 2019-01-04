@@ -65,7 +65,7 @@ namespace GUI.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap button_quan_ly_chuyen_de {
             get {
-                object obj = ResourceManager.GetObject("button_quan-ly-chuyen-de", resourceCulture);
+                object obj = ResourceManager.GetObject("button_quan_ly_chuyen_de", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -205,7 +205,7 @@ namespace GUI.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap ic_V_hamberger_1 {
             get {
-                object obj = ResourceManager.GetObject("ic_V_hamberger 1", resourceCulture);
+                object obj = ResourceManager.GetObject("ic_V_hamberger_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -215,7 +215,7 @@ namespace GUI.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_cancel_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-cancel-32", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_cancel_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -225,7 +225,7 @@ namespace GUI.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_delete_bin_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-delete-bin-32", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_delete_bin_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -235,7 +235,7 @@ namespace GUI.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_documents_folder_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-documents-folder-32", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_documents_folder_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -245,7 +245,7 @@ namespace GUI.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_edit_row_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-edit-row-32", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_edit_row_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -255,7 +255,27 @@ namespace GUI.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_plus_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-plus-32", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_plus_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_study_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_study_100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_synchronize_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-synchronize-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -265,7 +285,7 @@ namespace GUI.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_upload_to_the_cloud_20 {
             get {
-                object obj = ResourceManager.GetObject("icons8-upload-to-the-cloud-20", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_upload_to_the_cloud_20", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -275,7 +295,7 @@ namespace GUI.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_upload_to_the_cloud_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-upload-to-the-cloud-32", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_upload_to_the_cloud_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -285,7 +305,7 @@ namespace GUI.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap school_book_icon {
             get {
-                object obj = ResourceManager.GetObject("school-book-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("school_book_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

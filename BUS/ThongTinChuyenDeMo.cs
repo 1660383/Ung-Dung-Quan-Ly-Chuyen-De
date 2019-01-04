@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using DTO;
 using System.Data;
 using DAO;
+using System.Data.SqlClient;
+
 namespace BUS
 {
     public class ThongTinChuyenDeMo
@@ -13,40 +15,70 @@ namespace BUS
 
         public static List<DTO.ThongTinChuyenDeMo> LayDsChuyenDeGiaoVienThamGiaDangMo(List<DTO.GiaoVienThamGiaChuyenDe> dsChuyenDeGiaoVienThamGia)
         {
-            List<DTO.ThongTinChuyenDeMo> dsChuyenDe = new List<DTO.ThongTinChuyenDeMo>();
-            foreach (DTO.GiaoVienThamGiaChuyenDe i in dsChuyenDeGiaoVienThamGia)
+            List<DTO.ThongTinChuyenDeMo> dsChuyenDe = null;
+            if (dsChuyenDeGiaoVienThamGia != null)
             {
-                StringBuilder query = new StringBuilder();
-                query.AppendFormat("SELECT * FROM THONGTIN_CHUYENDE_MO WHERE MACD = '{0}' AND NAM = {1} AND MAHK = '{2}'", i.MaChuyenDe, i.NamHoc, i.MaHocKy);
-                DataProvider.Connect();
-                DataTable dt = DataProvider.Select(CommandType.Text, query.ToString());
-                DataProvider.Disconnect();
-                foreach (DataRow row in dt.Rows)
+                dsChuyenDe = new List<DTO.ThongTinChuyenDeMo>();
+                foreach (DTO.GiaoVienThamGiaChuyenDe i in dsChuyenDeGiaoVienThamGia)
                 {
-                    DTO.ThongTinChuyenDeMo chuyenDeMo = new DTO.ThongTinChuyenDeMo();
-                    chuyenDeMo.MaChuyenDe = row[0].ToString().Trim();
-                    chuyenDeMo.NamHoc = int.Parse(row[1].ToString().Trim());
-                    chuyenDeMo.HocKy = row[2].ToString().Trim();
-                    chuyenDeMo.MaGiaoVu = row[3].ToString().Trim();
-                    chuyenDeMo.ThoiGianBD = DateTime.Parse(row[4].ToString().Trim());
-                    chuyenDeMo.ThoiGianKT = DateTime.Parse(row[5].ToString().Trim());
-                    chuyenDeMo.SlSinhVienToiDa = int.Parse(row[6].ToString().Trim());
-                    chuyenDeMo.SlNhomToiDa = int.Parse(row[7].ToString().Trim());
-                    chuyenDeMo.TrangThai = row[8].ToString();
-                    dsChuyenDe.Add(chuyenDeMo);
+                    StringBuilder query = new StringBuilder();
+                    query.AppendFormat("SELECT * FROM THONGTIN_CHUYENDE_MO WHERE MACD = '{0}' AND NAM = {1} AND MAHK = '{2}'", i.MaChuyenDe, i.NamHoc, i.MaHocKy);
+                    DataProvider.Connect();
+                    DataTable dt = DataProvider.Select(CommandType.Text, query.ToString());
+                    DataProvider.Disconnect();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        DTO.ThongTinChuyenDeMo chuyenDeMo = new DTO.ThongTinChuyenDeMo();
+                        chuyenDeMo.MaChuyenDe = row[0].ToString().Trim();
+                        chuyenDeMo.NamHoc = int.Parse(row[1].ToString().Trim());
+                        chuyenDeMo.HocKy = row[2].ToString().Trim();
+                        chuyenDeMo.MaGiaoVu = row[3].ToString().Trim();
+                        chuyenDeMo.ThoiGianBD = DateTime.Parse(row[4].ToString().Trim());
+                        chuyenDeMo.ThoiGianKT = DateTime.Parse(row[5].ToString().Trim());
+                        chuyenDeMo.SlSinhVienToiDa = int.Parse(row[6].ToString().Trim());
+                        chuyenDeMo.SlNhomToiDa = int.Parse(row[7].ToString().Trim());
+                        chuyenDeMo.TrangThai = row[8].ToString();
+                        dsChuyenDe.Add(chuyenDeMo);
+                    }
                 }
             }
             return dsChuyenDe;
         }
+
+        public static DTO.ThongTinChuyenDeMo LayThongTin(string maCD, string hk, int namhoc)
+        {
+            DTO.ThongTinChuyenDeMo chuyenDeMo = null;
+            StringBuilder query = new StringBuilder();
+            query.AppendFormat("SELECT * FROM THONGTIN_CHUYENDE_MO WHERE MACD = '{0}' AND NAM = {1} AND MAHK = '{2}'", maCD, namhoc, hk);
+            DataProvider.Connect();
+            DataTable dt = DataProvider.Select(CommandType.Text, query.ToString());
+            DataProvider.Disconnect();
+            foreach (DataRow row in dt.Rows)
+            {
+                chuyenDeMo = new DTO.ThongTinChuyenDeMo();
+                chuyenDeMo.MaChuyenDe = row[0].ToString().Trim();
+                chuyenDeMo.NamHoc = int.Parse(row[1].ToString().Trim());
+                chuyenDeMo.HocKy = row[2].ToString().Trim();
+                chuyenDeMo.MaGiaoVu = row[3].ToString().Trim();
+                chuyenDeMo.ThoiGianBD = DateTime.Parse(row[4].ToString().Trim());
+                chuyenDeMo.ThoiGianKT = DateTime.Parse(row[5].ToString().Trim());
+                chuyenDeMo.SlSinhVienToiDa = int.Parse(row[6].ToString().Trim());
+                chuyenDeMo.SlNhomToiDa = int.Parse(row[7].ToString().Trim());
+                chuyenDeMo.TrangThai = row[8].ToString();
+                break;
+            }
+            return chuyenDeMo;
+        }
+
         public static List<DTO.ThongTinChuyenDeMo> LayDsTatCaChuyenDeDangMo()
         {
             List<DTO.ThongTinChuyenDeMo> dsChuyenDe = new List<DTO.ThongTinChuyenDeMo>();
 
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM THONGTIN_CHUYENDE_MO");
-           DataProvider.Connect();
-            DataTable dt =DataProvider.Select(CommandType.Text, query.ToString());
-           DataProvider.Disconnect();
+            DataProvider.Connect();
+            DataTable dt = DataProvider.Select(CommandType.Text, query.ToString());
+            DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
                 DTO.ThongTinChuyenDeMo chuyenDeMo = new DTO.ThongTinChuyenDeMo();
@@ -63,8 +95,7 @@ namespace BUS
             }
             return dsChuyenDe;
         }
-
-        public static List<DTO.ThongTinChuyenDeMo>LayDsChuyenDeDangMo()
+        public static List<DTO.ThongTinChuyenDeMo> LayDsChuyenDeDangMo()
         {
             List<DTO.ThongTinChuyenDeMo> dsChuyenDe = new List<DTO.ThongTinChuyenDeMo>();
             {
@@ -84,7 +115,7 @@ namespace BUS
                     chuyenDeMo.ThoiGianKT = DateTime.Parse(row[5].ToString().Trim());
                     chuyenDeMo.SlSinhVienToiDa = int.Parse(row[6].ToString().Trim());
                     chuyenDeMo.SlNhomToiDa = int.Parse(row[7].ToString().Trim());
-                    chuyenDeMo.TrangThai= row[8].ToString().Trim();
+                    chuyenDeMo.TrangThai = row[8].ToString().Trim();
                     dsChuyenDe.Add(chuyenDeMo);
                 }
             }
@@ -93,15 +124,13 @@ namespace BUS
         public static bool CapNhatTrangThaiChuyenDeMo(DTO.ThongTinChuyenDeMo chuyenDeMo)
         {
             StringBuilder query = new StringBuilder();
-            query.AppendFormat("UPDATE THONGTIN_CHUYENDE_MO SET TrangThai = N'{0}' where MACD = '{1}' and NAM = {2} and MAHK = '{3}'",chuyenDeMo.TrangThai,chuyenDeMo.MaChuyenDe,chuyenDeMo.NamHoc,chuyenDeMo.HocKy);
+            query.AppendFormat("UPDATE THONGTIN_CHUYENDE_MO SET TrangThai = N'{0}' where MACD = '{1}' and NAM = {2} and MAHK = '{3}'", chuyenDeMo.TrangThai, chuyenDeMo.MaChuyenDe, chuyenDeMo.NamHoc, chuyenDeMo.HocKy);
             DataProvider.Connect();
             int result = DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString());
             DataProvider.Disconnect();
             if (result > 0) return true;
             return false;
         }
-
-
         public static bool CapNhatThongTinChuyenDeDangMo(DTO.ThongTinChuyenDeMo chuyenDeMo)
         {
 
@@ -115,9 +144,9 @@ namespace BUS
                 chuyenDeMo.NamHoc,
                 chuyenDeMo.HocKy);
 
-           DataProvider.Connect();
-            int result =DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString());
-           DataProvider.Disconnect();
+            DataProvider.Connect();
+            int result = DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString());
+            DataProvider.Disconnect();
             if (result <= 0)
             {
                 return false;
@@ -129,10 +158,10 @@ namespace BUS
             List<DTO.ThongTinChuyenDeMo> dsChuyenDe = new List<DTO.ThongTinChuyenDeMo>();
 
             StringBuilder query = new StringBuilder();
-            query.AppendFormat(layCauTruyVanConbobox(macd,mahk,nam).ToString());
-           DataProvider.Connect();
-            DataTable dt =DataProvider.Select(CommandType.Text, query.ToString());
-           DataProvider.Disconnect();
+            query.AppendFormat(layCauTruyVanConbobox(macd, mahk, nam).ToString());
+            DataProvider.Connect();
+            DataTable dt = DataProvider.Select(CommandType.Text, query.ToString());
+            DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
                 DTO.ThongTinChuyenDeMo chuyenDeMo = new DTO.ThongTinChuyenDeMo();
@@ -192,6 +221,32 @@ namespace BUS
             }
             return query;
 
+        }
+
+        /// new
+        /// 
+
+        public static bool MoChuyenDe(DTO.ThongTinChuyenDeMo chuyenDeMo)
+        {
+            StringBuilder query = new StringBuilder();
+            query.Append("INSERT INTO THONGTIN_CHUYENDE_MO VALUES(@MaCD, @NamHoc, @HocKi, @MaGVu, @NgayBD, @NgayKT, @SLSVToiDa, @SLNhomToiDa, @TrangThai)");
+            SqlParameter[] Params = new SqlParameter[] {
+                new SqlParameter("@MaCD",chuyenDeMo.MaChuyenDe),
+                new SqlParameter("@NamHoc",chuyenDeMo.NamHoc),
+                new SqlParameter("@HocKi",chuyenDeMo.HocKy),
+                new SqlParameter("@MaGVu",chuyenDeMo.MaGiaoVu),
+                new SqlParameter("@NgayBD",chuyenDeMo.ThoiGianBD.ToShortDateString()),
+                new SqlParameter("@NgayKT",chuyenDeMo.ThoiGianKT.ToShortDateString()),
+                new SqlParameter("@SLSVToiDa",chuyenDeMo.SlSinhVienToiDa.ToString()),
+                new SqlParameter("@SLNhomToiDa",chuyenDeMo.SlNhomToiDa.ToString()),
+                new SqlParameter("@TrangThai",chuyenDeMo.TrangThai)
+            };
+
+            DAO.DataProvider.Connect();
+            int result = DAO.DataProvider.ExecuteNonQuery(CommandType.Text, query.ToString(), Params);
+            DAO.DataProvider.Disconnect();
+            if (result > 0) return true;
+            return false;
         }
     }
 }

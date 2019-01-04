@@ -24,7 +24,7 @@ namespace BUS
             }
             return sinhviens;
         }
-        public static DTO.SinhVien LaySinhVien(string masv)
+        public static DTO.SinhVien LayThongTin(string masv)
         {
             DTO.SinhVien sinhvien = null;
             DataTable dt;

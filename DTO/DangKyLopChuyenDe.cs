@@ -22,31 +22,22 @@ namespace DTO
         public int NAM
         {
             get { return nam; }
-            set
-            {
-                nam = value;
-            }
+            set { nam = value; }
         }
         public string MAHK
         {
             get { return mahk; }
-            set
-            {
-                mahk = value;
-            }
+            set { mahk = value; }
         }
         public string MASV
         {
             get { return masv; }
-            set { masv = value;  }
+            set { masv = value; }
         }
         public int MANHOM
         {
             get { return manhom; }
-            set
-            {
-                manhom = value;
-            }
+            set { manhom = value; }
         }
     }
 }
