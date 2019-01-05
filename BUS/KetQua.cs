@@ -17,8 +17,9 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM KETQUA");
             DataProvider.Connect();
-            dt = DataProvider.GetReader(CommandType.StoredProcedure, "LayDanhSachKetQua",null);
-            //DataProvider.Select(CommandType.Text, query.ToString());
+            dt =
+            //DataProvider.GetReader(CommandType.StoredProcedure, "LayDanhSachKetQua",null);
+            DataProvider.Select(CommandType.Text, query.ToString());
             DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
@@ -81,17 +82,42 @@ namespace BUS
         {
             List<DTO.KetQua> lkq = new List<DTO.KetQua>();
             DataTable dt;
-            //DataProvider.GetReader(CommandType.StoredProcedure, "LayDanhSachKetQuaTimKiem",
-            //    new System.Data.SqlClient.SqlParameter
-            //    {
-            //        ParameterName = "@masv",
-            //        Direction = ParameterDirection.Input,
-            //        Value = masv
-            //    }
 
-            //    );
             DataProvider.Connect();
-            dt = DataProvider.Select(CommandType.Text, layCauTruyVanChung(masv,tensv,macd,mahk,nam).ToString());
+            dt = DataProvider.GetReader(CommandType.StoredProcedure, "LayDanhSachKetQuaTimKiem",
+                new System.Data.SqlClient.SqlParameter
+                {
+                    ParameterName = "@masv",
+                    Direction = ParameterDirection.Input,
+                    Value = masv
+                },
+                new System.Data.SqlClient.SqlParameter
+                {
+                    ParameterName = "@tensv",
+                    Direction = ParameterDirection.Input,
+                    Value = tensv
+                },
+                new System.Data.SqlClient.SqlParameter
+                {
+                    ParameterName = "@macd",
+                    Direction = ParameterDirection.Input,
+                    Value = macd
+                },
+                new System.Data.SqlClient.SqlParameter
+                {
+                    ParameterName = "@mahk",
+                    Direction = ParameterDirection.Input,
+                    Value = mahk
+                },
+                new System.Data.SqlClient.SqlParameter
+                {
+                    ParameterName = "@nam",
+                    Direction = ParameterDirection.Input,
+                    Value = nam
+                }
+
+                );
+            //DataProvider.Select(CommandType.Text, layCauTruyVanChung(masv,tensv,macd,mahk,nam).ToString());
             DataProvider.Disconnect();
             return dt;
         }

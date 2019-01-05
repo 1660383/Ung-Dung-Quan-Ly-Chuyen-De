@@ -27,7 +27,13 @@ namespace BUS
             query.AppendFormat("SELECT * FROM NOIDUNG_LOP_CHUYENDE WHERE MACD = '{0}' AND MAGV = '{1}' AND MAHK= '{2}' AND NAM = {3}",
                 chuyende.MaChuyenDe, chuyende.MaGiaoVienThamGia, chuyende.MaHocKy, chuyende.NamHoc);
             DAO.DataProvider.Connect();
-            DataTable dt = DAO.DataProvider.Select(System.Data.CommandType.Text, query.ToString());
+            DataTable dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayDSNoiDungChuyenDe",
+                new SqlParameter { ParameterName = "@MaChuyenDe", Value = chuyende.MaChuyenDe, Direction = ParameterDirection.Input },
+                new SqlParameter { ParameterName = "@MaGiaoVienThamGia", Value = chuyende.MaGiaoVienThamGia, Direction = ParameterDirection.Input },
+                new SqlParameter { ParameterName = "@MaHocKy", Value = chuyende.MaHocKy, Direction = ParameterDirection.Input },
+                new SqlParameter { ParameterName = "@NamHoc", Value = chuyende.NamHoc, Direction = ParameterDirection.Input });
+                
+                //DAO.DataProvider.Select(System.Data.CommandType.Text, query.ToString());
             DAO.DataProvider.Disconnect();
             List<DTO.NoiDungLopChuyenDe> dsNDlopChuyenDe = null;
             if (dt.Rows.Count > 0)
@@ -39,7 +45,6 @@ namespace BUS
                     {
                         MaNoiDung = row[0].ToString().Trim(),
                         MaNoiDungChuyenDeGiao = row[1].ToString().Trim(),
-                        MaGiaoVien = row[2].ToString().Trim(),
                         MaChuyenDe = row[3].ToString().Trim(),
                         Nam = int.Parse(row[4].ToString().Trim()),
                         MaHocKy = row[5].ToString().Trim(),
@@ -61,7 +66,8 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM NOIDUNG_LOP_CHUYENDE");
             DAO.DataProvider.Connect();
-            DataTable dt = DAO.DataProvider.Select(System.Data.CommandType.Text, query.ToString());
+            DataTable dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayTatCaNoiDungChuyenDe");
+                //DAO.DataProvider.Select(System.Data.CommandType.Text, query.ToString());
             DAO.DataProvider.Disconnect();
             List<DTO.NoiDungLopChuyenDe> dsNDlopChuyenDe = null;
             if (dt.Rows.Count > 0)

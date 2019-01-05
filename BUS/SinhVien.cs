@@ -15,7 +15,8 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM SINHVIEN");
             DAO.DataProvider.Connect();
-            dt = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+            dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayDanhSachSinhVien");
+                DAO.DataProvider.Select(CommandType.Text, query.ToString());
             DAO.DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
@@ -31,7 +32,10 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from SINHVIEN sv where sv.MASV = '{0}'", masv);
             DAO.DataProvider.Connect();
-            dt = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+
+            dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayThongTinSinhVien",
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@masv",Value = masv,Direction = ParameterDirection.Input });
+            //DAO.DataProvider.Select(CommandType.Text, query.ToString())
             DAO.DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {

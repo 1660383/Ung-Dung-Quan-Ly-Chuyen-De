@@ -15,7 +15,8 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("SELECT * FROM Nhom");
             DAO.DataProvider.Connect();
-            dt = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+            dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayDanhSachNhom");
+            //DAO.DataProvider.Select(CommandType.Text, query.ToString());
             DAO.DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
@@ -31,7 +32,9 @@ namespace BUS
             StringBuilder query = new StringBuilder();
             query.AppendFormat("select * from NHOM n where n.MANHOM = '{0}'", manhom);
             DAO.DataProvider.Connect();
-            dt = DAO.DataProvider.Select(CommandType.Text, query.ToString());
+            dt = DAO.DataProvider.GetReader(CommandType.StoredProcedure, "LayTenNhom",
+                new System.Data.SqlClient.SqlParameter { ParameterName = "@manhom", Value = manhom, Direction = ParameterDirection.Input });
+            //DAO.DataProvider.Select(CommandType.Text, query.ToString());
             DAO.DataProvider.Disconnect();
             foreach (DataRow row in dt.Rows)
             {
